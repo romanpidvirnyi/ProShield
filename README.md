@@ -26,10 +26,10 @@
 1. Відкрийте [Git Bash](https://git-scm.com/downloads).
 2. Виконайте команду для створення нового ключа:
    ```bash
-   ssh-keygen -t ed25519 -C "ваш_email@example.com"
+   ssh-keygen -t ed25519 -C "your_email@example.com"
    ```
    > Якщо ваш клієнт не підтримує `ed25519`, скористайтеся `rsa`:  
-   > `ssh-keygen -t rsa -b 4096 -C "ваш_email@example.com"`
+   > `ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
 
 3. У відповідь на запит вкажіть місце для збереження ключа (або залиште за замовчуванням, натиснувши `Enter`).
 4. Встановіть або залиште порожнім парольну фразу (рекомендується встановити для безпеки).
@@ -49,10 +49,10 @@
 1. Відкрийте **Термінал**.
 2. Виконайте команду для створення нового ключа:
    ```bash
-   ssh-keygen -t ed25519 -C "ваш_email@example.com"
+   ssh-keygen -t ed25519 -C "your_email@example.com"
    ```
    > Якщо ваш клієнт не підтримує `ed25519`, скористайтеся `rsa`:  
-   > `ssh-keygen -t rsa -b 4096 -C "ваш_email@example.com"`
+   > `ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
 
 3. У відповідь на запит вкажіть місце для збереження ключа (або залиште за замовчуванням, натиснувши `Enter`).
 4. Встановіть або залиште порожнім парольну фразу (рекомендується встановити для безпеки).
@@ -73,10 +73,10 @@
 1. Відкрийте **Термінал**.
 2. Виконайте команду для створення нового ключа:
    ```bash
-   ssh-keygen -t ed25519 -C "ваш_email@example.com"
+   ssh-keygen -t ed25519 -C "your_email@example.com"
    ```
    > Якщо ваш клієнт не підтримує `ed25519`, скористайтеся `rsa`:  
-   > `ssh-keygen -t rsa -b 4096 -C "ваш_email@example.com"`
+   > `ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
 
 3. У відповідь на запит вкажіть місце для збереження ключа (або залиште за замовчуванням, натиснувши `Enter`).
 4. Встановіть або залиште порожнім парольну фразу (рекомендується встановити для безпеки).
@@ -125,7 +125,7 @@ Hi username! You've successfully authenticated, but GitHub does not provide shel
 2. Відкрийте Git Bash і налаштуйте глобальні параметри:
    ```bash
    git config --global user.name "Ваше ім'я"
-   git config --global user.email "ваш_email@example.com"
+   git config --global user.email "your_email@example.com"
    ```
 3. Перевірте налаштування:
    ```bash
@@ -140,7 +140,7 @@ Hi username! You've successfully authenticated, but GitHub does not provide shel
 2. Налаштуйте глобальні параметри:
    ```bash
    git config --global user.name "Ваше ім'я"
-   git config --global user.email "ваш_email@example.com"
+   git config --global user.email "your_email@example.com"
    ```
 3. Перевірте налаштування:
    ```bash
@@ -156,7 +156,7 @@ Hi username! You've successfully authenticated, but GitHub does not provide shel
 2. Налаштуйте глобальні параметри:
    ```bash
    git config --global user.name "Ваше ім'я"
-   git config --global user.email "ваш_email@example.com"
+   git config --global user.email "your_email@example.com"
    ```
 3. Перевірте налаштування:
    ```bash
