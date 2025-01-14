@@ -5,11 +5,21 @@ from logging.config import fileConfig
 from alembic import context
 from app.db.models import base
 from dotenv import load_dotenv
+from pydantic import Field
+from pydantic_settings import BaseSettings
 from sqlalchemy import engine_from_config, pool
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-load_dotenv(os.path.join(BASE_DIR, ".env"))
-sys.path.append(BASE_DIR)
+
+class Config(BaseSettings):
+    DB_CONNECTION_STRING: str = Field(
+        default="postgresql://postgres:postgres@localhost:5432/postgres",
+        validation_alias="DB_CONNECTION_STRING",
+    )
+
+    @property
+    def POSTGRES_CONNECTION(self):
+        return self.DB_CONNECTION_STRING
+
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -17,7 +27,7 @@ config = context.config
 
 # this will overwrite the ini-file sqlalchemy.url path
 # with the path given in the config of the main code
-config.set_main_option("sqlalchemy.url", os.environ["DATABASE_URL"])
+config.set_main_option("sqlalchemy.url", Config().POSTGRES_CONNECTION)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.

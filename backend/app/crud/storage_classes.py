@@ -105,8 +105,8 @@ def update_storage_class(
         storage_class_id (int): The Storage Class ID.
         storage_class (schemas.StorageClassUpdate): The storage class to update.
 
-    Returns (ProjectSettings):
-        The project settings.
+    Returns (models.StorageClass):
+        The storage class.
     """
 
     db_storage_class = db.get(models.StorageClass, storage_class_id)

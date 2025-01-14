@@ -18,7 +18,7 @@ async def lifespan(app: FastAPI):
     db: Session = SessionLocal()
 
     # pre-load
-    content.upload_storage_classes(db=db)
+    content.preload_templates(db=db)
 
     yield
 

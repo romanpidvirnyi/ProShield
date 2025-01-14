@@ -11,7 +11,7 @@ services:
       - ./alembic.ini:/app/alembic.ini
       - .:/app
     environment:
-      - ENVIRONMENT=DEV
+      DB_CONNECTION_STRING: postgresql://postgres:postgres@database:5432/postgres?sslmode=allow
     restart: always
     
     depends_on:
@@ -27,8 +27,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
     volumes:
-      - type: volume
-        target: /var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
     command: postgres -c listen_addresses=0.0.0.0
     restart: always
     healthcheck:
@@ -36,3 +35,6 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+
+volumes:
+  postgres-data:

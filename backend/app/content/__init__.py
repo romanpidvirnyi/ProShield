@@ -1,3 +1,3 @@
-from app.content.preload import upload_storage_classes
+from app.content.preload import preload_templates
 
-__all__ = ["upload_storage_classes"]
+__all__ = ["preload_templates"]

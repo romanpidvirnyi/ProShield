@@ -1,3 +1,4 @@
+from app.schemas.materials import Material, MaterialCreate, MaterialUpdate
 from app.schemas.storage_classes import (
     StorageClass,
     StorageClassCreate,
@@ -8,4 +9,7 @@ __all__ = [
     "StorageClassCreate",
     "StorageClass",
     "StorageClassUpdate",
+    "Material",
+    "MaterialCreate",
+    "MaterialUpdate",
 ]
