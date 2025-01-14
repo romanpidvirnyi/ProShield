@@ -1,8 +1,27 @@
-import uvicorn
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+import logging
+from contextlib import asynccontextmanager
 
-from backend.app.api.routes import router as api_router
+import uvicorn
+from app import content
+from app.api.routes import router as api_router
+from app.core.database import SessionLocal, get_db
+from fastapi import Depends, FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy.orm import Session
+
+logger = logging.getLogger(__name__)
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # get db session
+    db: Session = SessionLocal()
+
+    # pre-load
+    content.upload_storage_classes(db=db)
+
+    yield
+
 
 # Initialize FastAPI application
 app = FastAPI(
@@ -11,7 +30,9 @@ app = FastAPI(
     version="1.0.0",
     openapi_url="/openapi.json",
     docs_url="/docs",
+    lifespan=lifespan,
 )
+
 
 app.add_middleware(
     CORSMiddleware,

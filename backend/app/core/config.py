@@ -22,7 +22,11 @@ class Settings(BaseSettings):
     ENVIRONMENT: str = ENVIROMENT.DEVELOPMENT
 
     # database settings
-    DB_CONNECTION_STRING: str = ""
+    DATABASE_URL: str = ""
+
+    @property
+    def DATABASE_URL(self):
+        return self.DATABASE_URL
 
 
 settings = Settings()

@@ -1,0 +1,26 @@
+[
+    {
+        "protection_class": "A-I",
+        "description": "У межах проєктної забудови міст, віднесених до групи особливої важливості цивільного захисту",
+        "overpressure_air_blast_wave": 500,
+        "radiation_protection_level": 5000
+    },
+    {
+        "protection_class": "A-II",
+        "description": "Окремо розташований об’єкт суб’єкта господарювання, віднесеного до категорії особливої важливості цивільного захисту",
+        "overpressure_air_blast_wave": 300,
+        "radiation_protection_level": 3000
+    },
+    {
+        "protection_class": "A-III",
+        "description": "У межах проєктної забудови та санітарно-захисної зони атомних енергетичних об’єктів",
+        "overpressure_air_blast_wave": 200,
+        "radiation_protection_level": 5000
+    },
+    {
+        "protection_class": "A-IV",
+        "description": "У межах проєктної забудови територій та населених пунктів, віднесених до відповідних груп цивільного захисту, а також за межами проєктної забудови та санітарно-захисної зони атомних енергетичних об’єктів у зонах можливих значних (сильних) руйнувань ",
+        "overpressure_air_blast_wave": 100,
+        "radiation_protection_level": 1000
+    }
+]

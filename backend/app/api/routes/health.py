@@ -1,6 +1,5 @@
+from app.schemas.health import HealthResponse
 from fastapi import APIRouter, HTTPException, Response, Security, status
-
-from backend.app.schemas.health import HealthResponse
 
 router = APIRouter(prefix="")
 
