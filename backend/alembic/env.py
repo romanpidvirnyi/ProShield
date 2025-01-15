@@ -3,8 +3,8 @@ import sys
 from logging.config import fileConfig
 
 from alembic import context
-from app.db.models import base
 from dotenv import load_dotenv
+from proshield.db.models import base
 from pydantic import Field
 from pydantic_settings import BaseSettings
 from sqlalchemy import engine_from_config, pool

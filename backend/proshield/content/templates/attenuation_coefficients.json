@@ -1,0 +1,206 @@
+[
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 10,
+        "neutron_dose_coefficient": 6.2,
+        "gamma_dose_coefficient": 2.0
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 15,
+        "neutron_dose_coefficient": 12,
+        "gamma_dose_coefficient": 3.5
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 20,
+        "neutron_dose_coefficient": 23,
+        "gamma_dose_coefficient": 5.3
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 25,
+        "neutron_dose_coefficient": 43,
+        "gamma_dose_coefficient": 8.3
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 30,
+        "neutron_dose_coefficient": 74,
+        "gamma_dose_coefficient": 13
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 35,
+        "neutron_dose_coefficient": 130,
+        "gamma_dose_coefficient": 22
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 40,
+        "neutron_dose_coefficient": 230,
+        "gamma_dose_coefficient": 32
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 45,
+        "neutron_dose_coefficient": 390,
+        "gamma_dose_coefficient": 44
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 50,
+        "neutron_dose_coefficient": 680,
+        "gamma_dose_coefficient": 66
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 55,
+        "neutron_dose_coefficient": 1200,
+        "gamma_dose_coefficient": 96
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 60,
+        "neutron_dose_coefficient": 2100,
+        "gamma_dose_coefficient": 140
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 65,
+        "neutron_dose_coefficient": 3600,
+        "gamma_dose_coefficient": 220
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 70,
+        "neutron_dose_coefficient": 6300,
+        "gamma_dose_coefficient": 290
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 75,
+        "neutron_dose_coefficient": 11000,
+        "gamma_dose_coefficient": 390
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 80,
+        "neutron_dose_coefficient": 18000,
+        "gamma_dose_coefficient": 590
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 85,
+        "neutron_dose_coefficient": 31000,
+        "gamma_dose_coefficient": 790
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 90,
+        "neutron_dose_coefficient": 53000,
+        "gamma_dose_coefficient": 1100
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 95,
+        "neutron_dose_coefficient": 91000,
+        "gamma_dose_coefficient": 1500
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 100,
+        "neutron_dose_coefficient": 150000,
+        "gamma_dose_coefficient": 2200
+    }
+    ,
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 105,
+        "neutron_dose_coefficient": 260000,
+        "gamma_dose_coefficient": 3000
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 110,
+        "neutron_dose_coefficient": 450000,
+        "gamma_dose_coefficient": 4300
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 115,
+        "neutron_dose_coefficient": 760000,
+        "gamma_dose_coefficient": 5000
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 120,
+        "neutron_dose_coefficient": 1300000,
+        "gamma_dose_coefficient": 8400
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 125,
+        "neutron_dose_coefficient": 2200000,
+        "gamma_dose_coefficient": 12000
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 130,
+        "neutron_dose_coefficient": 3800000,
+        "gamma_dose_coefficient": 17000
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 135,
+        "neutron_dose_coefficient": 6400000,
+        "gamma_dose_coefficient": 23000
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 140,
+        "neutron_dose_coefficient": 11000000,
+        "gamma_dose_coefficient": 32000
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 145,
+        "neutron_dose_coefficient": 19000000,
+        "gamma_dose_coefficient": 45000
+    },
+    {
+        "material_name": "Бетон",
+        "material_density": 2.4,
+        "material_thickness": 150,
+        "neutron_dose_coefficient": 32000000,
+        "gamma_dose_coefficient": 64000
+    }
+]
