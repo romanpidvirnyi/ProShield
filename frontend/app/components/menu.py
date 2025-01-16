@@ -57,6 +57,34 @@ class MenuBar(ft.UserControl):
                                 "/attenuation-coefficients"
                             ),
                         ),
+                        ft.MenuItemButton(
+                            content=ft.Text("Характер забудови"),
+                            leading=ft.Icon(ft.Icons.BOOK),
+                            style=ft.ButtonStyle(
+                                bgcolor={ft.ControlState.HOVERED: ft.Colors.GREEN_100}
+                            ),
+                            on_click=lambda _: self.page.go("/building-types"),
+                        ),
+                        ft.MenuItemButton(
+                            content=ft.Text(
+                                "Коефіцієнт, який враховує зниження дози проникаючої радіації у забудові"
+                            ),
+                            leading=ft.Icon(ft.Icons.BOOK),
+                            style=ft.ButtonStyle(
+                                bgcolor={ft.ControlState.HOVERED: ft.Colors.GREEN_100}
+                            ),
+                            on_click=lambda _: self.page.go(
+                                "/location-condition-coefficients"
+                            ),
+                        ),
+                        ft.MenuItemButton(
+                            content=ft.Text("Матеріали стін"),
+                            leading=ft.Icon(ft.Icons.BOOK),
+                            style=ft.ButtonStyle(
+                                bgcolor={ft.ControlState.HOVERED: ft.Colors.GREEN_100}
+                            ),
+                            on_click=lambda _: self.page.go("/wall-materials"),
+                        ),
                     ],
                 ),
             ],

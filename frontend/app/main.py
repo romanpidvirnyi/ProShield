@@ -31,6 +31,24 @@ def main(page: ft.Page):
             page.clean()
             attenuation_coefficients = services.get_attenuation_coefficients()
             page.add(views.AttenuationCoefficientsView(page, attenuation_coefficients))
+        elif route == "/building-types":
+            page.clean()
+            building_types = services.get_building_types()
+            page.add(views.BuildingTypesView(page, building_types))
+        elif route == "/location-condition-coefficients":
+            page.clean()
+            location_condition_coefficients = (
+                services.get_location_condition_coefficients()
+            )
+            page.add(
+                views.LocationConditionCoeficientView(
+                    page, location_condition_coefficients
+                )
+            )
+        elif route == "/wall-materials":
+            page.clean()
+            wall_materials = services.get_wall_materials()
+            page.add(views.WallMaterialsView(page, wall_materials))
 
     # Set up routing
     page.on_route_change = route_change
