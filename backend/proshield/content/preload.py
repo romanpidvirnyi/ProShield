@@ -4,12 +4,14 @@ import os
 from proshield import crud, schemas
 from proshield.content.attenuation_coefficients import upload_attenuation_coefficients
 from proshield.content.base import TEMPLATES_DIR
+from proshield.content.building_coefficients import upload_building_coefficients
 from proshield.content.building_types import upload_building_types
 from proshield.content.location_condition_coefficients import (
     upload_location_condition_coefficients,
 )
 from proshield.content.materials import upload_materials
 from proshield.content.storage_classes import upload_storage_classes
+from proshield.content.wall_materials import upload_wall_materials
 from sqlalchemy.orm import Session
 
 FILE_NAME = "storage_classes.json"
@@ -33,3 +35,8 @@ def preload_templates(db: Session):
 
     # Створюємо в базі данних: Коефіцієнт умов розташування
     upload_location_condition_coefficients(db)
+
+    # Створюємо в базі данних: Матеріали стін будинків
+    upload_wall_materials(db)
+    # Створюємо в базі данних: Коефіцієнт будівель
+    upload_building_coefficients(db)

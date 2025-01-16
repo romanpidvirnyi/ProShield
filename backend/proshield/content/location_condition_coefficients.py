@@ -36,7 +36,7 @@ def upload_location_condition_coefficients(db: Session):
                 crud.update_location_condition_coefficient(
                     db=db,
                     location_condition_coefficient_id=db_location_condition_coefficient.id,
-                    db_location_condition_coefficient=schemas.LocationConditionCoefficientUpdate(
+                    location_condition_coefficient=schemas.LocationConditionCoefficientUpdate(
                         coefficient=item["coefficient"],
                     ),
                 )

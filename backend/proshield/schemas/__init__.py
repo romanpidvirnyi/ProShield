@@ -8,6 +8,11 @@ from proshield.schemas.building_types import (
     BuildingTypeCreate,
     BuildingTypeUpdate,
 )
+from proshield.schemas.buildings_coefficients import (
+    BuildingCoefficient,
+    BuildingCoefficientCreate,
+    BuildingCoefficientUpdate,
+)
 from proshield.schemas.location_condition_coefficients import (
     LocationConditionCoefficient,
     LocationConditionCoefficientCreate,
@@ -18,6 +23,11 @@ from proshield.schemas.storage_classes import (
     StorageClass,
     StorageClassCreate,
     StorageClassUpdate,
+)
+from proshield.schemas.wall_materials import (
+    WallMaterial,
+    WallMaterialCreate,
+    WallMaterialUpdate,
 )
 
 __all__ = [
@@ -36,4 +46,10 @@ __all__ = [
     "LocationConditionCoefficient",
     "LocationConditionCoefficientCreate",
     "LocationConditionCoefficientUpdate",
+    "WallMaterial",
+    "WallMaterialCreate",
+    "WallMaterialUpdate",
+    "BuildingCoefficient",
+    "BuildingCoefficientCreate",
+    "BuildingCoefficientUpdate",
 ]

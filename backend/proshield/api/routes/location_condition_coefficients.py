@@ -55,7 +55,7 @@ def get_location_condition_coefficient(
     status_code=status.HTTP_201_CREATED,
 )
 def create_location_condition_coefficient(
-    location_condition_coefficient: schemas.LocationConditionCoefficient,
+    location_condition_coefficient: schemas.LocationConditionCoefficientCreate,
     db=Depends(get_db),
 ) -> schemas.LocationConditionCoefficient:
     location_condition_coefficient = crud.create_location_condition_coefficient(
@@ -84,7 +84,7 @@ def update_location_condition_coefficient(
     location_condition_coefficient_id: int,
     location_condition_coefficient: schemas.LocationConditionCoefficientUpdate,
     db=Depends(get_db),
-) -> schemas.MaterialUpdate:
+) -> schemas.LocationConditionCoefficient:
     location_condition_coefficient = crud.update_location_condition_coefficient(
         db=db,
         location_condition_coefficient_id=location_condition_coefficient_id,

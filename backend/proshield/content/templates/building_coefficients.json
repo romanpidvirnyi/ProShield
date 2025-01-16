@@ -1,0 +1,669 @@
+[
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Промислова",
+        "wall_thickness": 25,
+        "weight": 375,
+        "area_relation_percent": 10,
+        "coefficient": 0.195
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Промислова",
+        "wall_thickness": 25,
+        "weight": 375,
+        "area_relation_percent": 20,
+        "coefficient": 0.28
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Промислова",
+        "wall_thickness": 25,
+        "weight": 375,
+        "area_relation_percent": 30,
+        "coefficient": 0.39
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Промислова",
+        "wall_thickness": 25,
+        "weight": 375,
+        "area_relation_percent": 40,
+        "coefficient": 0.53
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Промислова",
+        "wall_thickness": 25,
+        "weight": 375,
+        "area_relation_percent": 50,
+        "coefficient": 0.54
+    },
+
+
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Промислова",
+        "wall_thickness": 38,
+        "weight": 570,
+        "area_relation_percent": 10,
+        "coefficient": 0.16
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Промислова",
+        "wall_thickness": 38,
+        "weight": 570,
+        "area_relation_percent": 20,
+        "coefficient": 0.27
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Промислова",
+        "wall_thickness": 38,
+        "weight": 570,
+        "area_relation_percent": 30,
+        "coefficient": 0.38
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Промислова",
+        "wall_thickness": 38,
+        "weight": 570,
+        "area_relation_percent": 40,
+        "coefficient": 0.50
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Промислова",
+        "wall_thickness": 38,
+        "weight": 570,
+        "area_relation_percent": 50,
+        "coefficient": 0.52
+    },
+
+
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Промислова",
+        "wall_thickness": 51,
+        "weight": 768,
+        "area_relation_percent": 10,
+        "coefficient": 0.125
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Промислова",
+        "wall_thickness": 51,
+        "weight": 768,
+        "area_relation_percent": 20,
+        "coefficient": 0.26
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Промислова",
+        "wall_thickness": 51,
+        "weight": 768,
+        "area_relation_percent": 30,
+        "coefficient": 0.37
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Промислова",
+        "wall_thickness": 51,
+        "weight": 768,
+        "area_relation_percent": 40,
+        "coefficient": 0.47
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Промислова",
+        "wall_thickness": 51,
+        "weight": 768,
+        "area_relation_percent": 50,
+        "coefficient": 0.50
+    },
+
+
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Промислова",
+        "wall_thickness": 64,
+        "weight": 960,
+        "area_relation_percent": 10,
+        "coefficient": 0.1
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Промислова",
+        "wall_thickness": 64,
+        "weight": 960,
+        "area_relation_percent": 20,
+        "coefficient": 0.25
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Промислова",
+        "wall_thickness": 64,
+        "weight": 960,
+        "area_relation_percent": 30,
+        "coefficient": 0.36
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Промислова",
+        "wall_thickness": 64,
+        "weight": 960,
+        "area_relation_percent": 40,
+        "coefficient": 0.45
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Промислова",
+        "wall_thickness": 64,
+        "weight": 960,
+        "area_relation_percent": 50,
+        "coefficient": 0.47
+    },
+
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 25,
+        "weight": 375,
+        "area_relation_percent": 10,
+        "coefficient": 0.23
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 25,
+        "weight": 375,
+        "area_relation_percent": 20,
+        "coefficient": 0.32
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 25,
+        "weight": 375,
+        "area_relation_percent": 30,
+        "coefficient": 0.33
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 25,
+        "weight": 375,
+        "area_relation_percent": 40,
+        "coefficient": 0.37
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 25,
+        "weight": 375,
+        "area_relation_percent": 50,
+        "coefficient": 0.44
+    },
+
+
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 38,
+        "weight": 570,
+        "area_relation_percent": 10,
+        "coefficient": 0.18
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 38,
+        "weight": 570,
+        "area_relation_percent": 20,
+        "coefficient": 0.26
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 38,
+        "weight": 570,
+        "area_relation_percent": 30,
+        "coefficient": 0.28
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 38,
+        "weight": 570,
+        "area_relation_percent": 40,
+        "coefficient": 0.32
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 38,
+        "weight": 570,
+        "area_relation_percent": 50,
+        "coefficient": 0.41
+    },
+
+
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 51,
+        "weight": 768,
+        "area_relation_percent": 10,
+        "coefficient": 0.13
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 51,
+        "weight": 768,
+        "area_relation_percent": 20,
+        "coefficient": 0.20
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 51,
+        "weight": 768,
+        "area_relation_percent": 30,
+        "coefficient": 0.23
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 51,
+        "weight": 768,
+        "area_relation_percent": 40,
+        "coefficient": 0.27
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 51,
+        "weight": 768,
+        "area_relation_percent": 50,
+        "coefficient": 0.38
+    },
+
+
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 64,
+        "weight": 960,
+        "area_relation_percent": 10,
+        "coefficient": 0.1
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 64,
+        "weight": 960,
+        "area_relation_percent": 20,
+        "coefficient": 0.18
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 64,
+        "weight": 960,
+        "area_relation_percent": 30,
+        "coefficient": 0.21
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 64,
+        "weight": 960,
+        "area_relation_percent": 40,
+        "coefficient": 0.25
+    },
+    {
+        "wall_material_name": "Цегляна кладка",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 64,
+        "weight": 960,
+        "area_relation_percent": 50,
+        "coefficient": 0.35
+    },
+
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Промислова",
+        "wall_thickness": 20,
+        "weight": 360,
+        "area_relation_percent": 10,
+        "coefficient": 0.2
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Промислова",
+        "wall_thickness": 20,
+        "weight": 360,
+        "area_relation_percent": 20,
+        "coefficient": 0.28
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Промислова",
+        "wall_thickness": 20,
+        "weight": 360,
+        "area_relation_percent": 30,
+        "coefficient": 0.38
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Промислова",
+        "wall_thickness": 20,
+        "weight": 360,
+        "area_relation_percent": 40,
+        "coefficient": 0.47
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Промислова",
+        "wall_thickness": 20,
+        "weight": 360,
+        "area_relation_percent": 50,
+        "coefficient": 0.58
+    },
+
+
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Промислова",
+        "wall_thickness": 30,
+        "weight": 540,
+        "area_relation_percent": 10,
+        "coefficient": 0.15
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Промислова",
+        "wall_thickness": 30,
+        "weight": 540,
+        "area_relation_percent": 20,
+        "coefficient": 0.27
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Промислова",
+        "wall_thickness": 30,
+        "weight": 540,
+        "area_relation_percent": 30,
+        "coefficient": 0.37
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Промислова",
+        "wall_thickness": 30,
+        "weight": 540,
+        "area_relation_percent": 40,
+        "coefficient": 0.45
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Промислова",
+        "wall_thickness": 30,
+        "weight": 540,
+        "area_relation_percent": 50,
+        "coefficient": 0.58
+    },
+
+
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Промислова",
+        "wall_thickness": 38,
+        "weight": 684,
+        "area_relation_percent": 10,
+        "coefficient": 0.134
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Промислова",
+        "wall_thickness": 38,
+        "weight": 684,
+        "area_relation_percent": 20,
+        "coefficient": 0.262
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Промислова",
+        "wall_thickness": 38,
+        "weight": 684,
+        "area_relation_percent": 30,
+        "coefficient": 0.362
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Промислова",
+        "wall_thickness": 38,
+        "weight": 684,
+        "area_relation_percent": 40,
+        "coefficient": 0.434
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Промислова",
+        "wall_thickness": 38,
+        "weight": 684,
+        "area_relation_percent": 50,
+        "coefficient": 0.532
+    },
+
+
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Промислова",
+        "wall_thickness": 40,
+        "weight": 720,
+        "area_relation_percent": 10,
+        "coefficient": 0.13
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Промислова",
+        "wall_thickness": 40,
+        "weight": 720,
+        "area_relation_percent": 20,
+        "coefficient": 0.26
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Промислова",
+        "wall_thickness": 40,
+        "weight": 720,
+        "area_relation_percent": 30,
+        "coefficient": 0.36
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Промислова",
+        "wall_thickness": 40,
+        "weight": 720,
+        "area_relation_percent": 40,
+        "coefficient": 0.43
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Промислова",
+        "wall_thickness": 40,
+        "weight": 720,
+        "area_relation_percent": 50,
+        "coefficient": 0.52
+    },
+
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 20,
+        "weight": 360,
+        "area_relation_percent": 10,
+        "coefficient": 0.5
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 20,
+        "weight": 360,
+        "area_relation_percent": 20,
+        "coefficient": 0.55
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 20,
+        "weight": 360,
+        "area_relation_percent": 30,
+        "coefficient": 0.62
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 20,
+        "weight": 360,
+        "area_relation_percent": 40,
+        "coefficient": 0.71
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 20,
+        "weight": 360,
+        "area_relation_percent": 50,
+        "coefficient": 0.83
+    },
+
+
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 30,
+        "weight": 540,
+        "area_relation_percent": 10,
+        "coefficient": 0.38
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 30,
+        "weight": 540,
+        "area_relation_percent": 20,
+        "coefficient": 0.41
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 30,
+        "weight": 540,
+        "area_relation_percent": 30,
+        "coefficient": 0.45
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 30,
+        "weight": 540,
+        "area_relation_percent": 40,
+        "coefficient": 0.5
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 30,
+        "weight": 540,
+        "area_relation_percent": 50,
+        "coefficient": 0.55
+    },
+
+
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 38,
+        "weight": 684,
+        "area_relation_percent": 10,
+        "coefficient": 0.3
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 38,
+        "weight": 684,
+        "area_relation_percent": 20,
+        "coefficient": 0.337
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 38,
+        "weight": 684,
+        "area_relation_percent": 30,
+        "coefficient": 0.378
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 38,
+        "weight": 684,
+        "area_relation_percent": 40,
+        "coefficient": 0.364
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 38,
+        "weight": 684,
+        "area_relation_percent": 50,
+        "coefficient": 0.454
+    },
+
+
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 40,
+        "weight": 720,
+        "area_relation_percent": 10,
+        "coefficient": 0.28
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 40,
+        "weight": 720,
+        "area_relation_percent": 20,
+        "coefficient": 0.32
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 40,
+        "weight": 720,
+        "area_relation_percent": 30,
+        "coefficient": 0.36
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 40,
+        "weight": 720,
+        "area_relation_percent": 40,
+        "coefficient": 0.33
+    },
+    {
+        "wall_material_name": "Легкий бетон",
+        "building_type_name": "Житлова та громадська",
+        "wall_thickness": 40,
+        "weight": 720,
+        "area_relation_percent": 50,
+        "coefficient": 0.43
+    }
+]

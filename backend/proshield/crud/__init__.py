@@ -6,6 +6,14 @@ from proshield.crud.attenuation_coefficients import (
     get_attenuation_coefficients,
     update_attenuation_coefficient,
 )
+from proshield.crud.building_coefficients import (
+    create_building_coefficient,
+    delete_building_coefficient,
+    get_building_coefficient_by_id,
+    get_building_coefficient_by_params,
+    get_building_coefficients,
+    update_building_coefficient,
+)
 from proshield.crud.building_types import (
     create_building_type,
     delete_building_type,
@@ -37,6 +45,14 @@ from proshield.crud.storage_classes import (
     get_storage_class_by_protection_class,
     get_storage_classes,
     update_storage_class,
+)
+from proshield.crud.wall_materials import (
+    create_wall_material,
+    delete_wall_material,
+    get_wall_material_by_id,
+    get_wall_material_by_name,
+    get_wall_materials,
+    update_wall_material,
 )
 
 __all__ = [
@@ -70,4 +86,16 @@ __all__ = [
     "get_location_condition_coefficient_by_params",
     "get_location_condition_coefficients",
     "update_location_condition_coefficient",
+    "create_wall_material",
+    "delete_wall_material",
+    "get_wall_material_by_id",
+    "get_wall_material_by_name",
+    "get_wall_materials",
+    "update_wall_material",
+    "create_building_coefficient",
+    "delete_building_coefficient",
+    "get_building_coefficient_by_id",
+    "get_building_coefficient_by_params",
+    "get_building_coefficients",
+    "update_building_coefficient",
 ]
