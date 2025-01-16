@@ -1,6 +1,11 @@
+from typing import TYPE_CHECKING
+
 from proshield.db.models.base import Base
 from sqlalchemy import ForeignKey, UniqueConstraint
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+
+if TYPE_CHECKING:
+    from proshield.db.models import Material
 
 
 class AttenuationCoefficient(Base):
@@ -22,3 +27,13 @@ class AttenuationCoefficient(Base):
     neutron_dose_coefficient: Mapped[float] = mapped_column()
     # коефіцієнт послаблення дози гамма-випромінювання огороджувальною конструкцією
     gamma_dose_coefficient: Mapped[float] = mapped_column()
+
+    material: Mapped["Material"] = relationship(
+        "Material",
+        foreign_keys="AttenuationCoefficient.material_id",
+    )
+
+    @property
+    def material_name(self) -> str:
+        """Returns True if the control is locked, False otherwise."""
+        return self.material.name

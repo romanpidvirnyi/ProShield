@@ -95,7 +95,14 @@ def get_attenuation_coefficients(db: Session) -> list[models.AttenuationCoeffici
     Returns:
         list[models.AttenuationCoefficient]: Attenuation Coefficients list.
     """
-    return db.scalars(select(models.AttenuationCoefficient).distinct()).all()
+    return db.scalars(
+        select(models.AttenuationCoefficient)
+        .order_by(
+            models.AttenuationCoefficient.material_id,
+            models.AttenuationCoefficient.material_thickness,
+        )
+        .distinct()
+    ).all()
 
 
 def update_attenuation_coefficient(

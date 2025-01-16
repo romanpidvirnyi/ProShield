@@ -13,6 +13,7 @@ class AttenuationCoefficientCreate(BaseModel):
 
 class AttenuationCoefficient(AttenuationCoefficientCreate):
     id: int
+    material_name: str
 
 
 class AttenuationCoefficientUpdate(BaseModel):
