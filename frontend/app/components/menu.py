@@ -28,14 +28,6 @@ class MenuBar(ft.UserControl):
                     content=ft.Text("Додатки"),
                     controls=[
                         ft.MenuItemButton(
-                            content=ft.Text("Матеріали"),
-                            leading=ft.Icon(ft.Icons.BOOK),
-                            style=ft.ButtonStyle(
-                                bgcolor={ft.ControlState.HOVERED: ft.Colors.GREEN_100}
-                            ),
-                            on_click=lambda _: self.page.go("/materials"),
-                        ),
-                        ft.MenuItemButton(
                             content=ft.Text(
                                 "А.1 - Клас сховищ, СПП із захисними властивостями сховищ"
                             ),
@@ -58,16 +50,8 @@ class MenuBar(ft.UserControl):
                             ),
                         ),
                         ft.MenuItemButton(
-                            content=ft.Text("Характер забудови"),
-                            leading=ft.Icon(ft.Icons.BOOK),
-                            style=ft.ButtonStyle(
-                                bgcolor={ft.ControlState.HOVERED: ft.Colors.GREEN_100}
-                            ),
-                            on_click=lambda _: self.page.go("/building-types"),
-                        ),
-                        ft.MenuItemButton(
                             content=ft.Text(
-                                "Коефіцієнт, який враховує зниження дози проникаючої радіації у забудові"
+                                "Г.2 - Коефіцієнт, який враховує зниження дози проникаючої радіації у забудові"
                             ),
                             leading=ft.Icon(ft.Icons.BOOK),
                             style=ft.ButtonStyle(
@@ -76,6 +60,32 @@ class MenuBar(ft.UserControl):
                             on_click=lambda _: self.page.go(
                                 "/location-condition-coefficients"
                             ),
+                        ),
+                        ft.MenuItemButton(
+                            content=ft.Text(
+                                "Г.3 - Коефіцієнт, який враховує послаблення радіації огороджувальними конструкціями"
+                            ),
+                            leading=ft.Icon(ft.Icons.BOOK),
+                            style=ft.ButtonStyle(
+                                bgcolor={ft.ControlState.HOVERED: ft.Colors.GREEN_100}
+                            ),
+                            on_click=lambda _: self.page.go("/buildings-coefficients"),
+                        ),
+                        ft.MenuItemButton(
+                            content=ft.Text("Матеріали"),
+                            leading=ft.Icon(ft.Icons.BOOK),
+                            style=ft.ButtonStyle(
+                                bgcolor={ft.ControlState.HOVERED: ft.Colors.GREEN_100}
+                            ),
+                            on_click=lambda _: self.page.go("/materials"),
+                        ),
+                        ft.MenuItemButton(
+                            content=ft.Text("Характер забудови"),
+                            leading=ft.Icon(ft.Icons.BOOK),
+                            style=ft.ButtonStyle(
+                                bgcolor={ft.ControlState.HOVERED: ft.Colors.GREEN_100}
+                            ),
+                            on_click=lambda _: self.page.go("/building-types"),
                         ),
                         ft.MenuItemButton(
                             content=ft.Text("Матеріали стін"),

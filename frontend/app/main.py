@@ -49,6 +49,10 @@ def main(page: ft.Page):
             page.clean()
             wall_materials = services.get_wall_materials()
             page.add(views.WallMaterialsView(page, wall_materials))
+        elif route == "/buildings-coefficients":
+            page.clean()
+            buildings_coefficients = services.get_buildings_coefficients()
+            page.add(views.BuildingCoeficientsView(page, buildings_coefficients))
 
     # Set up routing
     page.on_route_change = route_change

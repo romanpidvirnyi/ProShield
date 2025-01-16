@@ -1,4 +1,5 @@
 from app.components.attenuation_coefficients import AttenuationCoefficientsDataTable
+from app.components.building_coefficients import BuildingCoeficientDataTable
 from app.components.building_types import BuildingTypesDataTable
 from app.components.content import Content
 from app.components.location_condition_coefficients import (
@@ -18,4 +19,5 @@ __all__ = [
     "BuildingTypesDataTable",
     "LocationConditionCoeficientDataTable",
     "WallMaterialsDataTable",
+    "BuildingCoeficientDataTable",
 ]

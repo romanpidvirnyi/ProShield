@@ -1,5 +1,6 @@
 from app.views.attenuation_coefficients import AttenuationCoefficientsView
 from app.views.building_types import BuildingTypesView
+from app.views.buildings_coefficients import BuildingCoeficientsView
 from app.views.home import HomeView
 from app.views.location_condition_coefficients import LocationConditionCoeficientView
 from app.views.materials import MaterialsView
@@ -14,4 +15,5 @@ __all__ = [
     "BuildingTypesView",
     "LocationConditionCoeficientView",
     "WallMaterialsView",
+    "BuildingCoeficientsView",
 ]

@@ -1,4 +1,5 @@
 from app.services.attenuation_coefficients import get_attenuation_coefficients
+from app.services.building_coefficients import get_buildings_coefficients
 from app.services.building_types import get_building_types
 from app.services.location_condition_coefficients import (
     get_location_condition_coefficients,
@@ -14,4 +15,5 @@ __all__ = [
     "get_location_condition_coefficients",
     "get_building_types",
     "get_wall_materials",
+    "get_buildings_coefficients",
 ]
