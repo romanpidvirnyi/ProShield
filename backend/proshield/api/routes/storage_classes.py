@@ -105,7 +105,7 @@ def update_starage_class(
     "/{storage_class_id}",
     status_code=status.HTTP_204_NO_CONTENT,
 )
-def update_starage_class(
+def delete_starage_class(
     storage_class_id: int,
     db=Depends(get_db),
 ):

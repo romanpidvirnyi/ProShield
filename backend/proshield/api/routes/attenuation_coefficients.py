@@ -107,7 +107,7 @@ def update_attenuation_coefficient(
     "/{attenuation_coefficient_id}",
     status_code=status.HTTP_204_NO_CONTENT,
 )
-def update_attenuation_coefficient(
+def delete_attenuation_coefficient(
     attenuation_coefficient_id: int,
     db=Depends(get_db),
 ):

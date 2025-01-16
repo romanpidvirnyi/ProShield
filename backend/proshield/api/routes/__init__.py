@@ -4,6 +4,9 @@ from proshield.api.routes.attenuation_coefficients import (
 )
 from proshield.api.routes.building_types import router as building_types
 from proshield.api.routes.health import router as health_router
+from proshield.api.routes.location_condition_coefficients import (
+    router as location_condition_coefficients_router,
+)
 from proshield.api.routes.materials import router as materials_router
 from proshield.api.routes.storage_classes import router as storage_classes_router
 
@@ -20,3 +23,8 @@ router.include_router(
     tags=["attenuation-coefficients"],
 )
 router.include_router(building_types, prefix="/building-types", tags=["building-types"])
+router.include_router(
+    location_condition_coefficients_router,
+    prefix="/location-condition-coefficients",
+    tags=["location-condition-coefficients"],
+)

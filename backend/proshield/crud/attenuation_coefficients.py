@@ -109,7 +109,7 @@ def update_attenuation_coefficient(
     db: Session,
     attenuation_coefficient_id: int,
     attenuation_coefficient: schemas.AttenuationCoefficientUpdate,
-) -> models.Material:
+) -> models.AttenuationCoefficient:
     """
     Update Attenuation Coefficient.
 

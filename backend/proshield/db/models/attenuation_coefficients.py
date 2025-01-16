@@ -35,5 +35,4 @@ class AttenuationCoefficient(Base):
 
     @property
     def material_name(self) -> str:
-        """Returns True if the control is locked, False otherwise."""
         return self.material.name

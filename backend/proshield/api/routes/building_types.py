@@ -103,7 +103,7 @@ def update_building_type(
     "/{building_type_id}",
     status_code=status.HTTP_204_NO_CONTENT,
 )
-def update_building_type(
+def delete_building_type(
     building_type_id: int,
     db=Depends(get_db),
 ):

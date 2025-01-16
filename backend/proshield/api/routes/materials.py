@@ -101,7 +101,7 @@ def update_material(
     "/{material_id}",
     status_code=status.HTTP_204_NO_CONTENT,
 )
-def update_material(
+def delete_material(
     material_id: int,
     db=Depends(get_db),
 ):

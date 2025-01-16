@@ -14,6 +14,14 @@ from proshield.crud.building_types import (
     get_building_types,
     update_building_type,
 )
+from proshield.crud.location_condition_coefficients import (
+    create_location_condition_coefficient,
+    delete_location_condition_coefficient,
+    get_location_condition_coefficient_by_id,
+    get_location_condition_coefficient_by_params,
+    get_location_condition_coefficients,
+    update_location_condition_coefficient,
+)
 from proshield.crud.materials import (
     create_material,
     delete_material,
@@ -56,4 +64,10 @@ __all__ = [
     "get_building_type_by_name",
     "get_building_types",
     "update_building_type",
+    "create_location_condition_coefficient",
+    "delete_location_condition_coefficient",
+    "get_location_condition_coefficient_by_id",
+    "get_location_condition_coefficient_by_params",
+    "get_location_condition_coefficients",
+    "update_location_condition_coefficient",
 ]
