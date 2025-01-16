@@ -6,6 +6,14 @@ from proshield.crud.attenuation_coefficients import (
     get_attenuation_coefficients,
     update_attenuation_coefficient,
 )
+from proshield.crud.building_types import (
+    create_building_type,
+    delete_building_type,
+    get_building_type_by_id,
+    get_building_type_by_name,
+    get_building_types,
+    update_building_type,
+)
 from proshield.crud.materials import (
     create_material,
     delete_material,
@@ -42,4 +50,10 @@ __all__ = [
     "get_attenuation_coefficients",
     "update_attenuation_coefficient",
     "get_attenuation_coefficient_by_params",
+    "create_building_type",
+    "delete_building_type",
+    "get_building_type_by_id",
+    "get_building_type_by_name",
+    "get_building_types",
+    "update_building_type",
 ]

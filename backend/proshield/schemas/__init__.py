@@ -3,6 +3,11 @@ from proshield.schemas.attenuation_coefficients import (
     AttenuationCoefficientCreate,
     AttenuationCoefficientUpdate,
 )
+from proshield.schemas.building_types import (
+    BuildingType,
+    BuildingTypeCreate,
+    BuildingTypeUpdate,
+)
 from proshield.schemas.materials import Material, MaterialCreate, MaterialUpdate
 from proshield.schemas.storage_classes import (
     StorageClass,
@@ -20,4 +25,7 @@ __all__ = [
     "AttenuationCoefficient",
     "AttenuationCoefficientCreate",
     "AttenuationCoefficientUpdate",
+    "BuildingType",
+    "BuildingTypeCreate",
+    "BuildingTypeUpdate",
 ]
