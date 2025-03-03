@@ -53,7 +53,7 @@ class LocationConditionCoeficientDataTable(ft.UserControl):
         self.page.snack_bar.open()
 
     def build(self):
-        return ft.Container(
+        data_table = ft.Container(
             content=ft.DataTable(
                 columns=[
                     ft.DataColumn(
@@ -92,4 +92,10 @@ class LocationConditionCoeficientDataTable(ft.UserControl):
                 border_radius=5,
             ),
             width=self.page.window_width,
+        )
+        return ft.ListView(
+            controls=[data_table],
+            width=self.page.window_width,
+            height=self.page.height - self.page.height * 0.1,
+            auto_scroll=False,
         )
