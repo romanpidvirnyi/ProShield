@@ -22,8 +22,7 @@ def create_location_condition_coefficient(
     """
     db_location_condition_coefficient = models.LocationConditionCoefficient(
         building_type_id=location_condition_coefficient.building_type_id,
-        building_height_from=location_condition_coefficient.building_height_from,
-        building_height_to=location_condition_coefficient.building_height_to,
+        building_height=location_condition_coefficient.building_height,
         building_density=location_condition_coefficient.building_density,
         coefficient=location_condition_coefficient.coefficient,
     )
@@ -60,8 +59,7 @@ def get_location_condition_coefficient_by_id(
 def get_location_condition_coefficient_by_params(
     db: Session,
     building_type_id: Optional[int] = None,
-    building_height_from: Optional[int] = None,
-    building_height_to: Optional[int] = None,
+    building_height: Optional[str] = None,
     building_density: Optional[int] = None,
 ) -> Optional[models.LocationConditionCoefficient]:
     """
@@ -70,8 +68,7 @@ def get_location_condition_coefficient_by_params(
     Args:
         db (Session): Database session.
         building_type_id (int): The building type ID.
-        building_height_from (int): The building height min.
-        building_height_to (int): The building height max.
+        building_height (str): The building height.
         building_density (int): The building density.
 
     Returns:
@@ -83,14 +80,9 @@ def get_location_condition_coefficient_by_params(
         statement = statement.filter(
             models.LocationConditionCoefficient.building_type_id == building_type_id
         )
-    if building_height_from:
+    if building_height:
         statement = statement.filter(
-            models.LocationConditionCoefficient.building_height_from
-            == building_height_from
-        )
-    if building_height_to:
-        statement = statement.filter(
-            models.LocationConditionCoefficient.building_height_to == building_height_to
+            models.LocationConditionCoefficient.building_height == building_height
         )
     if building_density:
         statement = statement.filter(
@@ -116,8 +108,7 @@ def get_location_condition_coefficients(
         select(models.LocationConditionCoefficient)
         .order_by(
             models.LocationConditionCoefficient.building_type_id,
-            models.LocationConditionCoefficient.building_height_from,
-            models.LocationConditionCoefficient.building_height_to,
+            models.LocationConditionCoefficient.building_height,
             models.LocationConditionCoefficient.building_density.desc(),
         )
         .distinct()

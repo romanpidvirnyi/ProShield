@@ -5,8 +5,7 @@ from pydantic import BaseModel
 
 class LocationConditionCoefficientCreate(BaseModel):
     building_type_id: int
-    building_height_from: Optional[int] = None
-    building_height_to: Optional[int] = None
+    building_height: str
     building_density: int
     coefficient: float
 

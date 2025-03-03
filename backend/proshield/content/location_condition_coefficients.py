@@ -26,8 +26,7 @@ def upload_location_condition_coefficients(db: Session):
                 crud.get_location_condition_coefficient_by_params(
                     db=db,
                     building_type_id=db_building_type.id,
-                    building_height_from=item["building_height_from"],
-                    building_height_to=item["building_height_to"],
+                    building_height=item["building_height"],
                     building_density=item["building_density"],
                 )
             )
@@ -45,8 +44,7 @@ def upload_location_condition_coefficients(db: Session):
                     db=db,
                     location_condition_coefficient=schemas.LocationConditionCoefficientCreate(
                         building_type_id=db_building_type.id,
-                        building_height_from=item["building_height_from"],
-                        building_height_to=item["building_height_to"],
+                        building_height=item["building_height"],
                         building_density=item["building_density"],
                         coefficient=item["coefficient"],
                     ),

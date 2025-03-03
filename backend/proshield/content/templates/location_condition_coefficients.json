@@ -1,145 +1,125 @@
 [
     {
         "building_type_name": "Промислова",
-        "building_height_from": 12,
-        "building_height_to": null,
+        "building_height": ">=12",
         "building_density": 40,
         "coefficient": 1.8
     },
     {
         "building_type_name": "Промислова",
-        "building_height_from": 12,
-        "building_height_to": null,
+        "building_height": ">=12",
         "building_density": 30,
         "coefficient": 1.5
     },
     {
         "building_type_name": "Промислова",
-        "building_height_from": 12,
-        "building_height_to": null,
+        "building_height": ">=12",
         "building_density": 20,
         "coefficient": 1.2
     },
     {
         "building_type_name": "Промислова",
-        "building_height_from": 12,
-        "building_height_to": null,
+        "building_height": ">=12",
         "building_density": 10,
         "coefficient": 1.0
     },
 
     {
         "building_type_name": "Промислова",
-        "building_height_from": 8,
-        "building_height_to": 12,
+        "building_height": "8-12",
         "building_density": 40,
         "coefficient": 1.5
     },
     {
         "building_type_name": "Промислова",
-        "building_height_from": 8,
-        "building_height_to": 12,
+        "building_height": "8-12",
         "building_density": 30,
         "coefficient": 1.3
     },
     {
         "building_type_name": "Промислова",
-        "building_height_from": 8,
-        "building_height_to": 12,
+        "building_height": "8-12",
         "building_density": 20,
         "coefficient": 1.2
     },
     {
         "building_type_name": "Промислова",
-        "building_height_from": 8,
-        "building_height_to": 12,
+        "building_height": "8-12",
         "building_density": 10,
         "coefficient": 1.0
     },
 
     {
         "building_type_name": "Житлова та громадська",
-        "building_height_from": 30,
-        "building_height_to": null,
+        "building_height": ">=30",
         "building_density": 50,
         "coefficient": 2.5
     },
     {
         "building_type_name": "Житлова та громадська",
-        "building_height_from": 30,
-        "building_height_to": null,
+        "building_height": ">=30",
         "building_density": 30,
         "coefficient": 2.0
     },
     {
         "building_type_name": "Житлова та громадська",
-        "building_height_from": 30,
-        "building_height_to": null,
+        "building_height": ">=30",
         "building_density": 20,
         "coefficient": 1.5
     },
     {
         "building_type_name": "Житлова та громадська",
-        "building_height_from": 30,
-        "building_height_to": null,
+        "building_height": ">=30",
         "building_density": 10,
         "coefficient": 1.0
     },
 
     {
         "building_type_name": "Житлова та громадська",
-        "building_height_from": 10,
-        "building_height_to": 29,
+        "building_height": "10-30",
         "building_density": 50,
         "coefficient": 2.0
     },
     {
         "building_type_name": "Житлова та громадська",
-        "building_height_from": 10,
-        "building_height_to": 29,
+        "building_height": "10-30",
         "building_density": 30,
         "coefficient": 1.8
     },
     {
         "building_type_name": "Житлова та громадська",
-        "building_height_from": 10,
-        "building_height_to": 29,
+        "building_height": "10-30",
         "building_density": 20,
         "coefficient": 1.3
     },
     {
         "building_type_name": "Житлова та громадська",
-        "building_height_from": 10,
-        "building_height_to": 29,
+        "building_height": "10-30",
         "building_density": 10,
         "coefficient": 1.0
     },
 
     {
         "building_type_name": "Житлова та громадська",
-        "building_height_from": 8,
-        "building_height_to": 9,
+        "building_height": "8-10",
         "building_density": 50,
         "coefficient": 1.6
     },
     {
         "building_type_name": "Житлова та громадська",
-        "building_height_from": 8,
-        "building_height_to": 9,
+        "building_height": "8-10",
         "building_density": 30,
         "coefficient": 1.4
     },
     {
         "building_type_name": "Житлова та громадська",
-        "building_height_from": 8,
-        "building_height_to": 9,
+        "building_height": "8-10",
         "building_density": 20,
         "coefficient": 1.2
     },
     {
         "building_type_name": "Житлова та громадська",
-        "building_height_from": 8,
-        "building_height_to": 9,
+        "building_height": "8-10",
         "building_density": 10,
         "coefficient": 1.0
     }

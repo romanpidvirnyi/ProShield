@@ -15,8 +15,7 @@ class LocationConditionCoefficient(Base):
     # Характер забудови
     building_type_id: Mapped[int] = mapped_column(ForeignKey("building_types.id"))
     # Висота будинків
-    building_height_from: Mapped[Optional[int]] = mapped_column(nullable=True)
-    building_height_to: Mapped[Optional[int]] = mapped_column(nullable=True)
+    building_height: Mapped[str] = mapped_column(nullable=True)
     # Щільність забудови
     building_density: Mapped[int] = mapped_column()
     # Коефіцієнт

@@ -10,9 +10,6 @@ def main(page: ft.Page):
 
     # Add routes to handle navigation
     def route_change(route: str | ft.RouteChangeEvent):
-        print("route_change")
-        print(route)
-
         if isinstance(route, ft.RouteChangeEvent):
             route = route.route
 

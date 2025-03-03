@@ -17,8 +17,7 @@ class LocationConditionCoeficientDataTable(ft.UserControl):
                     cells=[
                         ft.DataCell(ft.Text(item["id"])),
                         ft.DataCell(ft.Text(item["building_type_name"])),
-                        ft.DataCell(ft.Text(item["building_height_from"])),
-                        ft.DataCell(ft.Text(item["building_height_to"])),
+                        ft.DataCell(ft.Text(item["building_height"])),
                         ft.DataCell(ft.Text(item["building_density"])),
                         ft.DataCell(ft.Text(item["coefficient"])),
                         ft.DataCell(
@@ -63,12 +62,7 @@ class LocationConditionCoeficientDataTable(ft.UserControl):
                         )
                     ),
                     ft.DataColumn(ft.Container(content=ft.Text("Характер забудови"))),
-                    ft.DataColumn(
-                        ft.Container(content=ft.Text("Висота будинків \n(від), м"))
-                    ),
-                    ft.DataColumn(
-                        ft.Container(content=ft.Text("Висота будинків \n(до), м"))
-                    ),
+                    ft.DataColumn(ft.Container(content=ft.Text("Висота будинків, м"))),
                     ft.DataColumn(
                         ft.Container(content=ft.Text("Щільність\nзабудови, %"))
                     ),
