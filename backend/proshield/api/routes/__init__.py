@@ -6,6 +6,7 @@ from proshield.api.routes.building_types import router as building_types
 from proshield.api.routes.buildings_coefficients import (
     router as buildings_coefficients_router,
 )
+from proshield.api.routes.calculations import router as calculations_router
 from proshield.api.routes.health import router as health_router
 from proshield.api.routes.location_condition_coefficients import (
     router as location_condition_coefficients_router,
@@ -39,4 +40,7 @@ router.include_router(
     buildings_coefficients_router,
     prefix="/buildings-coefficients",
     tags=["buildings-coefficients"],
+)
+router.include_router(
+    calculations_router, prefix="/calculations", tags=["calculations"]
 )

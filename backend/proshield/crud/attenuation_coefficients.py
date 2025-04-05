@@ -6,6 +6,28 @@ from sqlalchemy import select, update
 from sqlalchemy.orm import Session
 
 
+def get_material_thickness(
+    db: Session,
+    material_id: int,
+) -> list[int]:
+    """
+    Returns a list of material thicknesses by material ID.
+
+    Args:
+        db (Session): Database session.
+        material_id (int): The material ID.
+
+    Returns:
+        list[int]: List of material thicknesses.
+    """
+    return db.scalars(
+        select(models.AttenuationCoefficient.material_thickness)
+        .filter(models.AttenuationCoefficient.material_id == material_id)
+        .order_by(models.AttenuationCoefficient.material_thickness)
+        .distinct()
+    ).all()
+
+
 def create_attenuation_coefficient(
     db: Session,
     attenuation_coefficient: schemas.AttenuationCoefficientCreate,

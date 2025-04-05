@@ -23,94 +23,94 @@ def get_location_condition_coefficients(
     ]
 
 
-@router.get(
-    "/{location_condition_coefficient_id}",
-    response_model=schemas.LocationConditionCoefficient,
-    status_code=status.HTTP_200_OK,
-)
-def get_location_condition_coefficient(
-    location_condition_coefficient_id: int,
-    db=Depends(get_db),
-) -> schemas.LocationConditionCoefficient:
-    location_condition_coefficient = crud.get_location_condition_coefficient_by_id(
-        db=db,
-        location_condition_coefficient_id=location_condition_coefficient_id,
-    )
+# @router.get(
+#     "/{location_condition_coefficient_id}",
+#     response_model=schemas.LocationConditionCoefficient,
+#     status_code=status.HTTP_200_OK,
+# )
+# def get_location_condition_coefficient(
+#     location_condition_coefficient_id: int,
+#     db=Depends(get_db),
+# ) -> schemas.LocationConditionCoefficient:
+#     location_condition_coefficient = crud.get_location_condition_coefficient_by_id(
+#         db=db,
+#         location_condition_coefficient_id=location_condition_coefficient_id,
+#     )
 
-    if location_condition_coefficient is None:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="LocationConditionCoefficient not found.",
-        )
+#     if location_condition_coefficient is None:
+#         raise HTTPException(
+#             status_code=status.HTTP_404_NOT_FOUND,
+#             detail="LocationConditionCoefficient not found.",
+#         )
 
-    return schemas.LocationConditionCoefficient.model_validate(
-        location_condition_coefficient,
-        from_attributes=True,
-    )
-
-
-@router.post(
-    "",
-    response_model=schemas.LocationConditionCoefficient,
-    status_code=status.HTTP_201_CREATED,
-)
-def create_location_condition_coefficient(
-    location_condition_coefficient: schemas.LocationConditionCoefficientCreate,
-    db=Depends(get_db),
-) -> schemas.LocationConditionCoefficient:
-    location_condition_coefficient = crud.create_location_condition_coefficient(
-        db=db,
-        material=location_condition_coefficient,
-    )
-
-    if location_condition_coefficient is None:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="LocationConditionCoefficient not found.",
-        )
-
-    return schemas.LocationConditionCoefficient.model_validate(
-        location_condition_coefficient,
-        from_attributes=True,
-    )
+#     return schemas.LocationConditionCoefficient.model_validate(
+#         location_condition_coefficient,
+#         from_attributes=True,
+#     )
 
 
-@router.patch(
-    "/{location_condition_coefficient_id}",
-    response_model=schemas.LocationConditionCoefficient,
-    status_code=status.HTTP_200_OK,
-)
-def update_location_condition_coefficient(
-    location_condition_coefficient_id: int,
-    location_condition_coefficient: schemas.LocationConditionCoefficientUpdate,
-    db=Depends(get_db),
-) -> schemas.LocationConditionCoefficient:
-    location_condition_coefficient = crud.update_location_condition_coefficient(
-        db=db,
-        location_condition_coefficient_id=location_condition_coefficient_id,
-        location_condition_coefficient=location_condition_coefficient,
-    )
+# @router.post(
+#     "",
+#     response_model=schemas.LocationConditionCoefficient,
+#     status_code=status.HTTP_201_CREATED,
+# )
+# def create_location_condition_coefficient(
+#     location_condition_coefficient: schemas.LocationConditionCoefficientCreate,
+#     db=Depends(get_db),
+# ) -> schemas.LocationConditionCoefficient:
+#     location_condition_coefficient = crud.create_location_condition_coefficient(
+#         db=db,
+#         material=location_condition_coefficient,
+#     )
 
-    if location_condition_coefficient is None:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="LocationConditionCoefficient not found.",
-        )
+#     if location_condition_coefficient is None:
+#         raise HTTPException(
+#             status_code=status.HTTP_404_NOT_FOUND,
+#             detail="LocationConditionCoefficient not found.",
+#         )
 
-    return schemas.LocationConditionCoefficient.model_validate(
-        location_condition_coefficient,
-        from_attributes=True,
-    )
+#     return schemas.LocationConditionCoefficient.model_validate(
+#         location_condition_coefficient,
+#         from_attributes=True,
+#     )
 
 
-@router.delete(
-    "/{location_condition_coefficient_id}",
-    status_code=status.HTTP_204_NO_CONTENT,
-)
-def delete_location_condition_coefficient(
-    location_condition_coefficient_id: int,
-    db=Depends(get_db),
-):
-    crud.delete_location_condition_coefficient(
-        db=db, location_condition_coefficient_id=location_condition_coefficient_id
-    )
+# @router.patch(
+#     "/{location_condition_coefficient_id}",
+#     response_model=schemas.LocationConditionCoefficient,
+#     status_code=status.HTTP_200_OK,
+# )
+# def update_location_condition_coefficient(
+#     location_condition_coefficient_id: int,
+#     location_condition_coefficient: schemas.LocationConditionCoefficientUpdate,
+#     db=Depends(get_db),
+# ) -> schemas.LocationConditionCoefficient:
+#     location_condition_coefficient = crud.update_location_condition_coefficient(
+#         db=db,
+#         location_condition_coefficient_id=location_condition_coefficient_id,
+#         location_condition_coefficient=location_condition_coefficient,
+#     )
+
+#     if location_condition_coefficient is None:
+#         raise HTTPException(
+#             status_code=status.HTTP_404_NOT_FOUND,
+#             detail="LocationConditionCoefficient not found.",
+#         )
+
+#     return schemas.LocationConditionCoefficient.model_validate(
+#         location_condition_coefficient,
+#         from_attributes=True,
+#     )
+
+
+# @router.delete(
+#     "/{location_condition_coefficient_id}",
+#     status_code=status.HTTP_204_NO_CONTENT,
+# )
+# def delete_location_condition_coefficient(
+#     location_condition_coefficient_id: int,
+#     db=Depends(get_db),
+# ):
+#     crud.delete_location_condition_coefficient(
+#         db=db, location_condition_coefficient_id=location_condition_coefficient_id
+#     )

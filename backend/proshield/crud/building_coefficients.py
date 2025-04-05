@@ -35,6 +35,14 @@ def create_building_coefficient(
     return db_building_coefficient
 
 
+def get_area_relation_percent(db: Session) -> list[int]:
+    return db.scalars(
+        select(models.BuildingCoefficient.area_relation_percent)
+        .order_by(models.BuildingCoefficient.area_relation_percent)
+        .distinct()
+    ).all()
+
+
 def get_building_coefficient_by_id(
     db: Session,
     building_coefficient_id: int,

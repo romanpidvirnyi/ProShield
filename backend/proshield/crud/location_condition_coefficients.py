@@ -92,6 +92,52 @@ def get_location_condition_coefficient_by_params(
     return db.scalars(statement.limit(1)).first()
 
 
+def get_building_height_by_building_type(
+    db: Session,
+    building_type_id: int,
+) -> list[str]:
+    """
+    Returns a list of building heights by building type.
+
+    Args:
+        db (Session): Database session.
+        building_type_id (int): The building type ID.
+
+    Returns:
+        list[str]: List of building heights.
+    """
+    return db.scalars(
+        select(models.LocationConditionCoefficient.building_height)
+        .filter(
+            models.LocationConditionCoefficient.building_type_id == building_type_id
+        )
+        .distinct()
+    ).all()
+
+
+def get_building_density_by_building_type(
+    db: Session,
+    building_type_id: int,
+) -> list[int]:
+    """
+    Returns a list of building densities by building type.
+
+    Args:
+        db (Session): Database session.
+        building_type_id (int): The building type ID.
+
+    Returns:
+        list[int]: List of building densities.
+    """
+    return db.scalars(
+        select(models.LocationConditionCoefficient.building_density)
+        .filter(
+            models.LocationConditionCoefficient.building_type_id == building_type_id
+        )
+        .distinct()
+    ).all()
+
+
 def get_location_condition_coefficients(
     db: Session,
 ) -> list[models.LocationConditionCoefficient]:

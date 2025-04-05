@@ -22,89 +22,104 @@ def get_wall_materials(db=Depends(get_db)) -> list[schemas.WallMaterial]:
 
 
 @router.get(
-    "/{material_id}",
-    response_model=schemas.WallMaterial,
+    "/{wall_material_id}/thickness",
+    response_model=list[int],
     status_code=status.HTTP_200_OK,
 )
-def get_wall_material(
-    material_id: int,
+def get_wall_material_thickness(
+    wall_material_id: int,
     db=Depends(get_db),
-) -> schemas.WallMaterial:
-    material = crud.get_wall_material_by_id(
-        db=db,
-        material_id=material_id,
+) -> list[schemas.LocationConditionCoefficient]:
+    wall_material_thickness = crud.get_wall_material_thickness(
+        db=db, wall_material_id=wall_material_id
     )
-
-    if material is None:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Material not found.",
-        )
-
-    return schemas.WallMaterial.model_validate(
-        material,
-        from_attributes=True,
-    )
+    return wall_material_thickness
 
 
-@router.post(
-    "",
-    response_model=schemas.Material,
-    status_code=status.HTTP_201_CREATED,
-)
-def create_wall_material(
-    material: schemas.WallMaterialCreate,
-    db=Depends(get_db),
-) -> schemas.WallMaterial:
-    material = crud.create_wall_material(
-        db=db,
-        material=material,
-    )
+# @router.get(
+#     "/{material_id}",
+#     response_model=schemas.WallMaterial,
+#     status_code=status.HTTP_200_OK,
+# )
+# def get_wall_material(
+#     material_id: int,
+#     db=Depends(get_db),
+# ) -> schemas.WallMaterial:
+#     material = crud.get_wall_material_by_id(
+#         db=db,
+#         material_id=material_id,
+#     )
 
-    if material is None:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Material not found.",
-        )
+#     if material is None:
+#         raise HTTPException(
+#             status_code=status.HTTP_404_NOT_FOUND,
+#             detail="Material not found.",
+#         )
 
-    return schemas.WallMaterial.model_validate(
-        material,
-        from_attributes=True,
-    )
-
-
-@router.patch(
-    "/{material_id}",
-    response_model=schemas.WallMaterial,
-    status_code=status.HTTP_200_OK,
-)
-def update_wall_material(
-    material_id: int,
-    material: schemas.WallMaterialUpdate,
-    db=Depends(get_db),
-) -> schemas.MaterialUpdate:
-    material = crud.update_wall_material(
-        db=db, material_id=material_id, material=material
-    )
-
-    if material is None:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Material not found.",
-        )
-
-    return schemas.WallMaterial.model_validate(
-        material,
-        from_attributes=True,
-    )
+#     return schemas.WallMaterial.model_validate(
+#         material,
+#         from_attributes=True,
+#     )
 
 
-@router.delete(
-    "/{material_id}",
-    status_code=status.HTTP_204_NO_CONTENT,
-)
-def delete_material(
-    material_id: int,
-    db=Depends(get_db),
-):
-    crud.delete_wall_material(db=db, material_id=material_id)
+# @router.post(
+#     "",
+#     response_model=schemas.Material,
+#     status_code=status.HTTP_201_CREATED,
+# )
+# def create_wall_material(
+#     material: schemas.WallMaterialCreate,
+#     db=Depends(get_db),
+# ) -> schemas.WallMaterial:
+#     material = crud.create_wall_material(
+#         db=db,
+#         material=material,
+#     )
+
+#     if material is None:
+#         raise HTTPException(
+#             status_code=status.HTTP_404_NOT_FOUND,
+#             detail="Material not found.",
+#         )
+
+#     return schemas.WallMaterial.model_validate(
+#         material,
+#         from_attributes=True,
+#     )
+
+
+# @router.patch(
+#     "/{material_id}",
+#     response_model=schemas.WallMaterial,
+#     status_code=status.HTTP_200_OK,
+# )
+# def update_wall_material(
+#     material_id: int,
+#     material: schemas.WallMaterialUpdate,
+#     db=Depends(get_db),
+# ) -> schemas.MaterialUpdate:
+#     material = crud.update_wall_material(
+#         db=db, material_id=material_id, material=material
+#     )
+
+#     if material is None:
+#         raise HTTPException(
+#             status_code=status.HTTP_404_NOT_FOUND,
+#             detail="Material not found.",
+#         )
+
+#     return schemas.WallMaterial.model_validate(
+#         material,
+#         from_attributes=True,
+#     )
+
+
+# @router.delete(
+#     "/{material_id}",
+#     status_code=status.HTTP_204_NO_CONTENT,
+# )
+# def delete_material(
+#     material_id: int,
+#     db=Depends(get_db),
+# ):
+#     crud.delete_wall_material(db=db, material_id=material_id)

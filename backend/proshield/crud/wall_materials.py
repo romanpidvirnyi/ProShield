@@ -28,6 +28,14 @@ def create_wall_material(
     return db_material
 
 
+def get_wall_material_thickness(db: Session, wall_material_id: int) -> list[int]:
+    return db.scalars(
+        select(models.BuildingCoefficient.wall_thickness)
+        .filter(models.BuildingCoefficient.wall_material_id == wall_material_id)
+        .distinct()
+    ).all()
+
+
 def get_wall_material_by_id(
     db: Session,
     material_id: int,
