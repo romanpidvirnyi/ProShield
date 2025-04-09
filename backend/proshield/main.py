@@ -1,12 +1,16 @@
 import logging
+import os
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 import uvicorn
 from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from proshield import content
 from proshield.api.routes import router as api_router
 from proshield.core.database import SessionLocal, get_db
+from proshield.views import router as views_routes
 from sqlalchemy.orm import Session
 
 logger = logging.getLogger(__name__)
@@ -43,7 +47,14 @@ app.add_middleware(
 )
 
 
-app.include_router(api_router)
+# Mount static files
+STATIC_PATH = os.path.join(Path(__file__).resolve().parent, "static")
+print(f"Static path: {STATIC_PATH}")
+app.mount("/static", StaticFiles(directory=STATIC_PATH), name="static")
+
+# Include routers
+app.include_router(api_router, prefix="/api", tags=["API"])
+app.include_router(views_routes)
 
 
 if __name__ == "__main__":

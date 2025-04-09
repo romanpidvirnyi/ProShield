@@ -1,0 +1,177 @@
+{% extends "square-law/base.html" %} {% block title %}Закон квадрата{% endblock
+%} {% block content %}
+<h2>Розрахунок радіаційного захисту за квадратичним законом</h2>
+
+<select id="calculationType" class="form-select my-2">
+  <option value="default">Виберіть тип</option>
+  <option value="known_source">Відоме джерело радіації</option>
+  <option value="one_measurement">
+    Одне вимірювання + відома відстань до джерела
+  </option>
+  <option value="two_measurements">
+    Два вимірювання з відомою відстанню між ними
+  </option>
+</select>
+
+<div id="defaultSection">
+  <h4>Припущення та обмеження</h4>
+  <p>
+    Розрахунки проводяться на основі так званого квадратичного закону, тобто
+    інтенсивність випромінювання зменшується з квадратом відстані від джерела
+    випромінювання. Тому ми не беремо до уваги, що радіація також зменшується
+    через інші фактори.
+  </p>
+  <h4>Про додаток</h4>
+  <p>
+    «Розрахунки радіаційного захисту з використанням квадратичного закону» — це
+    модуль розрахунків, який включено до підтримки прийняття рішень, який
+    публікує ДСНС України.
+  </p>
+</div>
+
+<div id="knownSourceSection" style="display: none">
+  <div class="mb-1">
+    <label class="form-label">Радіоактивна речовина</label>
+    <select id="radioactiveMaterial" class="form-select">
+      {% for isotope in radioactive_isotopes %}
+      <option
+        value="{{ isotope.name | lower | replace('-', '') }}"
+        data-halflifeY="{{ isotope.halflifeY | default('') }}"
+        data-gamma="{{ isotope.gamma | default('') }}"
+      >
+        {{ isotope.name }}
+      </option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="mb-1">
+    <label class="form-label">Покази приладу</label>
+    <div class="input-group">
+      <input type="number" class="form-control" id="referenceActivity" />
+      <select
+        class="form-select"
+        id="referenceActivityUnit"
+        style="max-width: 120px"
+      >
+        <option value="kilo">КБк</option>
+        <option value="mega">МБк</option>
+        <option value="giga">ГБк</option>
+        <option value="tera">TБк</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="mb-1">
+    <label class="form-label">Довідковий час</label>
+    <input type="number" class="form-control" id="referenceYear" value="2024" />
+  </div>
+</div>
+
+<div id="oneMeasurementSection" style="display: none">
+  <div class="mb-1">
+    <label class="form-label">Відстань до джерела випромінювання</label>
+    <div class="input-group">
+      <input type="number" class="form-control" id="sourceDistance" />
+      <span class="input-group-text">метрів</span>
+    </div>
+  </div>
+
+  <div class="mb-1">
+    <label class="form-label">Виміряна потужність дози</label>
+    <div class="input-group">
+      <input type="number" class="form-control" id="dosePower" />
+      <select id="dosePowerUnit" class="form-select" style="max-width: 160px">
+        <option value="blackAndWhite">Чорний/Білий</option>
+        <option value="m3v">мЗв/год</option>
+        <option value="mk3v">мкЗв/год</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div id="twoMeasurementsSection" style="display: none">
+  <div class="mb-1">
+    <label class="form-label">Виміряна потужність дози (1)</label>
+    <div class="input-group">
+      <input type="number" class="form-control" id="dosePower1" />
+      <select id="dosePowerUnit1" class="form-select" style="max-width: 160px">
+        <option value="blackAndWhite">Чорний/Білий</option>
+        <option value="m3v">мЗв/год</option>
+        <option value="mk3v">мкЗв/год</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="mb-1">
+    <label class="form-label">Виміряна потужність дози (2)</label>
+    <div class="input-group">
+      <input type="number" class="form-control" id="dosePower2" />
+      <select id="dosePowerUnit2" class="form-select" style="max-width: 160px">
+        <option value="blackAndWhite">Чорний/Білий</option>
+        <option value="m3v">мЗв/год</option>
+        <option value="mk3v">мкЗв/год</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="mb-1">
+    <label class="form-label">Відстань між вимірюваннями</label>
+    <div class="input-group">
+      <input type="number" class="form-control" id="distanceBetween" />
+      <span class="input-group-text">метрів</span>
+    </div>
+  </div>
+</div>
+
+<button
+  id="calculateBtn"
+  class="btn btn-primary w-100 mt-3"
+  style="display: none"
+>
+  Розрахувати
+</button>
+
+<div id="resultSection" class="result-box mt-3" style="display: none">
+  <h5 class="mb-1">Результати розрахунку (в розробці)</h5>
+  <p id="resultText"></p>
+
+  <div class="infographic">
+    <div
+      id="firefighter1"
+      class="firefighter firefighter-one"
+      style="display: none"
+    ></div>
+    <div
+      id="firefighter2"
+      class="firefighter firefighter-two"
+      style="display: none"
+    ></div>
+    <div
+      id="firefighterLabel1"
+      class="firefighter-label firefighter-one"
+      style="display: none"
+    ></div>
+    <div
+      id="firefighterLabel2"
+      class="firefighter-label firefighter-two"
+      style="display: none"
+    ></div>
+    <div class="warm-zone zone"></div>
+    <div class="hot-zone zone"></div>
+    <div id="warmZoneLabel" class="warm-zone-label"></div>
+    <div id="hotZoneLabel" class="hot-zone-label"></div>
+    <div
+      id="sourceDistanceLabel"
+      class="source-distance text-center"
+      style="display: none"
+    ></div>
+    <div
+      id="distanceBetweenLabel"
+      class="distance-between text-center"
+      style="display: none"
+    ></div>
+    <div class="source"></div>
+  </div>
+</div>
+{% endblock %}

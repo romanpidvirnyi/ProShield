@@ -2,14 +2,14 @@ import json
 import os
 
 from proshield import crud, schemas
-from proshield.content.base import TEMPLATES_DIR
+from proshield.content.base import INIT_DATA_DIR
 from sqlalchemy.orm import Session
 
 FILE_NAME = "attenuation_coefficients.json"
 
 
 def upload_attenuation_coefficients(db: Session):
-    template_file_path = os.path.join(TEMPLATES_DIR, FILE_NAME)
+    template_file_path = os.path.join(INIT_DATA_DIR, FILE_NAME)
 
     if not os.path.exists(template_file_path):
         return

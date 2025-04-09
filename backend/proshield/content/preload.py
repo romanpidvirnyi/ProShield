@@ -3,7 +3,7 @@ import os
 
 from proshield import crud, schemas
 from proshield.content.attenuation_coefficients import upload_attenuation_coefficients
-from proshield.content.base import TEMPLATES_DIR
+from proshield.content.base import INIT_DATA_DIR
 from proshield.content.building_coefficients import upload_building_coefficients
 from proshield.content.building_types import upload_building_types
 from proshield.content.location_condition_coefficients import (

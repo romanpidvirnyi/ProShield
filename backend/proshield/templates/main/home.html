@@ -1,0 +1,40 @@
+{% extends "main/base.html" %} {% block title %}Модулі розрахунку{% endblock %}
+{% block content %}
+<h2 class="text-center">Модулі розрахунку</h2>
+<p class="text-center">
+  Невеликі розрахункові модулі є спрощенням реальності та призначені для
+  використання, наприклад, рятувальними службами для надання приблизних оцінок.
+</p>
+
+<div class="row">
+  <div class="col-md-4 mb-4">
+    <a class="card-link" href="{{ url_for('square_law_view') }}">
+      <div class="card">
+        <i class="fas fa-radiation"></i>
+        <h5>Закон квадрата</h5>
+        <p>Розрахунки радіаційного захисту за квадратичним законом.</p>
+      </div>
+    </a>
+  </div>
+
+  <!-- <div class="col-md-4 mb-4">
+      <a class="card-link" href="#">
+        <div class="card">
+          <i class="fas fa-cloud"></i>
+          <h5>Lorem ipsum</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <a class="card-link" href="#">
+        <div class="card">
+          <i class="fas fa-vial"></i>
+          <h5>Lorem ipsum</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </a>
+    </div> -->
+</div>
+{% endblock %}

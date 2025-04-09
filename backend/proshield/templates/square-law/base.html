@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Закон квадрата{% endblock %}</title>
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', path='assets/favicon.png') }}"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', path='css/styles.css') }}"
+      rel="stylesheet"
+    />
+
+    <style>
+      p {
+        margin-bottom: 0;
+      }
+      .infographic {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        background: linear-gradient(
+          to top,
+          #808080 25%,
+          #adadad 25%,
+          #b0c4de 50%
+        );
+        border: 1px solid #ccc;
+        margin-bottom: 4px;
+      }
+      .zone {
+        position: absolute;
+        bottom: 25%;
+        width: 3px;
+      }
+      .warm-zone {
+        background-color: yellow;
+        left: 40%;
+        height: 150px;
+      }
+      .hot-zone {
+        background-color: red;
+        left: 60%;
+        height: 100px;
+      }
+      .warm-zone-label,
+      .hot-zone-label {
+        position: absolute;
+      }
+      .warm-zone-label {
+        bottom: calc(25% + 155px);
+        left: 40%;
+      }
+      .hot-zone-label {
+        bottom: calc(25% + 105px);
+        left: 60%;
+      }
+      .source {
+        position: absolute;
+        bottom: 30px;
+        left: 80%;
+        width: 50px;
+        height: 50px;
+        background: url("{{ url_for('static', path='assets/fire.png') }}")
+          no-repeat center/cover;
+      }
+      .firefighter {
+        position: absolute;
+        bottom: 40px;
+        width: 75px;
+        height: 150px;
+        background: url("{{ url_for('static', path='assets/firefighter.png') }}")
+          no-repeat center/cover;
+      }
+      .firefighter-one {
+        left: 20%;
+      }
+      .firefighter-two {
+        left: 0;
+      }
+      .firefighter-label {
+        position: absolute;
+        bottom: 185px;
+        padding-left: 1.5%;
+      }
+      .source-distance,
+      .distance-between {
+        position: absolute;
+        border-top: solid black 3px;
+        bottom: 20px;
+      }
+      .source-distance {
+        margin: 0 20px 0 80px;
+        left: 20%;
+        right: 20%;
+      }
+      .distance-between {
+        left: 6%;
+        right: 80%;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="{{ url_for('home_view') }}">
+          <img
+            src="{{ url_for('static', path='assets/logo-ldu.png') }}"
+            width="87"
+            height="54"
+          />
+          <img
+            src="{{ url_for('static', path='assets/logo.png') }}"
+            width="54"
+            height="54"
+          />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('home_view') }}"
+                >Модулі розрахунку</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Про сторінку</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container mt-3">{% block content %}{% endblock %}</main>
+
+    <footer class="footer text-center">
+      <p>Lorem ipsum &copy; 2025 | Підтримка: example@mail</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', path='js/squreLaw.js') }}"></script>
+  </body>
+</html>

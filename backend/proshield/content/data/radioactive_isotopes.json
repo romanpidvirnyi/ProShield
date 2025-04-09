@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Am-241",
+        "gamma": 13e-15,
+        "halflifeY": 432.2
+    },
+    {
+        "name": "Cf-252",
+        "gamma": 2e-15,
+        "halflifeY": 2.65
+    },
+    {
+        "name": "Co-60",
+        "gamma": 35e-14,
+        "halflifeY": 5.2713
+    },
+    {
+        "name": "Cs-134",
+        "gamma": 244e-15,
+        "halflifeY": 2.07
+    },
+    {
+        "name": "Cs-137",
+        "gamma": 9e-14,
+        "halflifeY": 30.17
+    },
+    {
+        "name": "Eu-152",
+        "gamma": 178e-15,
+        "halflifeY": 13.5
+    },
+    {
+        "name": "F-18",
+        "gamma": 9e-14,
+        "halflifeH": 1.8
+    },
+    {
+        "name": "Ga-68",
+        "gamma": 156e-15,
+        "halflifeH": 1.133
+    },
+    {
+        "name": "I-131",
+        "gamma": 64e-15,
+        "halflifeD": 8.05
+    },
+    {
+        "name": "Ir-192",
+        "gamma": 14e-14,
+        "halflifeD": 73.8
+    },
+    {
+        "name": "Kr-85",
+        "gamma": 369e-18,
+        "halflifeY": 10.7
+    },
+    {
+        "name": "Mo-99/Tc-99m",
+        "gamma": 49e-15,
+        "halflifeD": 2.6
+    },
+    {
+        "name": "Na-24",
+        "gamma": 486e-12,
+        "halflifeH": 15
+    },
+    {
+        "name": "Ra-226",
+        "gamma": 1e-15,
+        "halflifeY": 1600
+    },
+    {
+        "name": "Se-75",
+        "gamma": 7e-14,
+        "halflifeY": 328
+    },
+    {
+        "name": "Tc-99m",
+        "gamma": 24e-15,
+        "halflifeH": 6.01
+    }
+]
