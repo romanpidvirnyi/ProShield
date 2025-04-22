@@ -47,7 +47,6 @@ document.getElementById("calculateBtn").addEventListener("click", function () {
 });
 
 function calculateKnownSource() {
-  const referenceYear = document.getElementById("referenceYear").value;
   const referenceActivity = document.getElementById("referenceActivity").value;
   const referenceActivityUnit = document.getElementById(
     "referenceActivityUnit"
@@ -74,44 +73,50 @@ function calculateKnownSource() {
     .getAttribute("data-gamma");
   console.log("radioactiveMaterialGamma", Number(radioactiveMaterialGamma));
 
-  const currentYear = new Date().getFullYear();
+  // const currentYear = new Date().getFullYear();
 
-  if (
-    !validateNumberInput(referenceActivity, "Покази приладу") ||
-    !validateYear(referenceYear, "Довідковий час")
-  )
-    return;
+  if (!validateNumberInput(referenceActivity, "Покази приладу")) return;
 
   // TODO: implement proper calculation
-  const yearsPassed = currentYear - referenceYear;
-  const decayRate = referenceYear;
+  // const yearsPassed = currentYear - referenceYear;
+  // const decayRate = referenceYear;
 
   const dose1 = 1e-4; // 100 мкЗв/год = 1e-4 Зв/год
   const dose2 = 1e-6; // 1 мкЗв/год = 1e-6 Зв/год
 
   console.log(radioactiveMaterialGamma);
   const hotZone = Math.sqrt(
-    (referenceActivity * radioactiveMaterialGamma * 1e9) / dose1
+    (referenceActivity * radioactiveMaterialGamma * referenceActivityUnit) /
+      dose1
   );
   const warmZone = Math.sqrt(
-    (referenceActivity * radioactiveMaterialGamma * 1e9) / dose2
+    (referenceActivity * radioactiveMaterialGamma * referenceActivityUnit) /
+      dose2
   );
 
   // TODO: RESULTS
   resetInfographic();
-  document.getElementById("warmZoneLabel").innerHTML = `${warmZone} м`;
-  document.getElementById("hotZoneLabel").innerHTML = `${hotZone} м`;
+  document.getElementById("warmZoneLabel").innerHTML = `${
+    Math.round(warmZone * 1000) / 1000
+  } м`;
+  document.getElementById("hotZoneLabel").innerHTML = `${
+    Math.round(hotZone * 1000) / 1000
+  } м`;
 
   return `
-    <p>Відстань до пекельної зони (100 мкЗв/рік): ${hotZone} м</p>
-    <p>Відстань до гарячої зони (1 мкЗв/рік): ${warmZone} м</p>
+    <p>Відстань до пекельної зони (100 мкЗв/рік): ${
+      Math.round(hotZone * 1000) / 1000
+    } м</p>
+    <p>Відстань до гарячої зони (1 мкЗв/рік): ${
+      Math.round(warmZone * 1000) / 1000
+    } м</p>
   `;
 }
 
 function calculateOneMeasurement() {
   const sourceDistance = document.getElementById("sourceDistance").value;
   const dosePower = document.getElementById("dosePower").value;
-  const dosePowerUnit = document.getElementById("dosePowerUnit").value;
+  const dosePowerUnit = "мкЗв/год";
 
   if (
     !validateNumberInput(
@@ -127,8 +132,12 @@ function calculateOneMeasurement() {
   const warmZone = sourceDistance * Math.sqrt(dosePower / 1) * 1;
 
   resetInfographic();
-  document.getElementById("warmZoneLabel").innerHTML = `${warmZone} м`;
-  document.getElementById("hotZoneLabel").innerHTML = `${hotZone} м`;
+  document.getElementById("warmZoneLabel").innerHTML = `${
+    Math.round(warmZone * 1000) / 1000
+  } м`;
+  document.getElementById("hotZoneLabel").innerHTML = `${
+    Math.round(hotZone * 1000) / 1000
+  } м`;
   document.getElementById("firefighter1").style.display = "block";
   document.getElementById("firefighterLabel1").style.display = "block";
   document.getElementById(
@@ -140,17 +149,21 @@ function calculateOneMeasurement() {
   ).innerHTML = `${sourceDistance} м`;
 
   return `
-    <p>Відстань до пекельної зони (100 мкЗв/рік): ${hotZone} м</p>
-    <p>Відстань до гарячої зони (1 мкЗв/рік): ${warmZone} м</p>
+    <p>Відстань до пекельної зони (100 мкЗв/рік): ${
+      Math.round(hotZone * 1000) / 1000
+    } м</p>
+    <p>Відстань до гарячої зони (1 мкЗв/рік): ${
+      Math.round(warmZone * 1000) / 1000
+    } м</p>
   `;
 }
 
 function calculateTwoMeasurements() {
   const distanceBetween = document.getElementById("distanceBetween").value;
   var dosePower1 = document.getElementById("dosePower1").value;
-  const dosePowerUnit1 = document.getElementById("dosePowerUnit1").value;
+  const dosePowerUnit1 = "мкЗв/год";
   var dosePower2 = document.getElementById("dosePower2").value;
-  const dosePowerUnit2 = document.getElementById("dosePowerUnit2").value;
+  const dosePowerUnit2 = "мкЗв/год";
 
   if (
     !validateNumberInput(distanceBetween, "Відстань між вимірюваннями") ||
@@ -190,7 +203,9 @@ function calculateTwoMeasurements() {
     "firefighterLabel2"
   ).innerHTML = `${dosePower1}<br>${dosePowerUnit1}`;
   document.getElementById("sourceDistanceLabel").style.display = "block";
-  document.getElementById("sourceDistanceLabel").innerHTML = `${distanceTo} м`;
+  document.getElementById("sourceDistanceLabel").innerHTML = `${
+    Math.round(distanceTo * 1000) / 1000
+  } м`;
   document.getElementById("distanceBetweenLabel").style.display = "block";
   document.getElementById(
     "distanceBetweenLabel"
