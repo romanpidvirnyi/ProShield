@@ -85,8 +85,17 @@ function calculateKnownSource() {
   // TODO: implement proper calculation
   const yearsPassed = currentYear - referenceYear;
   const decayRate = referenceYear;
-  const hotZone = referenceActivity / 1000;
-  const warmZone = referenceActivity / 100;
+
+  const dose1 = 1e-4; // 100 мкЗв/год = 1e-4 Зв/год
+  const dose2 = 1e-6; // 1 мкЗв/год = 1e-6 Зв/год
+
+  console.log(radioactiveMaterialGamma);
+  const hotZone = Math.sqrt(
+    (referenceActivity * radioactiveMaterialGamma * 1e9) / dose1
+  );
+  const warmZone = Math.sqrt(
+    (referenceActivity * radioactiveMaterialGamma * 1e9) / dose2
+  );
 
   // TODO: RESULTS
   resetInfographic();
@@ -94,7 +103,6 @@ function calculateKnownSource() {
   document.getElementById("hotZoneLabel").innerHTML = `${hotZone} м`;
 
   return `
-    <p>Оскільки минуло ${yearsPassed} років, радіація зменшилася на ${decayRate}%.</p>
     <p>Відстань до пекельної зони (100 мкЗв/рік): ${hotZone} м</p>
     <p>Відстань до гарячої зони (1 мкЗв/рік): ${warmZone} м</p>
   `;
@@ -115,8 +123,8 @@ function calculateOneMeasurement() {
     return;
 
   // TODO: implement proper calculation
-  const hotZone = sourceDistance / 1000;
-  const warmZone = sourceDistance / 100;
+  const hotZone = sourceDistance * Math.sqrt(dosePower / 100) * 1; // koef UM
+  const warmZone = sourceDistance * Math.sqrt(dosePower / 1) * 1;
 
   resetInfographic();
   document.getElementById("warmZoneLabel").innerHTML = `${warmZone} м`;
@@ -139,9 +147,9 @@ function calculateOneMeasurement() {
 
 function calculateTwoMeasurements() {
   const distanceBetween = document.getElementById("distanceBetween").value;
-  const dosePower1 = document.getElementById("dosePower1").value;
+  var dosePower1 = document.getElementById("dosePower1").value;
   const dosePowerUnit1 = document.getElementById("dosePowerUnit1").value;
-  const dosePower2 = document.getElementById("dosePower2").value;
+  var dosePower2 = document.getElementById("dosePower2").value;
   const dosePowerUnit2 = document.getElementById("dosePowerUnit2").value;
 
   if (
@@ -152,6 +160,19 @@ function calculateTwoMeasurements() {
     return;
 
   // TODO: implement proper calculation
+  console.log("dosePower1", dosePower1);
+  console.log("dosePower2", dosePower2);
+  if (dosePower1 > dosePower2) {
+    var tempDosePower = dosePower1;
+    dosePower1 = dosePower2;
+    dosePower2 = tempDosePower;
+  }
+  console.log("dosePower1", dosePower1);
+  console.log("dosePower2", dosePower2);
+
+  var ratio = Math.sqrt(dosePower1 / dosePower2);
+  const distanceTo = (-distanceBetween * ratio) / (ratio - 1);
+
   const hotZone = distanceBetween / 1000;
   const warmZone = distanceBetween / 100;
 
@@ -164,14 +185,12 @@ function calculateTwoMeasurements() {
   document.getElementById("firefighterLabel2").style.display = "block";
   document.getElementById(
     "firefighterLabel1"
-  ).innerHTML = `${dosePower1}<br>${dosePowerUnit1}`;
+  ).innerHTML = `${dosePower2}<br>${dosePowerUnit2}`;
   document.getElementById(
     "firefighterLabel2"
-  ).innerHTML = `${dosePower2}<br>${dosePowerUnit2}`;
+  ).innerHTML = `${dosePower1}<br>${dosePowerUnit1}`;
   document.getElementById("sourceDistanceLabel").style.display = "block";
-  document.getElementById(
-    "sourceDistanceLabel"
-  ).innerHTML = `${distanceBetween} м`;
+  document.getElementById("sourceDistanceLabel").innerHTML = `${distanceTo} м`;
   document.getElementById("distanceBetweenLabel").style.display = "block";
   document.getElementById(
     "distanceBetweenLabel"
