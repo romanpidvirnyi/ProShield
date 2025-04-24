@@ -6,6 +6,7 @@ from proshield.db.models.location_condition_coefficients import (
 )
 from proshield.db.models.materials import Material
 from proshield.db.models.storage_classes import StorageClass
+from proshield.db.models.sub_materials import SubMaterial
 from proshield.db.models.wall_materials import WallMaterial
 
 __all__ = [
@@ -16,4 +17,5 @@ __all__ = [
     "LocationConditionCoefficient",
     "WallMaterial",
     "BuildingCoefficient",
+    "SubMaterial",
 ]

@@ -1,0 +1,67 @@
+[
+    {
+        "material_name": "Грунт",
+        "name": "Пісок",
+        "density": 1.7
+    },
+    {
+        "material_name": "Грунт",
+        "name": "Супісок",
+        "density": 1.8
+    },
+    {
+        "material_name": "Грунт",
+        "name": "Глина",
+        "density": 2.1
+    },
+    {
+        "material_name": "Грунт",
+        "name": "Суглинок",
+        "density": 1.95
+    },
+    {
+        "material_name": "Бетон",
+        "name": "Бетон",
+        "density": 2.3
+    },
+    {
+        "material_name": "Бетон",
+        "name": "Бетон",
+        "density": 2.4
+    },
+    {
+        "material_name": "Бетон",
+        "name": "Керамзитобетон",
+        "density": 1.35
+    },
+    {
+        "material_name": "Дерево",
+        "name": "Дерево",
+        "density": 0.7
+    },
+    {
+        "material_name": "Дерево",
+        "name": "Ліс",
+        "density": 2.3
+    },
+    {
+        "material_name": "Поліетилен",
+        "name": "Поліетилен",
+        "density": 0.9
+    },
+    {
+        "material_name": "Сталь",
+        "name": "Сталь",
+        "density": 7.8
+    },
+    {
+        "material_name": "Цегла",
+        "name": "Кладка із глиняної повнотілої цегли",
+        "density": 1.84
+    },
+    {
+        "material_name": "Цегла",
+        "name": "Кладка із силікатної цегли",
+        "density": 1.5
+    }
+]

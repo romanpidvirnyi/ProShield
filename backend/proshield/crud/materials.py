@@ -125,3 +125,86 @@ def delete_material(db: Session, material_id: int):
 
     db.delete(db_material)
     db.commit()
+
+
+def get_sub_materials(
+    material_id: int,
+    db: Session,
+    name: Optional[str] = None,
+    density: Optional[float] = None,
+) -> list[models.SubMaterial]:
+    """
+    Returns a SubMaterials list.
+
+    Args:
+        material_id (int): The Material ID.
+        db (Session): Database session.
+
+    Returns:
+        list[models.SubMaterial]: SubMaterials list.
+    """
+    query = (
+        select(models.SubMaterial)
+        .where(models.SubMaterial.material_id == material_id)
+        .distinct()
+    )
+    if name:
+        query = query.where(models.SubMaterial.name == name)
+    if density:
+        query = query.where(models.SubMaterial.density == density)
+    return db.scalars(query).all()
+
+
+def get_sub_material_by_params(
+    material_id: int,
+    db: Session,
+    name: str,
+    density: float,
+) -> Optional[models.SubMaterial]:
+    """
+    Returns a SubMaterial by params.
+
+    Args:
+        material_id (int): The Material ID.
+        db (Session): Database session.
+        name (str): The SubMaterial name.
+        density (float): The SubMaterial density.
+
+    Returns:
+        Optional[models.SubMaterial]: The SubMaterial.
+    """
+    return db.scalars(
+        select(models.SubMaterial)
+        .where(
+            models.SubMaterial.material_id == material_id,
+            models.SubMaterial.name == name,
+            models.SubMaterial.density == density,
+        )
+        .limit(1)
+    ).first()
+
+
+def create_sub_material(
+    db: Session,
+    sub_material: schemas.SubMaterialCreate,
+) -> models.SubMaterial:
+    """
+    Creates new SubMaterial.
+
+    Args:
+        db (Session): The database session.
+        sub_material (schemas.SubMaterialCreate): The SubMaterial to create.
+
+    Returns:
+        models.SubMaterial: The created SubMaterial.
+    """
+    db_sub_material = models.SubMaterial(
+        material_id=sub_material.material_id,
+        name=sub_material.name,
+        density=sub_material.density,
+    )
+
+    db.add(db_sub_material)
+    db.commit()
+    db.refresh(db_sub_material)
+    return db_sub_material

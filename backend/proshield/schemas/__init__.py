@@ -25,6 +25,11 @@ from proshield.schemas.storage_classes import (
     StorageClassCreate,
     StorageClassUpdate,
 )
+from proshield.schemas.sub_materials import (
+    SubMaterial,
+    SubMaterialCreate,
+    SubMaterialUpdate,
+)
 from proshield.schemas.wall_materials import (
     WallMaterial,
     WallMaterialCreate,
@@ -55,4 +60,7 @@ __all__ = [
     "BuildingCoefficientUpdate",
     "CalculateAZF",
     "AZFResults",
+    "SubMaterial",
+    "SubMaterialCreate",
+    "SubMaterialUpdate",
 ]

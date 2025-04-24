@@ -21,6 +21,25 @@ def get_materials(db=Depends(get_db)) -> list[schemas.Material]:
     ]
 
 
+@router.get(
+    "/{material_id}/sub-materials",
+    response_model=list[schemas.SubMaterial],
+    status_code=status.HTTP_200_OK,
+)
+def get_sub_materials(
+    material_id: int,
+    db=Depends(get_db),
+) -> list[schemas.SubMaterial]:
+    sub_materials = crud.get_sub_materials(db=db, material_id=material_id)
+    return [
+        schemas.SubMaterial.model_validate(
+            sub_material,
+            from_attributes=True,
+        )
+        for sub_material in sub_materials
+    ]
+
+
 # @router.get(
 #     "/{material_id}",
 #     response_model=schemas.Material,
