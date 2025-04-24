@@ -20,3 +20,10 @@ class SubMaterialCoefficientDisplay(BaseModel):
     id: int
     thickness: int
     coefficient: float
+
+
+class LocationConditionCoefficientDisplay(BaseModel):
+    id: int
+    building_height: str
+    building_density: int
+    coefficient: float

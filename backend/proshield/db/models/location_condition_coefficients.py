@@ -23,6 +23,7 @@ class LocationConditionCoefficient(Base):
 
     building_type: Mapped["BuildingType"] = relationship(
         "BuildingType",
+        back_populates="coefficients",
         foreign_keys="LocationConditionCoefficient.building_type_id",
     )
 

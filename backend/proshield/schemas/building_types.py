@@ -1,3 +1,4 @@
+from proshield.schemas.display_utils import LocationConditionCoefficientDisplay
 from pydantic import BaseModel
 
 
@@ -7,6 +8,7 @@ class BuildingTypeCreate(BaseModel):
 
 class BuildingType(BuildingTypeCreate):
     id: int
+    coefficients: list[LocationConditionCoefficientDisplay]
 
 
 class BuildingTypeUpdate(BuildingTypeCreate):
