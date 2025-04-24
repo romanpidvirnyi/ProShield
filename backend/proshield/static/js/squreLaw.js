@@ -64,14 +64,10 @@ function calculateKnownSource() {
   const radioactiveMaterialHalflifeY = radioactiveMaterialOptionsArray
     .find((option) => option.value === radioactiveMaterial)
     .getAttribute("data-halflifeY");
-  console.log(
-    "radioactiveMaterialhalflifeY",
-    Number(radioactiveMaterialHalflifeY)
-  );
+
   const radioactiveMaterialGamma = radioactiveMaterialOptionsArray
     .find((option) => option.value === radioactiveMaterial)
     .getAttribute("data-gamma");
-  console.log("radioactiveMaterialGamma", Number(radioactiveMaterialGamma));
 
   // const currentYear = new Date().getFullYear();
 

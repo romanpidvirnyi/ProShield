@@ -1,59 +1,83 @@
 {% extends "main/base.html" %} {% block title %}Модулі розрахунку{% endblock %}
 {% block content %}
-<h2 class="text-center">Клас сховища</h2>
-<p class="text-center">Виберіть клас сховища залежно від класу споруди.</p>
+<h2 class="text-center">Захисні споруди цивільного захисту</h2>
+<h2 class="text-center">Тип сховища</h2>
 
 <div class="row">
-  <div class="col-md-3 mb-3">
-    <a class="card-link" href="{{ url_for('square_law_view') }}">
-      <div class="card">
-        <i class="fas fa-city"></i>
-        <h5>A-I</h5>
-        <p>
-          У межах проєктної забудови міст, віднесених до групи особливої
-          важливості цивільного захисту
-        </p>
+  <div class="col-md-4 mb-4">
+    <a class="card-link" href="{{ url_for('shelter_separate_recessed') }}">
+      <div class="card h-100">
+        <img
+          class="mb-2"
+          src="{{ url_for('static', path='assets/bunker.jpg') }}"
+        />
+        <h5>Окремо розташоване, заглиблене</h5>
+        <p>Окремо розташоване, заглиблене</p>
       </div>
     </a>
   </div>
 
-  <div class="col-md-3 mb-3">
-    <a class="card-link" href="{{ url_for('shelter_view') }}">
-      <div class="card">
-        <i class="fas fa-city"></i>
-        <h5>A-II</h5>
-        <p>
-          Окремо розташований об’єкт суб’єкта господарювання, віднесеного до
-          категорії особливої важливості цивільного захисту
-        </p>
+  <div class="col-md-4 mb-4">
+    <a class="card-link" href="{{ url_for('shelter_main') }}">
+      <div class="card h-100">
+        <img
+          class="mb-2"
+          src="{{ url_for('static', path='assets/bunker.jpg') }}"
+        />
+        <h5>Окремо розташоване, обваловане</h5>
+        <p>Окремо розташоване, обваловане</p>
       </div>
     </a>
   </div>
 
-  <div class="col-md-3 mb-3">
-    <a class="card-link" href="{{ url_for('shelter_view') }}">
-      <div class="card">
-        <i class="fas fa-city"></i>
-        <h5>A-III</h5>
-        <p>
-          У межах проєктної забудови та санітарно-захисної зони атомних
-          енергетичних об’єктів
-        </p>
+  <div class="col-md-4 mb-4">
+    <a class="card-link" href="{{ url_for('shelter_main') }}">
+      <div class="card h-100 card-disabled">
+        <img
+          class="mb-2"
+          src="{{ url_for('static', path='assets/bunker.jpg') }}"
+        />
+        <h5>Окремо розташоване, необваловане</h5>
+        <p>Окремо розташоване, необваловане</p>
       </div>
     </a>
   </div>
 
-  <div class="col-md-3 mb-3">
-    <a class="card-link" href="{{ url_for('shelter_view') }}">
-      <div class="card">
-        <i class="fas fa-city"></i>
-        <h5>A-IV</h5>
-        <p>
-          У межах проєктної забудови територій та населених пунктів, віднесених
-          до відповідних груп цивільного захисту, а також за межами проєктної
-          забудови та санітарно-захисної зони атомних енергетичних об’єктів у
-          зонах можливих значних (сильних) руйнувань
-        </p>
+  <div class="col-md-4 mb-4">
+    <a class="card-link" href="{{ url_for('shelter_main') }}">
+      <div class="card h-100 card-disabled">
+        <img
+          class="mb-2"
+          src="{{ url_for('static', path='assets/bunker.jpg') }}"
+        />
+        <h5>Вбудоване у перший поверх</h5>
+        <p>Вбудоване у перший поверх</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="col-md-4 mb-4">
+    <a class="card-link" href="{{ url_for('shelter_main') }}">
+      <div class="card h-100 card-disabled">
+        <img
+          class="mb-2"
+          src="{{ url_for('static', path='assets/bunker.jpg') }}"
+        />
+        <h5>Підвальне приміщення</h5>
+        <p>Підвальне приміщення</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="col-md-4 mb-4">
+    <a class="card-link" href="{{ url_for('shelter_main') }}">
+      <div class="card h-100 card-disabled">
+        <img
+          class="mb-2"
+          src="{{ url_for('static', path='assets/bunker.jpg') }}"
+        />
+        <h5>Цокольне приміщення</h5>
+        <p>Цокольне приміщення</p>
       </div>
     </a>
   </div>
