@@ -1,4 +1,7 @@
-from proshield.schemas.display_utils import MaterialDisplay
+from proshield.schemas.display_utils import (
+    MaterialDisplay,
+    SubMaterialCoefficientDisplay,
+)
 from pydantic import BaseModel
 
 
@@ -11,8 +14,10 @@ class SubMaterialCreate(BaseModel):
 class SubMaterial(SubMaterialCreate):
     id: int
     display_name: str
-
+    minimum_thickness: int
+    maximum_thickness: int
     material: MaterialDisplay
+    coefficients: list[SubMaterialCoefficientDisplay]
 
 
 class SubMaterialUpdate(SubMaterialCreate):

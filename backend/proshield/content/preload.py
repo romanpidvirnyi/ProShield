@@ -11,6 +11,7 @@ from proshield.content.location_condition_coefficients import (
 )
 from proshield.content.materials import upload_materials
 from proshield.content.storage_classes import upload_storage_classes
+from proshield.content.sub_material_coefficients import upload_sub_material_coefficients
 from proshield.content.sub_materials import upload_sub_materials
 from proshield.content.wall_materials import upload_wall_materials
 from sqlalchemy.orm import Session
@@ -26,6 +27,7 @@ def preload_templates(db: Session):
     # Створюємо в базі данних: Матеріали
     upload_materials(db)
     upload_sub_materials(db)
+    upload_sub_material_coefficients(db)
 
     # Створюємо в базі данних:
     # Коефіцієнт послаблення дози гамма-випромінювання

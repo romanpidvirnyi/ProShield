@@ -37,13 +37,17 @@ from proshield.crud.location_condition_coefficients import (
 from proshield.crud.materials import (
     create_material,
     create_sub_material,
+    create_sub_material_coefficient,
     delete_material,
     get_material_by_id,
     get_material_by_name,
     get_materials,
+    get_sub_material_by_name,
     get_sub_material_by_params,
+    get_sub_material_coefficient_by_params,
     get_sub_materials,
     update_material,
+    update_sub_material_coefficient,
 )
 from proshield.crud.storage_classes import (
     create_storage_class,
@@ -114,4 +118,8 @@ __all__ = [
     "get_sub_materials",
     "get_sub_material_by_params",
     "create_sub_material",
+    "get_sub_material_by_name",
+    "get_sub_material_coefficient_by_params",
+    "update_sub_material_coefficient",
+    "create_sub_material_coefficient",
 ]

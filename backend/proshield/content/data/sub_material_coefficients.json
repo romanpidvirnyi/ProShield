@@ -1,0 +1,668 @@
+[
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 10,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 15,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 20,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 25,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 30,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 35,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 40,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 45,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 50,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 55,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 60,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 65,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 70,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 75,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 80,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 85,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 90,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 95,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 100,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 105,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 110,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 115,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 120,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 125,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 130,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 135,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 140,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 145,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Пісок",
+        "density": 1.7,
+        "thickness": 150,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 10,
+        "coefficient": 1.5
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 15,
+        "coefficient": 1.5
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 20,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 25,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 30,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 35,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 40,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 45,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 50,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 55,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 60,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 65,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 70,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 75,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 80,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 85,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 90,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 95,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 100,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 105,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 110,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 115,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 120,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 125,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 130,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 135,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 140,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 145,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Супісок",
+        "density": 1.8,
+        "thickness": 150,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Суглинок",
+        "density": 1.95,
+        "thickness": 10,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Суглинок",
+        "density": 1.95,
+        "thickness": 15,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Суглинок",
+        "density": 1.95,
+        "thickness": 20,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Суглинок",
+        "density": 1.95,
+        "thickness": 25,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Суглинок",
+        "density": 1.95,
+        "thickness": 30,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Суглинок",
+        "density": 1.95,
+        "thickness": 35,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Суглинок",
+        "density": 1.95,
+        "thickness": 40,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 40,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 45,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 50,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 55,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 60,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 65,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 70,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 75,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 80,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 85,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 90,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 95,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 100,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 105,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 110,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 115,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 120,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 125,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 130,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 135,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 140,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 145,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Ліс",
+        "density": 2.3,
+        "thickness": 150,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 40,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 45,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 50,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 55,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 60,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 65,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 70,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 75,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 80,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 85,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 90,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 95,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 100,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 105,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 110,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 115,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 120,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 125,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 130,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 135,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 140,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 145,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Глина",
+        "density": 2.1,
+        "thickness": 150,
+        "coefficient": 1.2
+    }
+]

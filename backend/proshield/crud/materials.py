@@ -208,3 +208,111 @@ def create_sub_material(
     db.commit()
     db.refresh(db_sub_material)
     return db_sub_material
+
+
+def get_sub_material_by_name(
+    db: Session,
+    name: str,
+) -> Optional[models.SubMaterial]:
+    """
+    Returns a sub-material by name.
+
+    Args:
+        db (Session): Database session.
+        name (str): The material name.
+
+    Returns:
+        Optional[models.SubMaterial]: The SubMaterial.
+    """
+    return db.scalars(
+        select(models.SubMaterial).filter(models.SubMaterial.name == name).limit(1)
+    ).first()
+
+
+def get_sub_material_coefficient_by_params(
+    db: Session,
+    sub_material_id: Optional[int] = None,
+    thickness: Optional[int] = None,
+) -> Optional[models.AttenuationCoefficient]:
+    """
+    Returns a sub-material coefficient by params.
+
+    Args:
+        db (Session): Database session.
+        sub_material_id (int): The material ID.
+        thickness (int): The material thickness.
+
+    Returns:
+        Optional[models.SubMaterialCoefficient]: The SubMaterialCoefficient.
+    """
+    statement = select(models.SubMaterialCoefficient)
+
+    if sub_material_id:
+        statement = statement.filter(
+            models.SubMaterialCoefficient.sub_material_id == sub_material_id
+        )
+    if thickness:
+        statement = statement.filter(
+            models.SubMaterialCoefficient.thickness == thickness
+        )
+
+    return db.scalars(statement.limit(1)).first()
+
+
+def update_sub_material_coefficient(
+    db: Session,
+    coefficient_id: int,
+    coefficient: float,
+) -> models.SubMaterialCoefficient:
+    """
+    Update SubMaterialCoefficient.
+
+    Args:
+        db (Session): Database session.
+        coefficient_id (int): The SubMaterial Coefficient ID.
+        coefficient (float): The SubMaterial Coefficient to update.
+
+    Returns (models.SubMaterialCoefficient):
+        The SubMaterial Coefficient.
+    """
+
+    db_sub_material = db.get(models.SubMaterialCoefficient, coefficient_id)
+
+    if db_sub_material is None:
+        return None
+
+    db_sub_material.coefficient = coefficient
+
+    db.commit()
+    db.refresh(db_sub_material)
+    return db_sub_material
+
+
+def create_sub_material_coefficient(
+    db: Session,
+    sub_material_id: int,
+    thickness: int,
+    coefficient: float,
+) -> models.AttenuationCoefficient:
+    """
+    Creates new Attenuation Coefficient
+
+     Args:
+        db (Session): The database session.
+        sub_material_id (int): The SubMaterial ID.
+        thickness (int): The SubMaterial thickness.
+        coefficient (float): The SubMaterial coefficient.
+
+    Returns:
+        models.SubMaterialCoefficient: The created SubMaterial Coefficient.
+    """
+    db_sub_material = models.SubMaterialCoefficient(
+        sub_material_id=sub_material_id,
+        thickness=thickness,
+        coefficient=coefficient,
+    )
+
+    db.add(db_sub_material)
+    db.commit()
+    db.refresh(db_sub_material)
+    return db_sub_material
