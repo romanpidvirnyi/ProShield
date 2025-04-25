@@ -57,37 +57,37 @@
         "sub_material_name": "Пісок",
         "density": 1.7,
         "thickness": 55,
-        "coefficient": 0.9
+        "coefficient": 1.0
     },
     {
         "sub_material_name": "Пісок",
         "density": 1.7,
         "thickness": 60,
-        "coefficient": 0.9
+        "coefficient": 1.0
     },
     {
         "sub_material_name": "Пісок",
         "density": 1.7,
         "thickness": 65,
-        "coefficient": 0.9
+        "coefficient": 1.0
     },
     {
         "sub_material_name": "Пісок",
         "density": 1.7,
         "thickness": 70,
-        "coefficient": 0.9
+        "coefficient": 1.0
     },
     {
         "sub_material_name": "Пісок",
         "density": 1.7,
         "thickness": 75,
-        "coefficient": 0.9
+        "coefficient": 1.0
     },
     {
         "sub_material_name": "Пісок",
         "density": 1.7,
         "thickness": 80,
-        "coefficient": 0.9
+        "coefficient": 1.0
     },
     {
         "sub_material_name": "Пісок",
@@ -664,5 +664,1163 @@
         "density": 2.1,
         "thickness": 150,
         "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 10,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 15,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 20,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 25,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 30,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 35,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 40,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 45,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 50,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 55,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 60,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 65,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 70,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 75,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 80,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 85,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 90,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 95,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 100,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 105,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 110,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 115,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 120,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 125,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 130,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 135,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 140,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 145,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.3,
+        "thickness": 150,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 10,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 15,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 20,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 25,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 30,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 35,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 40,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 45,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 50,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 55,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 60,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 65,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 70,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 75,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 80,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 85,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 90,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 95,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 100,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 105,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 110,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 115,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 120,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 125,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 130,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 135,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 140,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 145,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Бетон",
+        "density": 2.4,
+        "thickness": 150,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Кладка із глиняної повнотілої цегли",
+        "density": 1.84,
+        "thickness": 10,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Кладка із глиняної повнотілої цегли",
+        "density": 1.84,
+        "thickness": 15,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Кладка із глиняної повнотілої цегли",
+        "density": 1.84,
+        "thickness": 20,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Кладка із глиняної повнотілої цегли",
+        "density": 1.84,
+        "thickness": 25,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Кладка із глиняної повнотілої цегли",
+        "density": 1.84,
+        "thickness": 30,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Кладка із глиняної повнотілої цегли",
+        "density": 1.84,
+        "thickness": 35,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Кладка із глиняної повнотілої цегли",
+        "density": 1.84,
+        "thickness": 40,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Кладка із глиняної повнотілої цегли",
+        "density": 1.84,
+        "thickness": 45,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Кладка із глиняної повнотілої цегли",
+        "density": 1.84,
+        "thickness": 50,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Кладка із силікатної цегли",
+        "density": 1.5,
+        "thickness": 50,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Кладка із силікатної цегли",
+        "density": 1.5,
+        "thickness": 55,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Кладка із силікатної цегли",
+        "density": 1.5,
+        "thickness": 60,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Кладка із силікатної цегли",
+        "density": 1.5,
+        "thickness": 65,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Кладка із силікатної цегли",
+        "density": 1.5,
+        "thickness": 70,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Кладка із силікатної цегли",
+        "density": 1.5,
+        "thickness": 75,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Кладка із силікатної цегли",
+        "density": 1.5,
+        "thickness": 80,
+        "coefficient": 0.9
+    },
+    {
+        "sub_material_name": "Кладка із силікатної цегли",
+        "density": 1.5,
+        "thickness": 85,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Кладка із силікатної цегли",
+        "density": 1.5,
+        "thickness": 90,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Кладка із силікатної цегли",
+        "density": 1.5,
+        "thickness": 100,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 10,
+        "coefficient": 1.5
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 15,
+        "coefficient": 1.5
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 20,
+        "coefficient": 1.5
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 25,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 30,
+        "coefficient": 1.4
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 35,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 40,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 45,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 50,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 55,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 60,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 65,
+        "coefficient": 1.2
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 70,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 75,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 80,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 85,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 90,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 95,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 100,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 105,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 110,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 115,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 120,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 125,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 130,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 135,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 140,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 145,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Керамзитобетон",
+        "density": 1.35,
+        "thickness": 150,
+        "coefficient": 1.0
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 10,
+        "coefficient": 3.0
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 15,
+        "coefficient": 3.0
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 20,
+        "coefficient": 3.0
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 25,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 30,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 35,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 40,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 45,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 50,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 55,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 60,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 65,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 70,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 75,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 80,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 85,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 90,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 95,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 100,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 105,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 110,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 115,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 120,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 125,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 130,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 135,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 140,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 145,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Поліетилен",
+        "density": 0.9,
+        "thickness": 150,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 10,
+        "coefficient": 2.7
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 15,
+        "coefficient": 2.7
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 20,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 25,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 30,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 35,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 40,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 45,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 50,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 55,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 60,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 65,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 70,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 75,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 80,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 85,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 90,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 95,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 100,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 105,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 110,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 115,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 120,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 125,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 130,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 135,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 140,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 145,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Дерево",
+        "density": 0.7,
+        "thickness": 150,
+        "coefficient": 3.4
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 10,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 15,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 20,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 25,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 30,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 35,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 40,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 45,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 50,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 55,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 60,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 65,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 70,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 75,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 80,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 85,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 90,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 95,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 100,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 105,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 110,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 115,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 120,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 125,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 130,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 135,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 140,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 145,
+        "coefficient": 0.7
+    },
+    {
+        "sub_material_name": "Сталь",
+        "density": 7.8,
+        "thickness": 150,
+        "coefficient": 0.7
     }
 ]
