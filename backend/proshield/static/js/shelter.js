@@ -297,13 +297,18 @@ function showCalculationsDetails(data) {
   console.log("Calculation result:", data);
   const expectedProtectionValue = data.az; // data.expectedProtection;
   const calculatedProtectionValue = Math.round(data.AZF * 1000) / 1000; // data.calculatedProtection;
+  const ky = Math.round(data.ky * 1000) / 1000;
+  const kn = Math.round(data.kn * 1000) / 1000;
+  const kzab = Math.round(data.kzab * 1000) / 1000;
+  const kbud = Math.round(data.kbud * 1000) / 1000;
+  const KN = Math.round(data.KN * 1000) / 1000;
 
   expectedProtection.textContent = expectedProtectionValue;
   calculatedProtection.textContent = calculatedProtectionValue;
   // Show calculation results
   const calculationResults = document.getElementById("calculationResults");
   // АЗ ≤ АЗФ = 1,18 (Ky,i × Kn,i) × Kp × KN / (Ky,i + Kn,i),
-  calculationResults.textContent = `${expectedProtectionValue} <= ${calculatedProtectionValue} = 1.18 (${data.ky} x ${data.kn}) x (${data.kzab} / ${data.kbud}) x ${data.KN} / (${data.ky} + ${data.kn})`;
+  calculationResults.textContent = `${expectedProtectionValue} <= ${calculatedProtectionValue} = 1.18 (${ky} x ${kn}) x (${kzab} / ${kbud}) x ${KN} / (${ky} + ${kn})`;
   if (expectedProtectionValue > calculatedProtectionValue) {
     resultWarning.classList.remove("hidden");
   }

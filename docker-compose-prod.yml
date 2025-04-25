@@ -38,20 +38,6 @@ services:
       timeout: 5s
       retries: 5
 
-  pgadmin:
-    image: dpage/pgadmin4
-    restart: always
-    ports:
-      - "5050:80"
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@example.com
-      PGADMIN_DEFAULT_PASSWORD: admin
-    depends_on:
-      - database
-    volumes:
-      - pgadmin-data:/var/lib/pgadmin
-    entrypoint: /bin/sh -c "chmod 600 /pgpass; /entrypoint.sh;"
-
   nginx:
     image: nginx:latest
     container_name: nginx
@@ -77,4 +63,3 @@ services:
 volumes:
   postgres-data:
   proshield-data:
-  pgadmin-data:
