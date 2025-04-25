@@ -15,13 +15,24 @@ def calculate_az(
     db=Depends(get_db),
 ) -> schemas.AZFResults:
     # az
-    az = crud.get_storage_class_by_id(db=db, storage_class_id=data.storage_class_id)
-    if az is None:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Storage Class not found.",
+    az = data.az
+    # KN
+    KN = None
+    for item in data.materials:
+        sub_material_coefficient = crud.get_sub_material_coefficient_by_params(
+            db=db,
+            sub_material_id=item.sub_material_id,
+            thickness=item.thickness,
         )
-    az = az.radiation_protection_level
+        if sub_material_coefficient is not None:
+            if KN is None:
+                KN = sub_material_coefficient.coefficient
+            elif KN < sub_material_coefficient.coefficient:
+                KN = sub_material_coefficient.coefficient
+
+    # kbud
+    kbud = data.coefficient_bud
+
     # kzab
     kzab = crud.get_location_condition_coefficient_by_params(
         db=db,
@@ -35,20 +46,6 @@ def calculate_az(
             detail="Location Condition Coefficient not found.",
         )
     kzab = kzab.coefficient
-    # kbud
-    kbud = crud.get_building_coefficient_by_params(
-        db=db,
-        building_type_id=data.building_type_id,
-        wall_material_id=data.wall_material_id,
-        wall_thickness=data.wall_material_thickness,
-        area_relation_percent=data.area_relation_percent,
-    )
-    if kbud is None:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Building Coefficient not found.",
-        )
-    kbud = kbud.coefficient
 
     # attenuation_coefficients
     attenuation_coefficients = []
@@ -68,8 +65,6 @@ def calculate_az(
     kn = 1
     for item in attenuation_coefficients:
         kn *= item.neutron_dose_coefficient
-
-    KN = 1.4
 
     Azf = 1.18 * (ky * kn) * (kzab / kbud) * KN / (ky + kn)
     return schemas.AZFResults(

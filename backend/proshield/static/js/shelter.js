@@ -1,6 +1,6 @@
 // Global data storage
 const calculationData = {
-  Az: "",
+  az: "",
   materials: [],
   buildingType: "",
   buildingParams: {},
@@ -152,11 +152,11 @@ function addMaterial() {
   // Create new material object
   const newMaterial = {
     id: calculationData.materials.length + 1,
-    materialId: materialId,
+    material_id: materialId,
     material: material,
     thickness: thicknessValue,
     submaterial: submaterial,
-    submaterialId: submaterialId,
+    sub_material_id: submaterialId,
   };
 
   // Add to data storage
@@ -270,7 +270,7 @@ function goToStep2() {
   step2.classList.remove("hidden");
 
   // Save shelter class coefficient
-  calculationData.Az = getShelterClassCoefficient();
+  calculationData.az = getShelterClassCoefficient();
 
   // get materials for step 3
   loadMaterials();
@@ -284,25 +284,6 @@ function goToStep3() {
   loadBuildingTypes();
 }
 
-// Go to step 4
-function goToStep4() {
-  // Save data
-  calculationData.buildingType = buildingType.value;
-
-  // Mock API request
-  mockApiRequest("/building-type", {
-    buildingType: calculationData.buildingType,
-  })
-    .then(() => {
-      step3.classList.add("hidden");
-      step4.classList.remove("hidden");
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      alert("Error processing data. Please try again.");
-    });
-}
-
 // Check if step 4 is complete
 function checkStep3Complete() {
   if (buildingHeight.value && buildingDensity.value) {
@@ -312,41 +293,63 @@ function checkStep3Complete() {
   }
 }
 
+function showCalculationsDetails(data) {
+  console.log("Calculation result:", data);
+  const expectedProtectionValue = data.az; // data.expectedProtection;
+  const calculatedProtectionValue = Math.round(data.AZF * 1000) / 1000; // data.calculatedProtection;
+
+  expectedProtection.textContent = expectedProtectionValue;
+  calculatedProtection.textContent = calculatedProtectionValue;
+  // Show calculation results
+  const calculationResults = document.getElementById("calculationResults");
+  // АЗ ≤ АЗФ = 1,18 (Ky,i × Kn,i) × Kp × KN / (Ky,i + Kn,i),
+  calculationResults.textContent = `${expectedProtectionValue} <= ${calculatedProtectionValue} = 1.18 (${data.ky} x ${data.kn}) x (${data.kzab} / ${data.kbud}) x ${data.KN} / (${data.ky} + ${data.kn})`;
+  if (expectedProtectionValue > calculatedProtectionValue) {
+    resultWarning.classList.remove("hidden");
+  }
+}
 // Calculate results
 function calculateResults() {
   // Save building parameters
   calculationData.buildingParams = {
     height: buildingHeight.value,
     density: buildingDensity.value,
+    type_id: buildingType.value,
   };
+  console.log("calculationData:", calculationData);
 
-  // fetch('/api/calculate', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(calculationData),
-  //   })
-  //   .then(response => response.json())
-  //   .then(data => {
-  mockApiRequest("/calculate", calculationData)
-    .then(() => {
-      const expectedProtectionValue = 5000; // data.expectedProtection;
-      const calculatedProtectionValue = 167.65; // data.calculatedProtection;
+  const dataPayload = {
+    az: calculationData.az,
+    materials: calculationData.materials,
+    building_type_id: calculationData.buildingParams.type_id,
+    building_height: calculationData.buildingParams.height,
+    building_density: calculationData.buildingParams.density,
+  };
+  console.log("dataPayload:", dataPayload);
 
-      expectedProtection.textContent = expectedProtectionValue;
-      calculatedProtection.textContent = calculatedProtectionValue;
-
-      if (expectedProtectionValue > calculatedProtectionValue) {
-        resultWarning.classList.remove("hidden");
+  const calculateUrl = `${baseUrl}/api/calculations/azf`;
+  console.log("data:", dataPayload);
+  fetch(calculateUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(dataPayload),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
+      return response.json();
+    })
+    .then((data) => {
+      showCalculationsDetails(data);
 
       step3.classList.add("hidden");
       step4.classList.remove("hidden");
     })
     .catch((error) => {
-      console.error("Error:", error);
-      alert("Error processing data. Please try again.");
+      console.error("Fetch error:", error);
     });
 }
 
@@ -439,6 +442,8 @@ function loadMaterials() {
     })
     .then((data) => {
       const materialTypeSelect = document.getElementById("materialType");
+      materialTypeSelect.innerHTML = "";
+
       data.forEach((materialItem) => {
         const option = document.createElement("option");
         option.value = materialItem.id;

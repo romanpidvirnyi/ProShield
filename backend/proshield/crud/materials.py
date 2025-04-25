@@ -233,7 +233,7 @@ def get_sub_material_coefficient_by_params(
     db: Session,
     sub_material_id: Optional[int] = None,
     thickness: Optional[int] = None,
-) -> Optional[models.AttenuationCoefficient]:
+) -> Optional[models.SubMaterialCoefficient]:
     """
     Returns a sub-material coefficient by params.
 

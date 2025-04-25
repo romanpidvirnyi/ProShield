@@ -34,11 +34,6 @@ async def shelter_separate_recessed(
     return templates.TemplateResponse(
         request=request,
         name="shelter/shelter-separate-recessed.html",
-        context={
-            "storage_classes": storage_classes,
-            "materials": materials,
-            "host_url": host_url,
-        },
     )
 
 
@@ -46,6 +41,6 @@ async def shelter_separate_recessed(
 async def shelter_separate_embanked(request: Request, templates=Depends(get_templates)):
     return templates.TemplateResponse(
         request=request,
-        name="shelter/shelter-separate-embanked.html",
+        name="shelter/shelter-separate-recessed.html",
         context={},
     )
