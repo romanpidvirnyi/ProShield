@@ -8,7 +8,7 @@
 
 <div class="row">
   <div class="col-md-4 mb-4">
-    <a class="card-link" href="{{ url_for('square_law_view') }}">
+    <a class="card-link" href="{{ request.url_for('square_law_view') }}">
       <div class="card h-100">
         <i class="fas fa-radiation"></i>
         <h5>Закон квадрата</h5>
@@ -18,7 +18,7 @@
   </div>
 
   <div class="col-md-4 mb-4">
-    <a class="card-link" href="{{ url_for('shelter_main') }}">
+    <a class="card-link" href="{{ request.url_for('shelter_main') }}">
       <div class="card h-100">
         <i class="fas fa-city"></i>
         <h5>Захисні споруди цивільного захисту</h5>
