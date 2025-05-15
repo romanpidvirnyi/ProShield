@@ -7,7 +7,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./nginx/ldubgd.nginx.conf:/etc/nginx/conf.d/ldubgd.nginx.conf
+      - ./nginx/ldubgd.nginx.conf:/etc/nginx/conf.d/default.conf
       - /opt/cert:/etc/ssl/cert
     depends_on:
       - backend
