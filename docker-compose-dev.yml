@@ -7,8 +7,8 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./nginx/certs:/etc/nginx/certs:ro
+      - ./nginx/ldubgd.nginx.conf:/etc/nginx/conf.d/ldubgd.nginx.conf
+      - /opt/cert:/etc/ssl/cert
     depends_on:
       - backend
     restart: always
@@ -18,7 +18,7 @@ services:
       context: .
       dockerfile: ./backend/dockerfiles/dockerfile-backend
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
     environment:
       DB_CONNECTION_STRING: postgresql://postgres:postgres@database:5432/postgres?sslmode=allow
     restart: always
