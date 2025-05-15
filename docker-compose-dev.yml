@@ -1,17 +1,17 @@
 version: "3.11"
 
 services:
-  nginx:
-    image: nginx:latest
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx/ldubgd.nginx.conf:/etc/nginx/conf.d/default.conf
-      - /opt/cert:/etc/ssl/cert
-    depends_on:
-      - backend
-    restart: always
+  # nginx:
+  #   image: nginx:latest
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./nginx/ldubgd.nginx.conf:/etc/nginx/conf.d/default.conf
+  #     - /opt/cert:/etc/ssl/cert
+  #   depends_on:
+  #     - backend
+  #   restart: always
 
   backend:
     build:
@@ -19,6 +19,8 @@ services:
       dockerfile: ./backend/dockerfiles/dockerfile-backend
     ports:
       - "127.0.0.1:8000:8000"
+    volumes:
+      - /opt/cert:/etc/ssl/cert
     environment:
       DB_CONNECTION_STRING: postgresql://postgres:postgres@database:5432/postgres?sslmode=allow
     restart: always
@@ -27,7 +29,7 @@ services:
       database:
         condition: service_healthy
 
-    command: /bin/sh -c "alembic upgrade head && uvicorn proshield.main:app --workers 1 --host 0.0.0.0 --port 8000"
+    command: /bin/sh -c "alembic upgrade head && uvicorn proshield.main:app --reload --workers 1 --host 0.0.0.0 --port 8000 --ssl-keyfile /etc/ssl/cert/localhost.key --ssl-certfile /etc/ssl/cert/localhost.crt"
 
   database:
     image: postgres:16.6
