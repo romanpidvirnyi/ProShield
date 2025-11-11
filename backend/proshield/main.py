@@ -49,7 +49,6 @@ app.add_middleware(
 
 # Mount static files
 STATIC_PATH = os.path.join(Path(__file__).resolve().parent, "static")
-print(f"Static path: {STATIC_PATH}")
 app.mount("/static", StaticFiles(directory=STATIC_PATH), name="static")
 
 # Include routers

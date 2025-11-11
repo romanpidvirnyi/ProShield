@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, status
 from proshield import crud, schemas
 from proshield.core.database import get_db
 

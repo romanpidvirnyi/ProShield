@@ -2,7 +2,7 @@ from typing import Optional
 
 from proshield import schemas
 from proshield.db import models
-from sqlalchemy import select, update
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 
