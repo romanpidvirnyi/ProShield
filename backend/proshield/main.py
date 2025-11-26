@@ -3,7 +3,7 @@ import os
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import Depends, FastAPI
+from fastapi import Depends, FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from proshield import content
@@ -11,23 +11,17 @@ from proshield.api.routes import router as api_router
 from proshield.core.database import SessionLocal, get_db
 from proshield.views import router as views_routes
 from sqlalchemy.orm import Session
-from uvicorn.middleware.proxy_headers import ProxyHeadersMiddleware
 
 logger = logging.getLogger(__name__)
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # get db session
     db: Session = SessionLocal()
-
-    # pre-load
     content.preload_templates(db=db)
-
     yield
 
 
-# Initialize FastAPI application
 app = FastAPI(
     title="Protection Shield Coefficient API",
     description="Protection Shield Coefficient API",
@@ -38,15 +32,34 @@ app = FastAPI(
 )
 
 
+# Custom middleware to handle X-Forwarded-Proto
+@app.middleware("http")
+async def fix_scheme_middleware(request: Request, call_next):
+    # Check X-Forwarded-Proto header from Nginx
+    forwarded_proto = request.headers.get("X-Forwarded-Proto")
+    if forwarded_proto:
+        request.scope["scheme"] = forwarded_proto
+
+    # Also fix the host if needed
+    forwarded_host = request.headers.get("X-Forwarded-Host") or request.headers.get(
+        "Host"
+    )
+    if forwarded_host:
+        request.scope["server"] = (
+            forwarded_host.split(":")[0],
+            443 if forwarded_proto == "https" else 80,
+        )
+
+    return await call_next(request)
+
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"],  # Allow all methods
-    allow_headers=["*"],  # Allow all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
-
-app.add_middleware(ProxyHeadersMiddleware, trusted_hosts="*")
 
 # Mount static files
 STATIC_PATH = os.path.join(Path(__file__).resolve().parent, "static")
