@@ -8,7 +8,7 @@
     <link
       rel="icon"
       type="image/x-icon"
-      href="{{ url_for('static', path='assets/favicon_.png') }}"
+      href="{{ request.url_for('static', path='assets/favicon_.png') }}"
     />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -19,7 +19,7 @@
       rel="stylesheet"
     />
     <link
-      href="{{ url_for('static', path='css/styles.css') }}"
+      href="{{ request.url_for('static', path='css/styles.css') }}"
       rel="stylesheet"
     />
 
@@ -73,7 +73,7 @@
         left: 80%;
         width: 50px;
         height: 50px;
-        background: url("{{ url_for('static', path='assets/fire.png') }}")
+        background: url("{{ request.url_for('static', path='assets/fire.png') }}")
           no-repeat center/cover;
       }
       .firefighter {
@@ -81,7 +81,7 @@
         bottom: 40px;
         width: 75px;
         height: 150px;
-        background: url("{{ url_for('static', path='assets/firefighter.png') }}")
+        background: url("{{ request.url_for('static', path='assets/firefighter.png') }}")
           no-repeat center/cover;
       }
       .firefighter-one {
@@ -117,12 +117,12 @@
       <div class="container">
         <a class="navbar-brand" href="{{ request.url_for('home_view') }}">
           <img
-            src="{{ url_for('static', path='assets/logo-ldu.png') }}"
+            src="{{ request.url_for('static', path='assets/logo-ldu.png') }}"
             width="87"
             height="54"
           />
           <img
-            src="{{ url_for('static', path='assets/logo.png') }}"
+            src="{{ request.url_for('static', path='assets/logo.png') }}"
             width="54"
             height="54"
           />
@@ -162,6 +162,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ url_for('static', path='js/squreLaw.js') }}"></script>
+    <script src="{{ request.url_for('static', path='js/squreLaw.js') }}"></script>
   </body>
 </html>
