@@ -68,6 +68,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+@app.get("/debug-headers")
+async def debug_headers(request: Request):
+    return {
+        "headers": dict(request.headers),
+        "scheme": request.scope.get("scheme"),
+        "server": request.scope.get("server"),
+        "base_url": str(request.base_url),
+        "url_for_static": str(request.url_for("static", path="test.css")),
+    }
+
+
 # Mount static files
 STATIC_PATH = os.path.join(Path(__file__).resolve().parent, "static")
 app.mount("/static", StaticFiles(directory=STATIC_PATH), name="static")
