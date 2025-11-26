@@ -46,7 +46,7 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers
 )
 
-app = ProxyHeadersMiddleware(app, trusted_hosts="*")
+app.add_middleware(ProxyHeadersMiddleware, trusted_hosts="*")
 
 # Mount static files
 STATIC_PATH = os.path.join(Path(__file__).resolve().parent, "static")
