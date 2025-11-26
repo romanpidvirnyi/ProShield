@@ -3,7 +3,6 @@ import os
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-import uvicorn
 from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -12,6 +11,7 @@ from proshield.api.routes import router as api_router
 from proshield.core.database import SessionLocal, get_db
 from proshield.views import router as views_routes
 from sqlalchemy.orm import Session
+from uvicorn.middleware.proxy_headers import ProxyHeadersMiddleware
 
 logger = logging.getLogger(__name__)
 
@@ -46,6 +46,7 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers
 )
 
+app = ProxyHeadersMiddleware(app, trusted_hosts="*")
 
 # Mount static files
 STATIC_PATH = os.path.join(Path(__file__).resolve().parent, "static")
