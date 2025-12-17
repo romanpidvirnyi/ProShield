@@ -34,3 +34,14 @@ async def shelter_separate_embanked(request: Request, templates=Depends(get_temp
         name="shelter/shelter-separate-recessed.html",
         context={},
     )
+
+
+@router.get("/separate-freestanding", response_class=HTMLResponse)
+async def shelter_separate_freestanding(
+    request: Request, templates=Depends(get_templates)
+):
+    return templates.TemplateResponse(
+        request=request,
+        name="shelter/shelter-separate-recessed.html",
+        context={},
+    )

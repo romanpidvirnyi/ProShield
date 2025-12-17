@@ -165,20 +165,44 @@
 <div id="step5" class="step-container hidden">
   <h2 class="mb-4">Результат</h2>
 
-  <div class="alert alert-danger hidden" id="resultWarning">
-    <strong>Попередження:</strong> Ступінь послаблення радіаційного захисту не
-    відповідає нормі.
-  </div>
-
+  <!-- Wall Results -->
   <div class="card mb-4">
+    <div class="card-header">
+      <h5 class="mb-0">Стіни</h5>
+    </div>
     <div class="card-body">
+      <div class="alert alert-danger hidden" id="resultWarningWall">
+        <strong>Попередження:</strong> Ступінь послаблення радіаційного захисту
+        стін не відповідає нормі.
+      </div>
       <div class="result-value">
         <strong>Очікуваний ступінь захисту (Аз) =</strong>
-        <span id="expectedProtection">5000</span>
+        <span id="expectedProtectionWall">5000</span>
       </div>
       <div class="result-value">
         <strong>Розрахований ступінь захисту (Азф) =</strong>
-        <span id="calculatedProtection"></span>
+        <span id="calculatedProtectionWall"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Roof Results -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <h5 class="mb-0">Стеля</h5>
+    </div>
+    <div class="card-body">
+      <div class="alert alert-danger hidden" id="resultWarningRoof">
+        <strong>Попередження:</strong> Ступінь послаблення радіаційного захисту
+        стелі не відповідає нормі.
+      </div>
+      <div class="result-value">
+        <strong>Очікуваний ступінь захисту (Аз) =</strong>
+        <span id="expectedProtectionRoof">5000</span>
+      </div>
+      <div class="result-value">
+        <strong>Розрахований ступінь захисту (Азф) =</strong>
+        <span id="calculatedProtectionRoof"></span>
       </div>
     </div>
   </div>
@@ -191,18 +215,34 @@
   </div>
 
   <div class="result-formula hidden" id="calculationDetails">
-    <label class="form-check-label" for="calculationFormula"
-      ><strong>Формула:</strong></label
-    >
-    <div class="mb-2" id="calculationFormula">
-      <strong>Аз</strong> ≤ <strong>Азф</strong> = 1,18 (Ky,i × Kn,i) × (Кзаб /
-      Кбуд) × KN / (Ky,i + Kn,i)
+    <label class="form-check-label"><strong>Формула:</strong></label>
+    <div class="mb-3" id="calculationFormula">
+      <strong>Аз</strong> ≤ <strong>Азф</strong> = 1,18 × (Ky,i × Kn,i) × (Кзаб
+      / Кбуд) × KN / (Ky,i + Kn,i)
     </div>
-    <div>
-      <label class="form-check-label" for="calculationResults"
-        ><strong>Деталі розрахунку:</strong></label
-      >
-      <p id="calculationResults"></p>
+
+    <!-- Wall Calculation Details -->
+    <div class="card mb-3">
+      <div class="card-header">
+        <strong>Розрахунок для стін:</strong>
+      </div>
+      <div class="card-body">
+        <p id="calculationResultsWall"></p>
+      </div>
+    </div>
+
+    <!-- Roof Calculation Details -->
+    <div class="card mb-3">
+      <div class="card-header">
+        <strong>Розрахунок для стелі:</strong>
+      </div>
+      <div class="card-body">
+        <p id="calculationResultsRoof"></p>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <label class="form-check-label"><strong>Позначення:</strong></label>
       <p>
         <strong>Аз</strong> - нормативний ступінь послаблення, який приймається
         згідно з таблицею А.1 додатка А цих норм залежно від класу споруди;
@@ -230,7 +270,7 @@
         </p>
         <p>
           <strong>Kзаб</strong> – коефіцієнт, який враховує зниження дози
-          проникаючої радіації у забудові таприймається за таблицею Г.2;
+          проникаючої радіації у забудові та приймається за таблицею Г.2;
         </p>
         <p>
           <strong>Kбуд</strong> – коефіцієнт, який приймається за таблицею Г.3 і

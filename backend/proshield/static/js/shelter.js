@@ -63,9 +63,20 @@ const buildingHeight = document.getElementById("buildingHeight");
 const buildingDensity = document.getElementById("buildingDensity");
 
 // DOM elements - Results
-const resultWarning = document.getElementById("resultWarning");
-const expectedProtection = document.getElementById("expectedProtection");
-const calculatedProtection = document.getElementById("calculatedProtection");
+const resultWarningWall = document.getElementById("resultWarningWall");
+const resultWarningRoof = document.getElementById("resultWarningRoof");
+const expectedProtectionWall = document.getElementById(
+  "expectedProtectionWall"
+);
+const expectedProtectionRoof = document.getElementById(
+  "expectedProtectionRoof"
+);
+const calculatedProtectionWall = document.getElementById(
+  "calculatedProtectionWall"
+);
+const calculatedProtectionRoof = document.getElementById(
+  "calculatedProtectionRoof"
+);
 const showCalculations = document.getElementById("showCalculations");
 const calculationDetails = document.getElementById("calculationDetails");
 
@@ -375,22 +386,54 @@ function checkStep4Complete() {
 
 function showCalculationsDetails(data) {
   console.log("Calculation result:", data);
-  const expectedProtectionValue = data.az;
-  const calculatedProtectionValue = Math.round(data.AZF * 1000) / 1000;
-  const ky = Math.round(data.ky * 1000) / 1000;
-  const kn = Math.round(data.kn * 1000) / 1000;
+
+  const az = data.az;
   const kzab = Math.round(data.kzab * 1000) / 1000;
   const kbud = Math.round(data.kbud * 1000) / 1000;
-  const KN = Math.round(data.KN * 1000) / 1000;
 
-  expectedProtection.textContent = expectedProtectionValue;
-  calculatedProtection.textContent = calculatedProtectionValue;
+  // Wall calculations
+  const kyWall = Math.round(data.ky_wall * 1000) / 1000;
+  const knWall = Math.round(data.kn_wall * 1000) / 1000;
+  const KNWall = Math.round(data.KN_WALL * 1000) / 1000;
+  const azfWall = Math.round(data.AZF_WALL * 1000) / 1000;
 
-  const calculationResults = document.getElementById("calculationResults");
-  calculationResults.textContent = `${expectedProtectionValue} <= ${calculatedProtectionValue} = 1.18 (${ky} x ${kn}) x (${kzab} / ${kbud}) x ${KN} / (${ky} + ${kn})`;
+  // Roof calculations
+  const kyRoof = Math.round(data.ky_roof * 1000) / 1000;
+  const knRoof = Math.round(data.kn_roof * 1000) / 1000;
+  const KNRoof = Math.round(data.KN_ROOF * 1000) / 1000;
+  const azfRoof = Math.round(data.AZF_ROOF * 1000) / 1000;
 
-  if (expectedProtectionValue > calculatedProtectionValue) {
-    resultWarning.classList.remove("hidden");
+  // Display wall results
+  expectedProtectionWall.textContent = az;
+  calculatedProtectionWall.textContent = azfWall;
+
+  // Display roof results
+  expectedProtectionRoof.textContent = az;
+  calculatedProtectionRoof.textContent = azfRoof;
+
+  // Show calculation details for wall
+  const calculationResultsWall = document.getElementById(
+    "calculationResultsWall"
+  );
+  calculationResultsWall.textContent = `${az} <= ${azfWall} = 1.18 × (${kyWall} × ${knWall}) × (${kzab} / ${kbud}) × ${KNWall} / (${kyWall} + ${knWall})`;
+
+  // Show calculation details for roof
+  const calculationResultsRoof = document.getElementById(
+    "calculationResultsRoof"
+  );
+  calculationResultsRoof.textContent = `${az} <= ${azfRoof} = 1.18 × (${kyRoof} × ${knRoof}) × (${kzab} / ${kbud}) × ${KNRoof} / (${kyRoof} + ${knRoof})`;
+
+  // Show warnings if protection is insufficient
+  if (az > azfWall) {
+    resultWarningWall.classList.remove("hidden");
+  } else {
+    resultWarningWall.classList.add("hidden");
+  }
+
+  if (az > azfRoof) {
+    resultWarningRoof.classList.remove("hidden");
+  } else {
+    resultWarningRoof.classList.add("hidden");
   }
 }
 
@@ -477,7 +520,8 @@ function resetCalculator() {
 
   // Hide calculation details
   showCalculations.checked = false;
-  resultWarning.classList.add("hidden");
+  resultWarningWall.classList.add("hidden");
+  resultWarningRoof.classList.add("hidden");
   calculationDetails.classList.add("hidden");
 }
 
