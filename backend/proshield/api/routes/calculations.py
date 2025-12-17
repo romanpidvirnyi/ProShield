@@ -16,19 +16,33 @@ def calculate_az(
 ) -> schemas.AZFResults:
     # az
     az = data.az
-    # KN
-    KN = None
-    for item in data.materials:
+    # KN roof
+    KN_ROOF = None
+    for item in data.roof_materials:
         sub_material_coefficient = crud.get_sub_material_coefficient_by_params(
             db=db,
             sub_material_id=item.sub_material_id,
             thickness=item.thickness,
         )
         if sub_material_coefficient is not None:
-            if KN is None:
-                KN = sub_material_coefficient.coefficient
-            elif KN < sub_material_coefficient.coefficient:
-                KN = sub_material_coefficient.coefficient
+            if KN_ROOF is None:
+                KN_ROOF = sub_material_coefficient.coefficient
+            elif KN_ROOF < sub_material_coefficient.coefficient:
+                KN_ROOF = sub_material_coefficient.coefficient
+
+    # KN wall
+    KN_WALL = None
+    for item in data.wall_materials:
+        sub_material_coefficient = crud.get_sub_material_coefficient_by_params(
+            db=db,
+            sub_material_id=item.sub_material_id,
+            thickness=item.thickness,
+        )
+        if sub_material_coefficient is not None:
+            if KN_WALL is None:
+                KN_WALL = sub_material_coefficient.coefficient
+            elif KN_WALL < sub_material_coefficient.coefficient:
+                KN_WALL = sub_material_coefficient.coefficient
 
     # kbud
     kbud = data.coefficient_bud
@@ -48,9 +62,9 @@ def calculate_az(
     kzab = kzab.coefficient
 
     # attenuation_coefficients
-    attenuation_coefficients = []
-    for item in data.materials:
-        attenuation_coefficients.append(
+    attenuation_coefficients_wall = []
+    for item in data.wall_materials:
+        attenuation_coefficients_wall.append(
             crud.get_attenuation_coefficient_by_params(
                 db=db,
                 material_id=item.material_id,
@@ -58,21 +72,49 @@ def calculate_az(
             )
         )
 
-    ky = 1
-    for item in attenuation_coefficients:
-        ky *= item.gamma_dose_coefficient
+    attenuation_coefficients_roof = []
+    for item in data.roof_materials:
+        attenuation_coefficients_roof.append(
+            crud.get_attenuation_coefficient_by_params(
+                db=db,
+                material_id=item.material_id,
+                material_thickness=item.thickness,
+            )
+        )
 
-    kn = 1
-    for item in attenuation_coefficients:
-        kn *= item.neutron_dose_coefficient
+    ky_wall = 1
+    for item in attenuation_coefficients_wall:
+        ky_wall *= item.gamma_dose_coefficient
 
-    Azf = 1.18 * (ky * kn) * (kzab / kbud) * KN / (ky + kn)
+    ky_roof = 1
+    for item in attenuation_coefficients_roof:
+        ky_roof *= item.gamma_dose_coefficient
+
+    kn_wall = 1
+    for item in attenuation_coefficients_wall:
+        kn_wall *= item.neutron_dose_coefficient
+
+    kn_roof = 1
+    for item in attenuation_coefficients_roof:
+        kn_roof *= item.neutron_dose_coefficient
+
+    Azf_roof = (
+        1.18 * (ky_roof * kn_roof) * (kzab / kbud) * KN_ROOF / (ky_roof + kn_roof)
+    )
+    Azf_wall = (
+        1.18 * (ky_wall * kn_wall) * (kzab / kbud) * KN_WALL / (ky_wall + kn_wall)
+    )
+
     return schemas.AZFResults(
         az=az,
         kzab=kzab,
         kbud=kbud,
-        ky=ky,
-        kn=kn,
-        KN=KN,
-        AZF=Azf,
+        ky_roof=ky_roof,
+        kn_roof=kn_roof,
+        ky_wall=ky_wall,
+        kn_wall=kn_wall,
+        KN_ROOF=KN_ROOF,
+        AZF_ROOF=Azf_roof,
+        KN_WALL=KN_WALL,
+        AZF_WALL=Azf_wall,
     )

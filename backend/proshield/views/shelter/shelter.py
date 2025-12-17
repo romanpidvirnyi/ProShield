@@ -1,11 +1,5 @@
-import json
-import os
-
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import HTMLResponse
-from fastapi.staticfiles import StaticFiles
-from proshield import crud
-from proshield.content.base import INIT_DATA_DIR
 from proshield.core.database import get_db
 from proshield.views.dependencies import get_templates
 
@@ -27,10 +21,6 @@ async def shelter_separate_recessed(
     templates=Depends(get_templates),
     db=Depends(get_db),
 ):
-    storage_classes = crud.get_storage_classes(db=db)
-    materials = crud.get_materials(db=db)
-    host_url = str(request.base_url)
-
     return templates.TemplateResponse(
         request=request,
         name="shelter/shelter-separate-recessed.html",

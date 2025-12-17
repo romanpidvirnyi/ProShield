@@ -2,6 +2,7 @@
 %} {% block content %}
 <h2 class="text-center">Захисні споруди цивільного захисту</h2>
 
+<!-- Step 1: Shelter Class -->
 <div id="step1" class="step-container">
   <h3 class="text-center">
     Клас сховищ, СПП із захисними властивостями сховищ
@@ -29,12 +30,12 @@
   </div>
 </div>
 
-<!-- Step 2: Materials Table -->
+<!-- Step 2: Wall Materials Table -->
 <div id="step2" class="step-container hidden">
   <h2 class="mb-4">Додайте матеріал стіни огороджувальної конструкції</h2>
 
   <div class="table-responsive mb-4">
-    <table class="table table-bordered" id="materialsTable">
+    <table class="table table-bordered" id="wallMaterialsTable">
       <thead class="table-light">
         <tr>
           <th>Матеріал</th>
@@ -61,7 +62,7 @@
       type="button"
       class="btn btn-primary"
       data-bs-toggle="modal"
-      data-bs-target="#addMaterialModal"
+      data-bs-target="#addWallMaterialModal"
     >
       <i class="bi bi-plus-circle"></i> Додати матеріал
     </button>
@@ -76,8 +77,55 @@
   </div>
 </div>
 
-<!-- Step 3: Building Type And Parameters -->
+<!-- Step 3: Roof Materials Table -->
 <div id="step3" class="step-container hidden">
+  <h2 class="mb-4">Додайте матеріал стелі огороджувальної конструкції</h2>
+
+  <div class="table-responsive mb-4">
+    <table class="table table-bordered" id="roofMaterialsTable">
+      <thead class="table-light">
+        <tr>
+          <th>Матеріал</th>
+          <th>Підматеріал</th>
+          <th>Товщина (см)</th>
+          <th>Дії</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Table rows will be added dynamically -->
+      </tbody>
+    </table>
+  </div>
+
+  <div class="d-flex justify-content-between mb-5">
+    <button
+      type="button"
+      class="btn btn-outline-secondary"
+      id="backToStep2Button"
+    >
+      <i class="bi bi-arrow-left"></i> Назад
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#addRoofMaterialModal"
+    >
+      <i class="bi bi-plus-circle"></i> Додати матеріал
+    </button>
+    <button
+      type="button"
+      class="btn btn-success"
+      id="nextToStep4Button"
+      disabled
+    >
+      Продовжити <i class="bi bi-arrow-right"></i>
+    </button>
+  </div>
+</div>
+
+<!-- Step 4: Building Type And Parameters -->
+<div id="step4" class="step-container hidden">
   <h2 class="mb-4">Визначення коефіцієнту умов розташування</h2>
 
   <div class="mb-3">
@@ -103,7 +151,7 @@
     <button
       type="button"
       class="btn btn-outline-secondary"
-      id="backToStep2Button"
+      id="backToStep3Button"
     >
       <i class="bi bi-arrow-left"></i> Назад
     </button>
@@ -113,74 +161,8 @@
   </div>
 </div>
 
-<!-- Step 4: Building Parameters -->
-<!-- <div id="step4" class="step-container hidden">
-  <h2 class="mb-4">Параметри будівлі</h2>
-
-  <div class="row mb-3">
-    <div class="col-md-6 mb-3">
-      <label for="buildingHeight" class="form-label"
-        >Висота будинків забудови (м)</label
-      >
-      <select class="form-select" id="buildingHeight">
-        <option value="10-30">10-30</option>
-        <option value="30-50">30-50</option>
-        <option value="50-70">50-70</option>
-      </select>
-    </div>
-
-    <div class="col-md-6 mb-3">
-      <label for="wallThickness" class="form-label"
-        >Товщина стін огорожі (см)</label
-      >
-      <select class="form-select" id="wallThickness">
-        <option value="38">38</option>
-        <option value="51">51</option>
-        <option value="64">64</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="row mb-4">
-    <div class="col-md-6 mb-3">
-      <label for="buildingDensity" class="form-label"
-        >Щільність забуудови (%)</label
-      >
-      <select class="form-select" id="buildingDensity">
-        <option value="20">20</option>
-        <option value="30">30</option>
-        <option value="40">40</option>
-      </select>
-    </div>
-
-    <div class="col-md-6 mb-3">
-      <label for="openingsArea" class="form-label"
-        >Відносна площа отворів огорожі (%)</label
-      >
-      <select class="form-select" id="openingsArea">
-        <option value="20">20</option>
-        <option value="30">30</option>
-        <option value="40">40</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="d-flex justify-content-between">
-    <button
-      type="button"
-      class="btn btn-outline-secondary"
-      id="backToStep3Button"
-    >
-      <i class="bi bi-arrow-left"></i> Назад
-    </button>
-    <button type="button" class="btn btn-success" id="calculateButton" disabled>
-      Обрахувати результат <i class="bi bi-arrow-right"></i>
-    </button>
-  </div>
-</div> -->
-
 <!-- Step 5: Results -->
-<div id="step4" class="step-container hidden">
+<div id="step5" class="step-container hidden">
   <h2 class="mb-4">Результат</h2>
 
   <div class="alert alert-danger hidden" id="resultWarning">
@@ -265,7 +247,7 @@
     <button
       type="button"
       class="btn btn-outline-secondary"
-      id="backToStep3Button"
+      id="backToStep4Button"
     >
       <i class="bi bi-arrow-left"></i> Назад
     </button>
@@ -275,18 +257,18 @@
   </div>
 </div>
 
-<!-- Add Material Modal -->
+<!-- Add Wall Material Modal -->
 <div
   class="modal fade"
-  id="addMaterialModal"
+  id="addWallMaterialModal"
   tabindex="-1"
-  aria-labelledby="addMaterialModalLabel"
+  aria-labelledby="addWallMaterialModalLabel"
   aria-hidden="true"
 >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addMaterialModalLabel">
+        <h5 class="modal-title" id="addWallMaterialModalLabel">
           Виберіть матеріал стіни огороджуваної конструкції
         </h5>
         <button
@@ -297,23 +279,29 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form id="addMaterialForm">
+        <form id="addWallMaterialForm">
           <div class="mb-3">
-            <label for="materialType" class="form-label">Матеріал</label>
-            <select class="form-select" id="materialType" required></select>
+            <label for="wallMaterialType" class="form-label">Матеріал</label>
+            <select class="form-select" id="wallMaterialType" required></select>
           </div>
 
           <div class="mb-3">
-            <label for="submaterialType" class="form-label">Підматеріал</label>
-            <select class="form-select" id="submaterialType" required></select>
+            <label for="wallSubmaterialType" class="form-label"
+              >Підматеріал</label
+            >
+            <select
+              class="form-select"
+              id="wallSubmaterialType"
+              required
+            ></select>
           </div>
 
           <div class="mb-3">
-            <label for="thickness" class="form-label">Товщина (см)</label>
+            <label for="wallThickness" class="form-label">Товщина (см)</label>
             <input
               type="number"
               class="form-control"
-              id="thickness"
+              id="wallThickness"
               min="10"
               max="150"
               step="5"
@@ -332,7 +320,86 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Скасувати
         </button>
-        <button type="button" class="btn btn-primary" id="saveMaterialButton">
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="saveWallMaterialButton"
+        >
+          Додати
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Roof Material Modal -->
+<div
+  class="modal fade"
+  id="addRoofMaterialModal"
+  tabindex="-1"
+  aria-labelledby="addRoofMaterialModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addRoofMaterialModalLabel">
+          Виберіть матеріал стелі огороджуваної конструкції
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="addRoofMaterialForm">
+          <div class="mb-3">
+            <label for="roofMaterialType" class="form-label">Матеріал</label>
+            <select class="form-select" id="roofMaterialType" required></select>
+          </div>
+
+          <div class="mb-3">
+            <label for="roofSubmaterialType" class="form-label"
+              >Підматеріал</label
+            >
+            <select
+              class="form-select"
+              id="roofSubmaterialType"
+              required
+            ></select>
+          </div>
+
+          <div class="mb-3">
+            <label for="roofThickness" class="form-label">Товщина (см)</label>
+            <input
+              type="number"
+              class="form-control"
+              id="roofThickness"
+              min="10"
+              max="150"
+              step="5"
+              required
+            />
+            <div class="invalid-feedback">
+              Товщина повинна бути від 10 до 150 см та кратною 5
+            </div>
+            <small class="form-text text-muted"
+              >Значення має бути від 10 до 150 см та кратною 5</small
+            >
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Скасувати
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="saveRoofMaterialButton"
+        >
           Додати
         </button>
       </div>

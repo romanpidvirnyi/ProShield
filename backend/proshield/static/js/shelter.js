@@ -1,17 +1,20 @@
 // Global data storage
 const calculationData = {
   az: "",
-  materials: [],
+  wallMaterials: [],
+  roofMaterials: [],
   buildingType: "",
   buildingParams: {},
 };
 
-// DOM elements
+// DOM elements - Steps
 const step1 = document.getElementById("step1");
 const step2 = document.getElementById("step2");
 const step3 = document.getElementById("step3");
 const step4 = document.getElementById("step4");
+const step5 = document.getElementById("step5");
 
+// DOM elements - Shelter Class
 const shelterClass = document.getElementById("shelterClass");
 const shelterClassDescription = document.getElementById(
   "shelterClassDescription"
@@ -20,11 +23,32 @@ const shelterClassCoefficient = document.getElementById(
   "shelterClassCoefficient"
 );
 
-const materialsTable = document
-  .getElementById("materialsTable")
+// DOM elements - Wall Materials
+const wallMaterialsTable = document
+  .getElementById("wallMaterialsTable")
   .getElementsByTagName("tbody")[0];
+const wallMaterialType = document.getElementById("wallMaterialType");
+const wallSubmaterialType = document.getElementById("wallSubmaterialType");
+const wallThickness = document.getElementById("wallThickness");
+const saveWallMaterialButton = document.getElementById(
+  "saveWallMaterialButton"
+);
+
+// DOM elements - Roof Materials
+const roofMaterialsTable = document
+  .getElementById("roofMaterialsTable")
+  .getElementsByTagName("tbody")[0];
+const roofMaterialType = document.getElementById("roofMaterialType");
+const roofSubmaterialType = document.getElementById("roofSubmaterialType");
+const roofThickness = document.getElementById("roofThickness");
+const saveRoofMaterialButton = document.getElementById(
+  "saveRoofMaterialButton"
+);
+
+// DOM elements - Navigation Buttons
 const nextToStep2Button = document.getElementById("nextToStep2Button");
 const nextToStep3Button = document.getElementById("nextToStep3Button");
+const nextToStep4Button = document.getElementById("nextToStep4Button");
 const calculateButton = document.getElementById("calculateButton");
 
 const backToStep1Button = document.getElementById("backToStep1Button");
@@ -33,16 +57,12 @@ const backToStep3Button = document.getElementById("backToStep3Button");
 const backToStep4Button = document.getElementById("backToStep4Button");
 const startOverButton = document.getElementById("startOverButton");
 
+// DOM elements - Building Parameters
 const buildingType = document.getElementById("buildingType");
 const buildingHeight = document.getElementById("buildingHeight");
 const buildingDensity = document.getElementById("buildingDensity");
 
-const addMaterialForm = document.getElementById("addMaterialForm");
-const materialType = document.getElementById("materialType");
-const thickness = document.getElementById("thickness");
-const submaterialType = document.getElementById("submaterialType");
-const saveMaterialButton = document.getElementById("saveMaterialButton");
-
+// DOM elements - Results
 const resultWarning = document.getElementById("resultWarning");
 const expectedProtection = document.getElementById("expectedProtection");
 const calculatedProtection = document.getElementById("calculatedProtection");
@@ -54,12 +74,16 @@ const baseUrl = window.location.origin;
 
 // Initialize
 function init() {
-  // Add Material Modal
-  saveMaterialButton.addEventListener("click", addMaterial);
+  // Wall Material Modal
+  saveWallMaterialButton.addEventListener("click", addWallMaterial);
+
+  // Roof Material Modal
+  saveRoofMaterialButton.addEventListener("click", addRoofMaterial);
 
   // Navigation buttons
   nextToStep2Button.addEventListener("click", goToStep2);
   nextToStep3Button.addEventListener("click", goToStep3);
+  nextToStep4Button.addEventListener("click", goToStep4);
   calculateButton.addEventListener("click", calculateResults);
 
   backToStep1Button.addEventListener("click", () => {
@@ -77,9 +101,14 @@ function init() {
     step3.classList.remove("hidden");
   });
 
+  backToStep4Button.addEventListener("click", () => {
+    step5.classList.add("hidden");
+    step4.classList.remove("hidden");
+  });
+
   startOverButton.addEventListener("click", () => {
     resetCalculator();
-    step4.classList.add("hidden");
+    step5.classList.add("hidden");
     step1.classList.remove("hidden");
   });
 
@@ -92,23 +121,28 @@ function init() {
     }
   });
 
-  // Chnge description based on shelter class
+  // Change description based on shelter class
   shelterClass.addEventListener("change", changeDescription);
 
-  // Load submaterials based on selected material
-  materialType.addEventListener("change", loadSubmaterials);
-  submaterialType.addEventListener("change", setThickness);
+  // Wall materials - Load submaterials based on selected material
+  wallMaterialType.addEventListener("change", () => loadSubmaterials("wall"));
+  wallSubmaterialType.addEventListener("change", () => setThickness("wall"));
 
-  // Step 3 selects
+  // Roof materials - Load submaterials based on selected material
+  roofMaterialType.addEventListener("change", () => loadSubmaterials("roof"));
+  roofSubmaterialType.addEventListener("change", () => setThickness("roof"));
+
+  // Step 4 selects
   buildingType.addEventListener("change", loadBuildingsHeight);
   buildingType.addEventListener("change", loadBuildingsDensity);
-  buildingType.addEventListener("change", checkStep3Complete);
+  buildingType.addEventListener("change", checkStep4Complete);
 
-  buildingHeight.addEventListener("change", checkStep3Complete);
-  buildingDensity.addEventListener("change", checkStep3Complete);
+  buildingHeight.addEventListener("change", checkStep4Complete);
+  buildingDensity.addEventListener("change", checkStep4Complete);
 
   // Thickness validation
-  thickness.addEventListener("input", validateThickness);
+  wallThickness.addEventListener("input", () => validateThickness("wall"));
+  roofThickness.addEventListener("input", () => validateThickness("roof"));
 
   resetCalculator();
   loadStorageClasses();
@@ -130,28 +164,27 @@ function changeDescription() {
 }
 
 function getShelterClassCoefficient() {
-  const shelterClassCoefficient =
+  const coefficient =
     shelterClass.options[shelterClass.selectedIndex].getAttribute(
       "data-coefficient"
     );
-
-  return parseFloat(shelterClassCoefficient);
+  return parseFloat(coefficient);
 }
 
-// Add material to table
-function addMaterial() {
-  if (!validateMaterialForm()) return;
+// Add wall material to table
+function addWallMaterial() {
+  if (!validateMaterialForm("wall")) return;
 
-  const material = materialType.options[materialType.selectedIndex].text;
-  const materialId = materialType.value;
-  const thicknessValue = parseInt(thickness.value);
+  const material =
+    wallMaterialType.options[wallMaterialType.selectedIndex].text;
+  const materialId = wallMaterialType.value;
+  const thicknessValue = parseInt(wallThickness.value);
   const submaterial =
-    submaterialType.options[submaterialType.selectedIndex].text;
-  const submaterialId = submaterialType.value;
+    wallSubmaterialType.options[wallSubmaterialType.selectedIndex].text;
+  const submaterialId = wallSubmaterialType.value;
 
-  // Create new material object
   const newMaterial = {
-    id: calculationData.materials.length + 1,
+    id: calculationData.wallMaterials.length + 1,
     material_id: materialId,
     material: material,
     thickness: thicknessValue,
@@ -159,29 +192,60 @@ function addMaterial() {
     sub_material_id: submaterialId,
   };
 
-  // Add to data storage
-  calculationData.materials.push(newMaterial);
+  calculationData.wallMaterials.push(newMaterial);
+  addMaterialRow(newMaterial, wallMaterialsTable, "wall");
 
-  // Add to table
-  addMaterialRow(newMaterial);
-
-  // Enable next button if we have at least one material
   nextToStep3Button.disabled = false;
 
-  // Close modal and reset form
   const modal = bootstrap.Modal.getInstance(
-    document.getElementById("addMaterialModal")
+    document.getElementById("addWallMaterialModal")
   );
   modal.hide();
 
-  materialType.value = "";
-  thickness.value = "";
-  submaterialType.value = "";
+  wallMaterialType.value = "";
+  wallThickness.value = "";
+  wallSubmaterialType.value = "";
 }
 
-// Add material row to table
-function addMaterialRow(material) {
-  const row = materialsTable.insertRow();
+// Add roof material to table
+function addRoofMaterial() {
+  if (!validateMaterialForm("roof")) return;
+
+  const material =
+    roofMaterialType.options[roofMaterialType.selectedIndex].text;
+  const materialId = roofMaterialType.value;
+  const thicknessValue = parseInt(roofThickness.value);
+  const submaterial =
+    roofSubmaterialType.options[roofSubmaterialType.selectedIndex].text;
+  const submaterialId = roofSubmaterialType.value;
+
+  const newMaterial = {
+    id: calculationData.roofMaterials.length + 1,
+    material_id: materialId,
+    material: material,
+    thickness: thicknessValue,
+    submaterial: submaterial,
+    sub_material_id: submaterialId,
+  };
+
+  calculationData.roofMaterials.push(newMaterial);
+  addMaterialRow(newMaterial, roofMaterialsTable, "roof");
+
+  nextToStep4Button.disabled = false;
+
+  const modal = bootstrap.Modal.getInstance(
+    document.getElementById("addRoofMaterialModal")
+  );
+  modal.hide();
+
+  roofMaterialType.value = "";
+  roofThickness.value = "";
+  roofSubmaterialType.value = "";
+}
+
+// Add material row to table (universal for wall and roof)
+function addMaterialRow(material, tableBody, type) {
+  const row = tableBody.insertRow();
 
   const materialCell = row.insertCell(0);
   const submaterialCell = row.insertCell(1);
@@ -192,63 +256,74 @@ function addMaterialRow(material) {
   submaterialCell.textContent = material.submaterial;
   thicknessCell.textContent = material.thickness;
 
-  // Delete button
   const deleteButton = document.createElement("button");
   deleteButton.className = "btn btn-sm";
   deleteButton.innerHTML = '<i class="bi bi-trash"></i>';
   deleteButton.onclick = function () {
-    deleteMaterial(material.id, row);
+    deleteMaterial(material.id, row, type);
   };
 
   actionsCell.appendChild(deleteButton);
 }
 
-// Delete material
-function deleteMaterial(id, row) {
-  // Remove from data storage
-  const index = calculationData.materials.findIndex((m) => m.id === id);
+// Delete material (universal for wall and roof)
+function deleteMaterial(id, row, type) {
+  const materialsArray =
+    type === "wall"
+      ? calculationData.wallMaterials
+      : calculationData.roofMaterials;
+  const tableBody = type === "wall" ? wallMaterialsTable : roofMaterialsTable;
+  const nextButton = type === "wall" ? nextToStep3Button : nextToStep4Button;
+
+  const index = materialsArray.findIndex((m) => m.id === id);
   if (index !== -1) {
-    calculationData.materials.splice(index, 1);
+    materialsArray.splice(index, 1);
   }
 
-  // Remove row from table
-  materialsTable.removeChild(row);
+  tableBody.removeChild(row);
+  reindexMaterials(type);
 
-  // Re-index remaining materials
-  reindexMaterials();
-
-  // Disable next button if no materials
-  if (calculationData.materials.length === 0) {
-    nextToStep3Button.disabled = true;
+  if (materialsArray.length === 0) {
+    nextButton.disabled = true;
   }
 }
 
-// Reindex materials after deletion
-function reindexMaterials() {
-  // Update data storage IDs
-  calculationData.materials.forEach((material, index) => {
+// Reindex materials after deletion (universal for wall and roof)
+function reindexMaterials(type) {
+  const materialsArray =
+    type === "wall"
+      ? calculationData.wallMaterials
+      : calculationData.roofMaterials;
+  const tableBody = type === "wall" ? wallMaterialsTable : roofMaterialsTable;
+
+  materialsArray.forEach((material, index) => {
     material.id = index + 1;
   });
 
-  // Update table IDs
-  for (let i = 0; i < materialsTable.rows.length; i++) {
-    materialsTable.rows[i].cells[0].textContent = i + 1;
+  for (let i = 0; i < tableBody.rows.length; i++) {
+    tableBody.rows[i].cells[0].textContent = i + 1;
   }
 }
 
-// Validate material form
-function validateMaterialForm() {
+// Validate material form (universal for wall and roof)
+function validateMaterialForm(type) {
+  const materialType = type === "wall" ? wallMaterialType : roofMaterialType;
+  const thickness = type === "wall" ? wallThickness : roofThickness;
+  const submaterialType =
+    type === "wall" ? wallSubmaterialType : roofSubmaterialType;
+
   if (!materialType.value || !thickness.value || !submaterialType.value) {
     alert("Виберіть матеріал");
     return false;
   }
 
-  return validateThickness();
+  return validateThickness(type);
 }
 
-// Validate thickness input
-function validateThickness() {
-  const thicknessValue = parseInt(thickness.value);
+// Validate thickness input (universal for wall and roof)
+function validateThickness(type) {
+  const thicknessInput = type === "wall" ? wallThickness : roofThickness;
+  const thicknessValue = parseInt(thicknessInput.value);
 
   if (
     isNaN(thicknessValue) ||
@@ -256,10 +331,10 @@ function validateThickness() {
     thicknessValue > 150 ||
     thicknessValue % 5 !== 0
   ) {
-    thickness.classList.add("is-invalid");
+    thicknessInput.classList.add("is-invalid");
     return false;
   } else {
-    thickness.classList.remove("is-invalid");
+    thicknessInput.classList.remove("is-invalid");
     return true;
   }
 }
@@ -269,11 +344,8 @@ function goToStep2() {
   step1.classList.add("hidden");
   step2.classList.remove("hidden");
 
-  // Save shelter class coefficient
   calculationData.az = getShelterClassCoefficient();
-
-  // get materials for step 3
-  loadMaterials();
+  loadMaterials("wall");
 }
 
 // Go to step 3
@@ -281,11 +353,19 @@ function goToStep3() {
   step2.classList.add("hidden");
   step3.classList.remove("hidden");
 
+  loadMaterials("roof");
+}
+
+// Go to step 4
+function goToStep4() {
+  step3.classList.add("hidden");
+  step4.classList.remove("hidden");
+
   loadBuildingTypes();
 }
 
 // Check if step 4 is complete
-function checkStep3Complete() {
+function checkStep4Complete() {
   if (buildingHeight.value && buildingDensity.value) {
     calculateButton.disabled = false;
   } else {
@@ -295,8 +375,8 @@ function checkStep3Complete() {
 
 function showCalculationsDetails(data) {
   console.log("Calculation result:", data);
-  const expectedProtectionValue = data.az; // data.expectedProtection;
-  const calculatedProtectionValue = Math.round(data.AZF * 1000) / 1000; // data.calculatedProtection;
+  const expectedProtectionValue = data.az;
+  const calculatedProtectionValue = Math.round(data.AZF * 1000) / 1000;
   const ky = Math.round(data.ky * 1000) / 1000;
   const kn = Math.round(data.kn * 1000) / 1000;
   const kzab = Math.round(data.kzab * 1000) / 1000;
@@ -305,17 +385,17 @@ function showCalculationsDetails(data) {
 
   expectedProtection.textContent = expectedProtectionValue;
   calculatedProtection.textContent = calculatedProtectionValue;
-  // Show calculation results
+
   const calculationResults = document.getElementById("calculationResults");
-  // АЗ ≤ АЗФ = 1,18 (Ky,i × Kn,i) × Kp × KN / (Ky,i + Kn,i),
   calculationResults.textContent = `${expectedProtectionValue} <= ${calculatedProtectionValue} = 1.18 (${ky} x ${kn}) x (${kzab} / ${kbud}) x ${KN} / (${ky} + ${kn})`;
+
   if (expectedProtectionValue > calculatedProtectionValue) {
     resultWarning.classList.remove("hidden");
   }
 }
+
 // Calculate results
 function calculateResults() {
-  // Save building parameters
   calculationData.buildingParams = {
     height: buildingHeight.value,
     density: buildingDensity.value,
@@ -325,7 +405,8 @@ function calculateResults() {
 
   const dataPayload = {
     az: calculationData.az,
-    materials: calculationData.materials,
+    wall_materials: calculationData.wallMaterials,
+    roof_materials: calculationData.roofMaterials,
     building_type_id: calculationData.buildingParams.type_id,
     building_height: calculationData.buildingParams.height,
     building_density: calculationData.buildingParams.density,
@@ -333,7 +414,6 @@ function calculateResults() {
   console.log("dataPayload:", dataPayload);
 
   const calculateUrl = `${baseUrl}/api/calculations/azf`;
-  console.log("data:", dataPayload);
   fetch(calculateUrl, {
     method: "POST",
     headers: {
@@ -350,8 +430,8 @@ function calculateResults() {
     .then((data) => {
       showCalculationsDetails(data);
 
-      step3.classList.add("hidden");
-      step4.classList.remove("hidden");
+      step4.classList.add("hidden");
+      step5.classList.remove("hidden");
     })
     .catch((error) => {
       console.error("Fetch error:", error);
@@ -360,44 +440,45 @@ function calculateResults() {
 
 // Reset calculator
 function resetCalculator() {
-  // Clear data storage
-  calculationData.materials = [];
+  calculationData.wallMaterials = [];
+  calculationData.roofMaterials = [];
   calculationData.buildingType = "";
   calculationData.buildingParams = {};
 
-  // Clear table
-  while (materialsTable.rows.length > 0) {
-    materialsTable.deleteRow(0);
+  // Clear wall materials table
+  while (wallMaterialsTable.rows.length > 0) {
+    wallMaterialsTable.deleteRow(0);
   }
 
-  // Reset form values
-  materialType.value = "";
-  thickness.value = "";
-  submaterialType.value = "";
+  // Clear roof materials table
+  while (roofMaterialsTable.rows.length > 0) {
+    roofMaterialsTable.deleteRow(0);
+  }
+
+  // Reset wall form values
+  wallMaterialType.value = "";
+  wallThickness.value = "";
+  wallSubmaterialType.value = "";
+
+  // Reset roof form values
+  roofMaterialType.value = "";
+  roofThickness.value = "";
+  roofSubmaterialType.value = "";
+
+  // Reset building parameters
   buildingType.value = "";
   buildingHeight.value = "";
   buildingDensity.value = "";
 
   // Disable buttons
   nextToStep3Button.disabled = true;
+  nextToStep4Button.disabled = true;
   calculateButton.disabled = true;
 
   // Hide calculation details
   showCalculations.checked = false;
   resultWarning.classList.add("hidden");
   calculationDetails.classList.add("hidden");
-}
-
-// Mock API request
-function mockApiRequest(endpoint, data) {
-  return new Promise((resolve) => {
-    console.log(`Sending data to ${endpoint}:`, data);
-
-    // Simulate API delay
-    setTimeout(() => {
-      resolve({ status: "success" });
-    }, 500);
-  });
 }
 
 // Initialize application
@@ -426,7 +507,6 @@ function loadStorageClasses() {
         );
         shelterClassSelect.appendChild(option);
       });
-      // Set default value
       shelterClassSelect.value = data[0].id;
       changeDescription();
     })
@@ -435,8 +515,10 @@ function loadStorageClasses() {
     });
 }
 
-function loadMaterials() {
+function loadMaterials(type) {
   const materialsUrl = `${baseUrl}/api/materials`;
+  const materialTypeSelect =
+    type === "wall" ? wallMaterialType : roofMaterialType;
 
   fetch(materialsUrl)
     .then((response) => {
@@ -446,7 +528,6 @@ function loadMaterials() {
       return response.json();
     })
     .then((data) => {
-      const materialTypeSelect = document.getElementById("materialType");
       materialTypeSelect.innerHTML = "";
 
       data.forEach((materialItem) => {
@@ -455,19 +536,24 @@ function loadMaterials() {
         option.textContent = materialItem.name;
         materialTypeSelect.appendChild(option);
       });
-      // Set default value
+
       materialTypeSelect.value = data[0].id;
-      loadSubmaterials();
+      loadSubmaterials(type);
     })
     .catch((error) => {
       console.error("Fetch error:", error);
     });
 }
 
-// Load submaterials
-function loadSubmaterials() {
-  const materialTypeSelect = document.getElementById("materialType");
+// Load submaterials (universal for wall and roof)
+function loadSubmaterials(type) {
+  const materialTypeSelect =
+    type === "wall" ? wallMaterialType : roofMaterialType;
+  const submaterialTypeSelect =
+    type === "wall" ? wallSubmaterialType : roofSubmaterialType;
+
   const subMaterialsUrl = `${baseUrl}/api/materials/${materialTypeSelect.value}/sub-materials`;
+
   fetch(subMaterialsUrl)
     .then((response) => {
       if (!response.ok) {
@@ -476,8 +562,8 @@ function loadSubmaterials() {
       return response.json();
     })
     .then((data) => {
-      const submaterialTypeSelect = document.getElementById("submaterialType");
-      submaterialTypeSelect.innerHTML = ""; // Clear previous options
+      submaterialTypeSelect.innerHTML = "";
+
       data.forEach((submaterialItem) => {
         const option = document.createElement("option");
         option.value = submaterialItem.id;
@@ -492,26 +578,30 @@ function loadSubmaterials() {
         );
         submaterialTypeSelect.appendChild(option);
       });
-      // Set min and max values for thickness
-      setThickness();
+
+      setThickness(type);
     })
     .catch((error) => {
       console.error("Fetch error:", error);
     });
 }
 
-function setThickness() {
-  const minThickness = submaterialType.options[
-    submaterialType.selectedIndex
+function setThickness(type) {
+  const submaterialTypeSelect =
+    type === "wall" ? wallSubmaterialType : roofSubmaterialType;
+  const thicknessInput = type === "wall" ? wallThickness : roofThickness;
+
+  const minThickness = submaterialTypeSelect.options[
+    submaterialTypeSelect.selectedIndex
   ].getAttribute("data-minimum_thickness");
-  const maxThickness = submaterialType.options[
-    submaterialType.selectedIndex
+  const maxThickness = submaterialTypeSelect.options[
+    submaterialTypeSelect.selectedIndex
   ].getAttribute("data-maximum_thickness");
 
-  thickness.setAttribute("min", minThickness);
-  thickness.setAttribute("max", maxThickness);
-  thickness.value = minThickness;
-  validateThickness();
+  thicknessInput.setAttribute("min", minThickness);
+  thicknessInput.setAttribute("max", maxThickness);
+  thicknessInput.value = minThickness;
+  validateThickness(type);
 }
 
 function loadBuildingTypes() {
@@ -526,7 +616,6 @@ function loadBuildingTypes() {
     })
     .then((data) => {
       const buildingTypeSelect = document.getElementById("buildingType");
-      // clear select options
       buildingTypeSelect.innerHTML = "";
 
       data.forEach((buildingTypeItem) => {
@@ -535,11 +624,11 @@ function loadBuildingTypes() {
         option.textContent = buildingTypeItem.name;
         buildingTypeSelect.appendChild(option);
       });
-      // Set default value
+
       buildingTypeSelect.value = data[0].id;
       loadBuildingsHeight();
       loadBuildingsDensity();
-      checkStep3Complete();
+      checkStep4Complete();
     })
     .catch((error) => {
       console.error("Fetch error:", error);
@@ -549,6 +638,7 @@ function loadBuildingTypes() {
 function loadBuildingsHeight() {
   const buildingTypeId = buildingType.value;
   const buildingHeightUrl = `${baseUrl}/api/building-types/${buildingTypeId}/buildings-height`;
+
   fetch(buildingHeightUrl)
     .then((response) => {
       if (!response.ok) {
@@ -558,7 +648,6 @@ function loadBuildingsHeight() {
     })
     .then((data) => {
       const buildingHeightSelect = document.getElementById("buildingHeight");
-      // clear select options
       buildingHeightSelect.innerHTML = "";
 
       data.forEach((buildingHeightItem) => {
@@ -567,9 +656,9 @@ function loadBuildingsHeight() {
         option.textContent = buildingHeightItem;
         buildingHeightSelect.appendChild(option);
       });
-      // Set default value
+
       buildingHeightSelect.value = data[0];
-      checkStep3Complete();
+      checkStep4Complete();
     })
     .catch((error) => {
       console.error("Fetch error:", error);
@@ -579,6 +668,7 @@ function loadBuildingsHeight() {
 function loadBuildingsDensity() {
   const buildingTypeId = buildingType.value;
   const buildingDensityUrl = `${baseUrl}/api/building-types/${buildingTypeId}/buildings-density`;
+
   fetch(buildingDensityUrl)
     .then((response) => {
       if (!response.ok) {
@@ -588,7 +678,6 @@ function loadBuildingsDensity() {
     })
     .then((data) => {
       const buildingDensitySelect = document.getElementById("buildingDensity");
-      // clear select options
       buildingDensitySelect.innerHTML = "";
 
       data.forEach((buildingDensityItem) => {
@@ -597,9 +686,9 @@ function loadBuildingsDensity() {
         option.textContent = buildingDensityItem;
         buildingDensitySelect.appendChild(option);
       });
-      // Set default value
+
       buildingDensitySelect.value = data[0];
-      checkStep3Complete();
+      checkStep4Complete();
     })
     .catch((error) => {
       console.error("Fetch error:", error);

@@ -19,14 +19,19 @@ class CalculateAZF(BaseModel):
     # coefficient bud
     coefficient_bud: Optional[int] = 1
 
-    materials: list[MeterialThickness]
+    roof_materials: list[MeterialThickness]
+    wall_materials: list[MeterialThickness]
 
 
 class AZFResults(BaseModel):
     az: float
     kzab: float
     kbud: float
-    ky: float
-    kn: float
-    KN: float
-    AZF: float
+    ky_wall: float
+    kn_wall: float
+    ky_roof: float
+    kn_roof: float
+    KN_ROOF: float
+    KN_WALL: float
+    AZF_ROOF: float
+    AZF_WALL: float
