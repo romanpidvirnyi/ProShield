@@ -1,0 +1,514 @@
+{% extends "shelter/base-02.html" %} {% block title %}Модулі розрахунку{%
+endblock %} {% block content %}
+<h2 class="text-center">Захисні споруди цивільного захисту</h2>
+
+<!-- Step 1: Shelter Class -->
+<div id="step1" class="step-container">
+  <h3 class="text-center">
+    Клас сховищ, СПП із захисними властивостями сховищ
+  </h3>
+
+  <div class="mb-3">
+    <label for="shelterClass" class="form-label">Клас сховища</label>
+    <select class="form-select" id="shelterClass"></select>
+  </div>
+
+  <label for="shelterClassDescription" class="form-label"
+    >Розміщення сховищ, СПП із захисними властивостями сховищ</label
+  >
+  <p id="shelterClassDescription" class="text-muted">опис 1</p>
+
+  <label for="shelterClassCoefficient" class="form-label"
+    >Ступінь послаблення радіаційного впливу (ступінь захисту) Аз</label
+  >
+  <p id="shelterClassCoefficient" class="text-muted">опис 1</p>
+
+  <div class="d-flex justify-content-end mb-5">
+    <button type="button" class="btn btn-success" id="nextToStep2Button">
+      Продовжити <i class="bi bi-arrow-right"></i>
+    </button>
+  </div>
+</div>
+
+<!-- Step 2: Wall Materials Table -->
+<div id="step2" class="step-container hidden">
+  <h2 class="mb-4">Додайте матеріал стіни огороджувальної конструкції</h2>
+
+  <div class="table-responsive mb-4">
+    <table class="table table-bordered" id="wallMaterialsTable">
+      <thead class="table-light">
+        <tr>
+          <th>Матеріал</th>
+          <th>Підматеріал</th>
+          <th>Товщина (см)</th>
+          <th>Дії</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Table rows will be added dynamically -->
+      </tbody>
+    </table>
+  </div>
+
+  <div class="d-flex justify-content-between mb-5">
+    <button
+      type="button"
+      class="btn btn-outline-secondary"
+      id="backToStep1Button"
+    >
+      <i class="bi bi-arrow-left"></i> Назад
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#addWallMaterialModal"
+    >
+      <i class="bi bi-plus-circle"></i> Додати матеріал
+    </button>
+    <button
+      type="button"
+      class="btn btn-success"
+      id="nextToStep3Button"
+      disabled
+    >
+      Продовжити <i class="bi bi-arrow-right"></i>
+    </button>
+  </div>
+</div>
+
+<!-- Step 3: Roof Materials Table -->
+<div id="step3" class="step-container hidden">
+  <h2 class="mb-4">Додайте матеріал стелі огороджувальної конструкції</h2>
+
+  <div class="table-responsive mb-4">
+    <table class="table table-bordered" id="roofMaterialsTable">
+      <thead class="table-light">
+        <tr>
+          <th>Матеріал</th>
+          <th>Підматеріал</th>
+          <th>Товщина (см)</th>
+          <th>Дії</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Table rows will be added dynamically -->
+      </tbody>
+    </table>
+  </div>
+
+  <div class="d-flex justify-content-between mb-5">
+    <button
+      type="button"
+      class="btn btn-outline-secondary"
+      id="backToStep2Button"
+    >
+      <i class="bi bi-arrow-left"></i> Назад
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#addRoofMaterialModal"
+    >
+      <i class="bi bi-plus-circle"></i> Додати матеріал
+    </button>
+    <button
+      type="button"
+      class="btn btn-success"
+      id="nextToStep4Button"
+      disabled
+    >
+      Продовжити <i class="bi bi-arrow-right"></i>
+    </button>
+  </div>
+</div>
+
+<!-- Step 4: Building Wall Parameters (NEW) -->
+<div id="step4" class="step-container hidden">
+  <h2 class="mb-4">Параметри стін будівлі</h2>
+
+  <div class="mb-3">
+    <label for="buildingType4" class="form-label">Характер забудови</label>
+    <select class="form-select" id="buildingType4"></select>
+  </div>
+
+  <div class="mb-3">
+    <label for="buildingWallMaterial" class="form-label"
+      >Матеріал стін будівлі</label
+    >
+    <select class="form-select" id="buildingWallMaterial"></select>
+  </div>
+
+  <div class="mb-3">
+    <label for="buildingWallThickness" class="form-label"
+      >Товщина стін будівлі (см)</label
+    >
+    <select class="form-select" id="buildingWallThickness"></select>
+  </div>
+
+  <!-- <div class="mb-3">
+    <label for="buildingOpeningsPercent" class="form-label">% отворів</label>
+    <select class="form-select" id="buildingOpeningsPercent"></select>
+  </div> -->
+  <div class="mb-3">
+    <label for="buildingOpeningsPercent" class="form-label">% отворів</label>
+    <input
+      type="number"
+      class="form-control"
+      id="buildingOpeningsPercent"
+      min="10"
+      max="100"
+      step="10"
+      required
+    />
+    <div class="invalid-feedback">
+      Товщина повинна бути від 10 до 100 см та кратною 10
+    </div>
+    <small class="form-text text-muted"
+      >Значення має бути від 10 до 100 см та кратною 10</small
+    >
+  </div>
+
+  <div class="d-flex justify-content-between mb-5">
+    <button
+      type="button"
+      class="btn btn-outline-secondary"
+      id="backToStep3Button"
+    >
+      <i class="bi bi-arrow-left"></i> Назад
+    </button>
+    <button
+      type="button"
+      class="btn btn-success"
+      id="nextToStep5Button"
+      disabled
+    >
+      Продовжити <i class="bi bi-arrow-right"></i>
+    </button>
+  </div>
+</div>
+
+<!-- Step 5: Building Type And Parameters (was Step 4) -->
+<div id="step5" class="step-container hidden">
+  <h2 class="mb-4">Визначення коефіцієнту умов розташування</h2>
+
+  <div class="mb-3">
+    <label for="buildingType" class="form-label">Характер забудови</label>
+    <select class="form-select" id="buildingType"></select>
+  </div>
+
+  <div class="mb-3">
+    <label for="buildingHeight" class="form-label"
+      >Висота будинків забудови (м)</label
+    >
+    <select class="form-select" id="buildingHeight"></select>
+  </div>
+
+  <div class="mb-3">
+    <label for="buildingDensity" class="form-label"
+      >Щільність забуудови (%)</label
+    >
+    <select class="form-select" id="buildingDensity"></select>
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <button
+      type="button"
+      class="btn btn-outline-secondary"
+      id="backToStep4Button"
+    >
+      <i class="bi bi-arrow-left"></i> Назад
+    </button>
+    <button type="button" class="btn btn-success" id="calculateButton" disabled>
+      Продовжити <i class="bi bi-arrow-right"></i>
+    </button>
+  </div>
+</div>
+
+<!-- Step 6: Results (was Step 5) -->
+<div id="step6" class="step-container hidden">
+  <h2 class="mb-4">Результат</h2>
+
+  <!-- Wall Results -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <h5 class="mb-0">Стіни</h5>
+    </div>
+    <div class="card-body">
+      <div class="alert alert-danger hidden" id="resultWarningWall">
+        <strong>Попередження:</strong> Ступінь послаблення радіаційного захисту
+        стін не відповідає нормі.
+      </div>
+      <div class="result-value">
+        <strong>Очікуваний ступінь захисту (Аз) =</strong>
+        <span id="expectedProtectionWall">5000</span>
+      </div>
+      <div class="result-value">
+        <strong>Розрахований ступінь захисту (Азф) =</strong>
+        <span id="calculatedProtectionWall"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Roof Results -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <h5 class="mb-0">Стеля</h5>
+    </div>
+    <div class="card-body">
+      <div class="alert alert-danger hidden" id="resultWarningRoof">
+        <strong>Попередження:</strong> Ступінь послаблення радіаційного захисту
+        стелі не відповідає нормі.
+      </div>
+      <div class="result-value">
+        <strong>Очікуваний ступінь захисту (Аз) =</strong>
+        <span id="expectedProtectionRoof">5000</span>
+      </div>
+      <div class="result-value">
+        <strong>Розрахований ступінь захисту (Азф) =</strong>
+        <span id="calculatedProtectionRoof"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-check form-switch mb-3">
+    <input class="form-check-input" type="checkbox" id="showCalculations" />
+    <label class="form-check-label" for="showCalculations"
+      >Показати обрахунки</label
+    >
+  </div>
+
+  <div class="result-formula hidden" id="calculationDetails">
+    <label class="form-check-label"><strong>Формула:</strong></label>
+    <div class="mb-3" id="calculationFormula">
+      <strong>Аз</strong> ≤ <strong>Азф</strong> = 1,18 × (Ky,i × Kn,i) × (Кзаб
+      / Кбуд) × KN / (Ky,i + Kn,i)
+    </div>
+
+    <!-- Wall Calculation Details -->
+    <div class="card mb-3">
+      <div class="card-header">
+        <strong>Розрахунок для стін:</strong>
+      </div>
+      <div class="card-body">
+        <p id="calculationResultsWall"></p>
+      </div>
+    </div>
+
+    <!-- Roof Calculation Details -->
+    <div class="card mb-3">
+      <div class="card-header">
+        <strong>Розрахунок для стелі:</strong>
+      </div>
+      <div class="card-body">
+        <p id="calculationResultsRoof"></p>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <label class="form-check-label"><strong>Позначення:</strong></label>
+      <p>
+        <strong>Аз</strong> - нормативний ступінь послаблення, який приймається
+        згідно з таблицею А.1 додатка А цих норм залежно від класу споруди;
+      </p>
+      <p>
+        <strong>Ky,i</strong> - коефіцієнт послаблення дози гамма-випромінювання
+        огороджувальною конструкцією з одного або декількох і-тих шарів
+        матеріалу, що приймається для шару матеріалу за таблицею Г.1 та дорівнює
+        добутку їх відповідних значень, якщо шарів матеріалів декілька;
+      </p>
+      <p>
+        <strong>Kn,i</strong> – коефіцієнт послаблення дози нейтронів
+        огороджувальною конструкцією з одного або декількох і-тих шарів
+        матеріалу, що приймається для шару матеріалу за таблицею Г.1 та дорівнює
+        добутку їх значень, якщо шарів матеріалів декілька;
+      </p>
+      <p>
+        <strong>KN</strong> - коефіцієнт, що враховує товщину шару матеріалу,
+        значення якого визначається за таблицею Г.4;
+      </p>
+      <div>
+        <p><strong>Kp</strong> - коефіцієнт умов розташування сховищ чи СПП.</p>
+        <p>
+          <strong>Kp = Kзаб / Kбуд</strong>
+        </p>
+        <p>
+          <strong>Kзаб</strong> – коефіцієнт, який враховує зниження дози
+          проникаючої радіації у забудові та приймається за таблицею Г.2;
+        </p>
+        <p>
+          <strong>Kбуд</strong> – коефіцієнт, який приймається за таблицею Г.3 і
+          враховує послаблення радіації огороджувальними конструкціями житлових,
+          громадських та виробничих будівель, в які вбудовані сховища чи СПП.
+          Особливості визначення коефіцієнта Kбуд наведено в примітках до
+          таблиці Г.3.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between mt-4">
+    <button
+      type="button"
+      class="btn btn-outline-secondary"
+      id="backToStep5Button"
+    >
+      <i class="bi bi-arrow-left"></i> Назад
+    </button>
+    <button type="button" class="btn btn-primary" id="startOverButton">
+      Обрахувати знову
+    </button>
+  </div>
+</div>
+
+<!-- Add Wall Material Modal -->
+<div
+  class="modal fade"
+  id="addWallMaterialModal"
+  tabindex="-1"
+  aria-labelledby="addWallMaterialModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addWallMaterialModalLabel">
+          Виберіть матеріал стіни огороджуваної конструкції
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="addWallMaterialForm">
+          <div class="mb-3">
+            <label for="wallMaterialType" class="form-label">Матеріал</label>
+            <select class="form-select" id="wallMaterialType" required></select>
+          </div>
+
+          <div class="mb-3">
+            <label for="wallSubmaterialType" class="form-label"
+              >Підматеріал</label
+            >
+            <select
+              class="form-select"
+              id="wallSubmaterialType"
+              required
+            ></select>
+          </div>
+
+          <div class="mb-3">
+            <label for="wallThickness" class="form-label">Товщина (см)</label>
+            <input
+              type="number"
+              class="form-control"
+              id="wallThickness"
+              min="10"
+              max="150"
+              step="5"
+              required
+            />
+            <div class="invalid-feedback">
+              Товщина повинна бути від 10 до 150 см та кратною 5
+            </div>
+            <small class="form-text text-muted"
+              >Значення має бути від 10 до 150 см та кратною 5</small
+            >
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Скасувати
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="saveWallMaterialButton"
+        >
+          Додати
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Roof Material Modal -->
+<div
+  class="modal fade"
+  id="addRoofMaterialModal"
+  tabindex="-1"
+  aria-labelledby="addRoofMaterialModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addRoofMaterialModalLabel">
+          Виберіть матеріал стелі огороджуваної конструкції
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="addRoofMaterialForm">
+          <div class="mb-3">
+            <label for="roofMaterialType" class="form-label">Матеріал</label>
+            <select class="form-select" id="roofMaterialType" required></select>
+          </div>
+
+          <div class="mb-3">
+            <label for="roofSubmaterialType" class="form-label"
+              >Підматеріал</label
+            >
+            <select
+              class="form-select"
+              id="roofSubmaterialType"
+              required
+            ></select>
+          </div>
+
+          <div class="mb-3">
+            <label for="roofThickness" class="form-label">Товщина (см)</label>
+            <input
+              type="number"
+              class="form-control"
+              id="roofThickness"
+              min="10"
+              max="150"
+              step="5"
+              required
+            />
+            <div class="invalid-feedback">
+              Товщина повинна бути від 10 до 150 см та кратною 5
+            </div>
+            <small class="form-text text-muted"
+              >Значення має бути від 10 до 150 см та кратною 5</small
+            >
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Скасувати
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="saveRoofMaterialButton"
+        >
+          Додати
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

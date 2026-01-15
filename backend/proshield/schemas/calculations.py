@@ -17,7 +17,8 @@ class CalculateAZF(BaseModel):
     building_height: str
     building_density: int
     # coefficient bud
-    coefficient_bud: Optional[int] = 1
+    coefficient_bud_wall: Optional[float] = 1.0
+    coefficient_bud_roof: Optional[float] = 1.0
 
     roof_materials: list[MeterialThickness]
     wall_materials: list[MeterialThickness]
@@ -26,7 +27,8 @@ class CalculateAZF(BaseModel):
 class AZFResults(BaseModel):
     az: float
     kzab: float
-    kbud: float
+    coefficient_bud_wall: float
+    coefficient_bud_roof: float
     ky_wall: float
     kn_wall: float
     ky_roof: float

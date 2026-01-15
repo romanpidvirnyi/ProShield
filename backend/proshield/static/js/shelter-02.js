@@ -3,6 +3,9 @@ const calculationData = {
   az: "",
   wallMaterials: [],
   roofMaterials: [],
+  buildingWallParams: {}, // NEW: building wall parameters
+  coefficient_bud_wall: null, // NEW: coefficient from API
+  coefficient_bud_roof: null, // NEW: coefficient from API
   buildingType: "",
   buildingParams: {},
 };
@@ -13,6 +16,7 @@ const step2 = document.getElementById("step2");
 const step3 = document.getElementById("step3");
 const step4 = document.getElementById("step4");
 const step5 = document.getElementById("step5");
+const step6 = document.getElementById("step6");
 
 // DOM elements - Shelter Class
 const shelterClass = document.getElementById("shelterClass");
@@ -45,20 +49,30 @@ const saveRoofMaterialButton = document.getElementById(
   "saveRoofMaterialButton"
 );
 
+// DOM elements - Building Wall Parameters (NEW Step 4)
+const buildingWallMaterial = document.getElementById("buildingWallMaterial");
+const buildingWallThickness = document.getElementById("buildingWallThickness");
+const buildingOpeningsPercent = document.getElementById(
+  "buildingOpeningsPercent"
+);
+
 // DOM elements - Navigation Buttons
 const nextToStep2Button = document.getElementById("nextToStep2Button");
 const nextToStep3Button = document.getElementById("nextToStep3Button");
 const nextToStep4Button = document.getElementById("nextToStep4Button");
+const nextToStep5Button = document.getElementById("nextToStep5Button");
 const calculateButton = document.getElementById("calculateButton");
 
 const backToStep1Button = document.getElementById("backToStep1Button");
 const backToStep2Button = document.getElementById("backToStep2Button");
 const backToStep3Button = document.getElementById("backToStep3Button");
 const backToStep4Button = document.getElementById("backToStep4Button");
+const backToStep5Button = document.getElementById("backToStep5Button");
 const startOverButton = document.getElementById("startOverButton");
 
-// DOM elements - Building Parameters
+// DOM elements - Building Parameters (Step 5)
 const buildingType = document.getElementById("buildingType");
+const buildingType4 = document.getElementById("buildingType4");
 const buildingHeight = document.getElementById("buildingHeight");
 const buildingDensity = document.getElementById("buildingDensity");
 
@@ -95,6 +109,7 @@ function init() {
   nextToStep2Button.addEventListener("click", goToStep2);
   nextToStep3Button.addEventListener("click", goToStep3);
   nextToStep4Button.addEventListener("click", goToStep4);
+  nextToStep5Button.addEventListener("click", goToStep5);
   calculateButton.addEventListener("click", calculateResults);
 
   backToStep1Button.addEventListener("click", () => {
@@ -117,9 +132,14 @@ function init() {
     step4.classList.remove("hidden");
   });
 
+  backToStep5Button.addEventListener("click", () => {
+    step6.classList.add("hidden");
+    step5.classList.remove("hidden");
+  });
+
   startOverButton.addEventListener("click", () => {
     resetCalculator();
-    step5.classList.add("hidden");
+    step6.classList.add("hidden");
     step1.classList.remove("hidden");
   });
 
@@ -143,13 +163,20 @@ function init() {
   roofMaterialType.addEventListener("change", () => loadSubmaterials("roof"));
   roofSubmaterialType.addEventListener("change", () => setThickness("roof"));
 
-  // Step 4 selects
+  // Step 4 selects (Building Wall Parameters)
+  buildingType4.addEventListener("change", loadBuildingWallMaterials);
+  buildingWallMaterial.addEventListener("change", loadBuildingWallThicknesses);
+  buildingWallMaterial.addEventListener("change", checkStep4Complete);
+  buildingWallThickness.addEventListener("change", checkStep4Complete);
+  buildingOpeningsPercent.addEventListener("input", checkStep4Complete);
+
+  // Step 5 selects (Building Type)
   buildingType.addEventListener("change", loadBuildingsHeight);
   buildingType.addEventListener("change", loadBuildingsDensity);
-  buildingType.addEventListener("change", checkStep4Complete);
+  buildingType.addEventListener("change", checkStep5Complete);
 
-  buildingHeight.addEventListener("change", checkStep4Complete);
-  buildingDensity.addEventListener("change", checkStep4Complete);
+  buildingHeight.addEventListener("change", checkStep5Complete);
+  buildingDensity.addEventListener("change", checkStep5Complete);
 
   // Thickness validation
   wallThickness.addEventListener("input", () => validateThickness("wall"));
@@ -350,6 +377,24 @@ function validateThickness(type) {
   }
 }
 
+// Validate openings percent input
+function validateOpeningsPercent() {
+  const openingsValue = parseInt(buildingOpeningsPercent.value);
+
+  if (
+    isNaN(openingsValue) ||
+    openingsValue < 10 ||
+    openingsValue > 100 ||
+    openingsValue % 10 !== 0
+  ) {
+    buildingOpeningsPercent.classList.add("is-invalid");
+    return false;
+  } else {
+    buildingOpeningsPercent.classList.remove("is-invalid");
+    return true;
+  }
+}
+
 // Go to step 2
 function goToStep2() {
   step1.classList.add("hidden");
@@ -367,16 +412,100 @@ function goToStep3() {
   loadMaterials("roof");
 }
 
-// Go to step 4
+// Go to step 4 (NEW: Building Wall Parameters)
 function goToStep4() {
   step3.classList.add("hidden");
   step4.classList.remove("hidden");
 
-  loadBuildingTypes();
+  loadBuildingTypes4();
 }
 
-// Check if step 4 is complete
+// Go to step 5 (was step 4)
+async function goToStep5() {
+  // Validate openings percent
+  if (!validateOpeningsPercent()) {
+    alert(
+      "Будь ласка, введіть коректне значення % отворів (від 10 до 100, кратне 10)"
+    );
+    return;
+  }
+
+  const openingsPercent = parseInt(buildingOpeningsPercent.value);
+
+  // Save building wall parameters
+  calculationData.buildingWallParams = {
+    type_id: buildingType4.value,
+    material_id: buildingWallMaterial.value,
+    thickness: buildingWallThickness.value,
+    openings_percent: openingsPercent,
+  };
+
+  // If openings percent > 50, set coefficient_bud to 1 without API call
+  if (openingsPercent > 50) {
+    calculationData.coefficient_bud_roof = 1;
+    console.log("Openings percent > 50, setting coefficient_bud_roof = 1");
+
+    step4.classList.add("hidden");
+    step5.classList.remove("hidden");
+    loadBuildingTypes();
+    return;
+  }
+
+  // Otherwise, make API call to get coefficient
+  try {
+    const coefficientUrl =
+      `${baseUrl}/api/building-types/${buildingType4.value}/coefficient?` +
+      `wall_material_id=${buildingWallMaterial.value}&` +
+      `wall_material_thickness=${buildingWallThickness.value}&` +
+      `area_relation_percent=${openingsPercent}`;
+
+    console.log("Fetching coefficient from:", coefficientUrl);
+
+    const response = await fetch(coefficientUrl);
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    const data = await response.json();
+    calculationData.coefficient_bud_roof = data.coefficient;
+    console.log(
+      "Received coefficient_bud:",
+      calculationData.coefficient_bud_roof
+    );
+
+    step4.classList.add("hidden");
+    step5.classList.remove("hidden");
+    loadBuildingTypes();
+  } catch (error) {
+    console.error("Error fetching building coefficient:", error);
+    alert("Помилка отримання коефіцієнта будівлі. Спробуйте ще раз.");
+  }
+}
+
+// Check if step 4 is complete (NEW)
 function checkStep4Complete() {
+  const openingsValue = parseInt(buildingOpeningsPercent.value);
+  const isOpeningsValid =
+    !isNaN(openingsValue) &&
+    openingsValue >= 10 &&
+    openingsValue <= 100 &&
+    openingsValue % 10 === 0;
+
+  if (
+    buildingType4.value &&
+    buildingWallMaterial.value &&
+    buildingWallThickness.value &&
+    isOpeningsValid
+  ) {
+    nextToStep5Button.disabled = false;
+  } else {
+    nextToStep5Button.disabled = true;
+  }
+}
+
+// Check if step 5 is complete (was checkStep4Complete)
+function checkStep5Complete() {
   if (buildingHeight.value && buildingDensity.value) {
     calculateButton.disabled = false;
   } else {
@@ -453,6 +582,9 @@ function calculateResults() {
     az: calculationData.az,
     wall_materials: calculationData.wallMaterials,
     roof_materials: calculationData.roofMaterials,
+    // Include building wall coefficient
+    coefficient_bud_roof: calculationData.coefficient_bud_roof,
+
     building_type_id: calculationData.buildingParams.type_id,
     building_height: calculationData.buildingParams.height,
     building_density: calculationData.buildingParams.density,
@@ -476,8 +608,8 @@ function calculateResults() {
     .then((data) => {
       showCalculationsDetails(data);
 
-      step4.classList.add("hidden");
-      step5.classList.remove("hidden");
+      step5.classList.add("hidden");
+      step6.classList.remove("hidden");
     })
     .catch((error) => {
       console.error("Fetch error:", error);
@@ -488,6 +620,9 @@ function calculateResults() {
 function resetCalculator() {
   calculationData.wallMaterials = [];
   calculationData.roofMaterials = [];
+  calculationData.buildingWallParams = {};
+  calculationData.coefficient_bud_wall = null;
+  calculationData.coefficient_bud_roof = null;
   calculationData.buildingType = "";
   calculationData.buildingParams = {};
 
@@ -511,6 +646,11 @@ function resetCalculator() {
   roofThickness.value = "";
   roofSubmaterialType.value = "";
 
+  // Reset building wall parameters (NEW)
+  buildingWallMaterial.value = "";
+  buildingWallThickness.value = "";
+  buildingOpeningsPercent.value = "";
+
   // Reset building parameters
   buildingType.value = "";
   buildingHeight.value = "";
@@ -519,6 +659,7 @@ function resetCalculator() {
   // Disable buttons
   nextToStep3Button.disabled = true;
   nextToStep4Button.disabled = true;
+  nextToStep5Button.disabled = true;
   calculateButton.disabled = true;
 
   // Hide calculation details
@@ -651,6 +792,109 @@ function setThickness(type) {
   validateThickness(type);
 }
 
+// ============================================
+// NEW: Building Wall Parameters Functions
+// ============================================
+
+function loadBuildingTypes4() {
+  const buildingTypesUrl = `${baseUrl}/api/building-types`;
+
+  fetch(buildingTypesUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const buildingTypeSelect = document.getElementById("buildingType4");
+      buildingTypeSelect.innerHTML = "";
+
+      data.forEach((buildingTypeItem) => {
+        const option = document.createElement("option");
+        option.value = buildingTypeItem.id;
+        option.textContent = buildingTypeItem.name;
+        buildingTypeSelect.appendChild(option);
+      });
+
+      if (data.length > 0) {
+        buildingTypeSelect.value = data[0].id;
+        loadBuildingWallMaterials();
+      }
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
+    });
+}
+
+// Load building wall materials for Step 4
+function loadBuildingWallMaterials() {
+  const buildingWallMaterialsUrl = `${baseUrl}/api/wall-materials`;
+
+  fetch(buildingWallMaterialsUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      buildingWallMaterial.innerHTML = "";
+
+      data.forEach((item) => {
+        const option = document.createElement("option");
+        option.value = item.id;
+        option.textContent = item.name;
+        buildingWallMaterial.appendChild(option);
+      });
+
+      if (data.length > 0) {
+        buildingWallMaterial.value = data[0].id;
+        loadBuildingWallThicknesses();
+      }
+      checkStep4Complete();
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
+    });
+}
+
+// Load building wall thicknesses based on selected material
+function loadBuildingWallThicknesses() {
+  const materialId = buildingWallMaterial.value;
+  const thicknessUrl = `${baseUrl}/api/wall-materials/${materialId}/thickness`;
+
+  fetch(thicknessUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      buildingWallThickness.innerHTML = "";
+
+      data.forEach((thickness) => {
+        const option = document.createElement("option");
+        option.value = thickness;
+        option.textContent = thickness;
+        buildingWallThickness.appendChild(option);
+      });
+
+      if (data.length > 0) {
+        buildingWallThickness.value = data[0];
+      }
+      checkStep4Complete();
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
+    });
+}
+
+// ============================================
+// Building Types Functions (Step 5)
+// ============================================
+
 function loadBuildingTypes() {
   const buildingTypesUrl = `${baseUrl}/api/building-types`;
 
@@ -675,7 +919,7 @@ function loadBuildingTypes() {
       buildingTypeSelect.value = data[0].id;
       loadBuildingsHeight();
       loadBuildingsDensity();
-      checkStep4Complete();
+      checkStep5Complete();
     })
     .catch((error) => {
       console.error("Fetch error:", error);
@@ -705,7 +949,7 @@ function loadBuildingsHeight() {
       });
 
       buildingHeightSelect.value = data[0];
-      checkStep4Complete();
+      checkStep5Complete();
     })
     .catch((error) => {
       console.error("Fetch error:", error);
@@ -735,7 +979,7 @@ function loadBuildingsDensity() {
       });
 
       buildingDensitySelect.value = data[0];
-      checkStep4Complete();
+      checkStep5Complete();
     })
     .catch((error) => {
       console.error("Fetch error:", error);

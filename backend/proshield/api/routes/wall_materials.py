@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, status
+
 from proshield import crud, schemas
 from proshield.core.database import get_db
 
@@ -7,7 +8,7 @@ router = APIRouter(prefix="")
 
 @router.get(
     "",
-    response_model=list[schemas.Material],
+    response_model=list[schemas.WallMaterial],
     status_code=status.HTTP_200_OK,
 )
 def get_wall_materials(db=Depends(get_db)) -> list[schemas.WallMaterial]:

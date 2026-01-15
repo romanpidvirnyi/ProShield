@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+
 from proshield.api.routes.attenuation_coefficients import (
     router as attenuation_coefficients_router,
 )

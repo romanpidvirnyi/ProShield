@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import HTMLResponse
+
 from proshield.core.database import get_db
 from proshield.views.dependencies import get_templates
 
@@ -43,5 +44,16 @@ async def shelter_separate_freestanding(
     return templates.TemplateResponse(
         request=request,
         name="shelter/shelter-separate-recessed.html",
+        context={},
+    )
+
+
+@router.get("/built-in-first-floor", response_class=HTMLResponse)
+async def shelter_built_in_first_floor(
+    request: Request, templates=Depends(get_templates)
+):
+    return templates.TemplateResponse(
+        request=request,
+        name="shelter/shelter-built-in-first-floor.html",
         context={},
     )

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>A-I</title>
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ request.url_for('static', path='assets/favicon_.png') }}"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ request.url_for('static', path='css/styles.css') }}"
+      rel="stylesheet"
+    />
+
+    <style>
+      .step-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .hidden {
+        display: none;
+      }
+      .result-formula {
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+      .result-value {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+      .invalid-feedback {
+        display: none;
+      }
+      input.is-invalid + .invalid-feedback {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="{{ request.url_for('home_view') }}">
+          <img
+            src="{{ request.url_for('static', path='assets/logo-ldu.png') }}"
+            width="87"
+            height="54"
+          />
+          <img
+            src="{{ request.url_for('static', path='assets/logo.png') }}"
+            width="54"
+            height="54"
+          />
+        </a>
+
+        <h1 class="navbar-brand text-center w-100 collapse navbar-collapse">
+          ЛЬВІВСЬКИЙ ДЕРЖАВНИЙ УНІВЕРСИТЕТ БЕЗПЕКИ ЖИТТЄДІЯЛЬНОСТІ
+        </h1>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse col-md-4" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ request.url_for('home_view') }}"
+                >Модулі розрахунку</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Про сторінку</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container">{% block content %}{% endblock %}</main>
+
+    <footer class="footer text-center">
+      <p>&copy; 2025 | Підтримка: example@mail</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ request.url_for('static', path='js/shelter-02.js?v=2') }}"></script>
+  </body>
+</html>

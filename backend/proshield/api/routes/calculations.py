@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, status
+
 from proshield import crud, schemas
 from proshield.core.database import get_db
 
@@ -45,7 +46,8 @@ def calculate_az(
                 KN_WALL = sub_material_coefficient.coefficient
 
     # kbud
-    kbud = data.coefficient_bud
+    coefficient_bud_roof = data.coefficient_bud_roof
+    coefficient_bud_wall = data.coefficient_bud_wall
 
     # kzab
     kzab = crud.get_location_condition_coefficient_by_params(
@@ -99,16 +101,25 @@ def calculate_az(
         kn_roof *= item.neutron_dose_coefficient
 
     Azf_roof = (
-        1.18 * (ky_roof * kn_roof) * (kzab / kbud) * KN_ROOF / (ky_roof + kn_roof)
+        1.18
+        * (ky_roof * kn_roof)
+        * (kzab / coefficient_bud_roof)
+        * KN_ROOF
+        / (ky_roof + kn_roof)
     )
     Azf_wall = (
-        1.18 * (ky_wall * kn_wall) * (kzab / kbud) * KN_WALL / (ky_wall + kn_wall)
+        1.18
+        * (ky_wall * kn_wall)
+        * (kzab / coefficient_bud_wall)
+        * KN_WALL
+        / (ky_wall + kn_wall)
     )
 
     return schemas.AZFResults(
         az=az,
         kzab=kzab,
-        kbud=kbud,
+        coefficient_bud_roof=coefficient_bud_roof,
+        coefficient_bud_wall=coefficient_bud_wall,
         ky_roof=ky_roof,
         kn_roof=kn_roof,
         ky_wall=ky_wall,

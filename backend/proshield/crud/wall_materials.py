@@ -1,9 +1,10 @@
 from typing import Optional
 
-from proshield import schemas
-from proshield.db import models
 from sqlalchemy import select, update
 from sqlalchemy.orm import Session
+
+from proshield import schemas
+from proshield.db import models
 
 
 def create_wall_material(
@@ -32,6 +33,7 @@ def get_wall_material_thickness(db: Session, wall_material_id: int) -> list[int]
     return db.scalars(
         select(models.BuildingCoefficient.wall_thickness)
         .filter(models.BuildingCoefficient.wall_material_id == wall_material_id)
+        .order_by(models.BuildingCoefficient.wall_thickness)
         .distinct()
     ).all()
 
