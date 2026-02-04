@@ -87,6 +87,42 @@
                 >Модулі розрахунку</a
               >
             </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="documentsDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Документи
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="documentsDropdown">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="{{ request.url_for('static', path='pdf/tz.pdf') }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Технічне завдання
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="{{ request.url_for('static', path='pdf/dbn.pdf') }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    ДБН В.2.2-5:2023
+                  </a>
+                </li>
+              </ul>
+            </li>
+
             <li class="nav-item">
               <a class="nav-link" href="#">Про сторінку</a>
             </li>
