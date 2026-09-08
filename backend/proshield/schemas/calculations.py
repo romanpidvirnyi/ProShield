@@ -37,3 +37,37 @@ class AZFResults(BaseModel):
     KN_WALL: float
     AZF_ROOF: float
     AZF_WALL: float
+
+
+class MaterialDisplay(BaseModel):
+    material: str
+    submaterial: str
+    thickness: int
+
+
+class BuildingWallDisplay(BaseModel):
+    material: str
+    thickness: str
+    openings_percent: int
+
+
+class PDFDownloadRequest(BaseModel):
+    az: float
+    shelter_class_name: str
+    wall_materials: list[MaterialDisplay]
+    roof_materials: list[MaterialDisplay]
+    building_type_name: str
+    building_height: str
+    building_density: int
+    building_wall_params: Optional[BuildingWallDisplay] = None
+    kzab: float
+    coefficient_bud_wall: float
+    coefficient_bud_roof: float
+    ky_wall: float
+    kn_wall: float
+    ky_roof: float
+    kn_roof: float
+    KN_WALL: float
+    KN_ROOF: float
+    AZF_WALL: float
+    AZF_ROOF: float

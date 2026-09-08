@@ -13,7 +13,7 @@ from proshield.schemas.buildings_coefficients import (
     BuildingCoefficientCreate,
     BuildingCoefficientUpdate,
 )
-from proshield.schemas.calculations import AZFResults, CalculateAZF
+from proshield.schemas.calculations import AZFResults, CalculateAZF, PDFDownloadRequest
 from proshield.schemas.location_condition_coefficients import (
     LocationConditionCoefficient,
     LocationConditionCoefficientCreate,
@@ -60,6 +60,7 @@ __all__ = [
     "BuildingCoefficientUpdate",
     "CalculateAZF",
     "AZFResults",
+    "PDFDownloadRequest",
     "SubMaterial",
     "SubMaterialCreate",
     "SubMaterialUpdate",

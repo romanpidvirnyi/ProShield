@@ -1,7 +1,11 @@
+from io import BytesIO
+
 from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.responses import StreamingResponse
 
 from proshield import crud, schemas
 from proshield.core.database import get_db
+from proshield.services.pdf_generator import generate_calculation_pdf
 
 router = APIRouter(prefix="")
 
@@ -128,4 +132,16 @@ def calculate_az(
         AZF_ROOF=Azf_roof,
         KN_WALL=KN_WALL,
         AZF_WALL=Azf_wall,
+    )
+
+
+@router.post("/azf/pdf")
+def download_pdf(data: schemas.PDFDownloadRequest):
+    pdf_bytes = generate_calculation_pdf(data.model_dump())
+    return StreamingResponse(
+        BytesIO(pdf_bytes),
+        media_type="application/pdf",
+        headers={
+            "Content-Disposition": "attachment; filename=proshield-results.pdf"
+        },
     )

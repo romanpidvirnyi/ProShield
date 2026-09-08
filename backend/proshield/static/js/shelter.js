@@ -7,6 +7,8 @@ const calculationData = {
   buildingParams: {},
 };
 
+let lastApiResponse = null;
+
 // DOM elements - Steps
 const step1 = document.getElementById("step1");
 const step2 = document.getElementById("step2");
@@ -122,6 +124,9 @@ function init() {
     step5.classList.add("hidden");
     step1.classList.remove("hidden");
   });
+
+  // Download PDF
+  document.getElementById("downloadPdfButton").addEventListener("click", downloadPdf);
 
   // Show/hide calculations
   showCalculations.addEventListener("change", () => {
@@ -474,6 +479,7 @@ function calculateResults() {
       return response.json();
     })
     .then((data) => {
+      lastApiResponse = data;
       showCalculationsDetails(data);
 
       step4.classList.add("hidden");
@@ -739,5 +745,64 @@ function loadBuildingsDensity() {
     })
     .catch((error) => {
       console.error("Fetch error:", error);
+    });
+}
+
+function downloadPdf() {
+  if (!lastApiResponse) return;
+
+  const shelterClassName =
+    shelterClass.options[shelterClass.selectedIndex].text;
+  const buildingTypeName =
+    buildingType.options[buildingType.selectedIndex].text;
+
+  const pdfPayload = {
+    az: calculationData.az,
+    shelter_class_name: shelterClassName,
+    wall_materials: calculationData.wallMaterials.map((m) => ({
+      material: m.material,
+      submaterial: m.submaterial,
+      thickness: m.thickness,
+    })),
+    roof_materials: calculationData.roofMaterials.map((m) => ({
+      material: m.material,
+      submaterial: m.submaterial,
+      thickness: m.thickness,
+    })),
+    building_type_name: buildingTypeName,
+    building_height: calculationData.buildingParams.height,
+    building_density: parseInt(calculationData.buildingParams.density),
+    kzab: lastApiResponse.kzab,
+    coefficient_bud_wall: lastApiResponse.coefficient_bud_wall,
+    coefficient_bud_roof: lastApiResponse.coefficient_bud_roof,
+    ky_wall: lastApiResponse.ky_wall,
+    kn_wall: lastApiResponse.kn_wall,
+    ky_roof: lastApiResponse.ky_roof,
+    kn_roof: lastApiResponse.kn_roof,
+    KN_WALL: lastApiResponse.KN_WALL,
+    KN_ROOF: lastApiResponse.KN_ROOF,
+    AZF_WALL: lastApiResponse.AZF_WALL,
+    AZF_ROOF: lastApiResponse.AZF_ROOF,
+  };
+
+  fetch(`${baseUrl}/api/calculations/azf/pdf`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(pdfPayload),
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error("PDF generation failed");
+      return response.blob();
+    })
+    .then((blob) => {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "proshield-results.pdf";
+      a.click();
+      URL.revokeObjectURL(url);
+    })
+    .catch((error) => {
+      console.error("PDF download error:", error);
     });
 }

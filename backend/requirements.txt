@@ -7,6 +7,7 @@ python-dotenv==1.0.1
 pydantic==2.10.3
 pydantic-settings==2.7.0
 Jinja2==3.1.6
+fpdf2==2.8.2
 
 # frontend
 flet==0.25.2
